@@ -1,0 +1,284 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:<http://example.org/GeoNWDW#> .
+@prefix virtrdf: <http://www.openlinksw.com/schemas/virtrdf#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix qb: <http://purl.org/linked-data/cube#>.
+@prefix qb4o: <http://purl.org/qb4solap/cubes#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix gnwi: <http://qb4solap.org/cubes/instances/geonorthwind#> .
+@prefix gnw: <http://qb4solap.org/cubes/schemas/geonorthwind#> . 
+gnwi:country_1 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 1 ;
+	 gnw:countryName "Austria" ;
+	 gnw:countryCode "AT " ;
+	 gnw:countryCapital "Vienna" ;
+	 gnw:population 8316487 ;
+	 gnw:subdivision "Austria is divided into nine Bundesländer, or simply Länder (states; sing. Land)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(16.3738189 48.2081743)"^^virtrdf:Geometry; 
+	 gnw:area  "10.0407946189893"^^xsd:double. 
+gnwi:country_2 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 2 ;
+	 gnw:countryName "Belgium" ;
+	 gnw:countryCode "BE " ;
+	 gnw:countryCapital "Bruxelles" ;
+	 gnw:population 10584534 ;
+	 gnw:subdivision "Belgium is divided into ten provinces (Flemish: provincies) and one capital region (Flemish: hoofdstedelijke gewest; French: région capitale)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(4.3517103 50.8503396)"^^virtrdf:Geometry; 
+	 gnw:area  "3.89783417520565"^^xsd:double. 
+gnwi:country_3 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 3 ;
+	 gnw:countryName "Denmark" ;
+	 gnw:countryCode "DK " ;
+	 gnw:countryCapital "Copenhagen" ;
+	 gnw:population 5475791 ;
+	 gnw:subdivision "Denmark is divided into five regioner (regions; singular: region) and 98 municipalities (Danish, kommuner)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(12.5683371 55.6760968)"^^virtrdf:Geometry; 
+	 gnw:area  "6.39556288404441"^^xsd:double. 
+gnwi:country_4 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 4 ;
+	 gnw:countryName "Finland" ;
+	 gnw:countryCode "FI " ;
+	 gnw:countryCapital "Helsinki" ;
+	 gnw:population 5311891 ;
+	 gnw:subdivision "Finland is divided into five läänit (sing. lääni, Swedish län: provinces) and one itsehallinnollinen maakunta (autonomous province), namely Åland. " ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(24.9385508 60.169845)"^^virtrdf:Geometry; 
+	 gnw:area  "62.7115560229047"^^xsd:double. 
+gnwi:country_5 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 5 ;
+	 gnw:countryName "France" ;
+	 gnw:countryCode "FR " ;
+	 gnw:countryCapital "Paris" ;
+	 gnw:population 64473140 ;
+	 gnw:subdivision "France, in Europe and adjacent islands (Corsica), is divided into 96 départements (departments). It also has a number of possessions, some of which are classified as départements d'outre-mer (overseas departments). " ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(2.3522219 48.856614)"^^virtrdf:Geometry; 
+	 gnw:area  "64.4307393604697"^^xsd:double. 
+gnwi:country_6 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 6 ;
+	 gnw:countryName "Germany" ;
+	 gnw:countryCode "DE " ;
+	 gnw:countryCapital "Berlin" ;
+	 gnw:population 82210000 ;
+	 gnw:subdivision "Germany is divided into sixteen Länder (sing. Land: state)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(13.4060912 52.519171)"^^virtrdf:Geometry; 
+	 gnw:area  "45.8777227070815"^^xsd:double. 
+gnwi:country_7 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 7 ;
+	 gnw:countryName "Ireland" ;
+	 gnw:countryCode "IE " ;
+	 gnw:countryCapital "Dublin" ;
+	 gnw:population 6000000 ;
+	 gnw:subdivision "Ireland is divided into 26 (traditional) counties." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(-6.2603097 53.3498053)"^^virtrdf:Geometry; 
+	 gnw:area  "9.38355018810176"^^xsd:double. 
+gnwi:country_8 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 8 ;
+	 gnw:countryName "Italy" ;
+	 gnw:countryCode "IT " ;
+	 gnw:countryCapital "Roma" ;
+	 gnw:population 59536507 ;
+	 gnw:subdivision "Italy is divided into 110 province (sing. provincia: provinces)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(12.4825199 41.8929163)"^^virtrdf:Geometry; 
+	 gnw:area  "33.2227569220181"^^xsd:double. 
+gnwi:country_9 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 9 ;
+	 gnw:countryName "Netherlands" ;
+	 gnw:countryCode "NL " ;
+	 gnw:countryCapital "Amsterdam" ;
+	 gnw:population 16408557 ;
+	 gnw:subdivision "The Netherlands is divided into twelve provincies (provinces)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(4.8951679 52.3702157)"^^virtrdf:Geometry; 
+	 gnw:area  "4.60172492573797"^^xsd:double. 
+gnwi:country_10 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 10 ;
+	 gnw:countryName "Norway" ;
+	 gnw:countryCode "NO " ;
+	 gnw:countryCapital "Oslo" ;
+	 gnw:population 4752735 ;
+	 gnw:subdivision "Norway is divided into 19 fylker (sing. fylke: counties)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(10.7522454 59.9138688)"^^virtrdf:Geometry; 
+	 gnw:area  "60.6207513732027"^^xsd:double. 
+gnwi:country_11 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 11 ;
+	 gnw:countryName "Poland" ;
+	 gnw:countryCode "PL " ;
+	 gnw:countryCapital "Warsaw" ;
+	 gnw:population 38518241 ;
+	 gnw:subdivision "Poland is divided into sixteen wojewodztwa (voivodships)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(21.0122287 52.2296756)"^^virtrdf:Geometry; 
+	 gnw:area  "40.9467286630612"^^xsd:double. 
+gnwi:country_12 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 12 ;
+	 gnw:countryName "Portugal" ;
+	 gnw:countryCode "PT " ;
+	 gnw:countryCapital "Lisbon" ;
+	 gnw:population 10623032 ;
+	 gnw:subdivision "Portugal is divided into eighteen distritos (districts) and two regiões autônomas (autonomous regions)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(-9.1500364 38.7252993)"^^virtrdf:Geometry; 
+	 gnw:area  "9.64774494028924"^^xsd:double. 
+gnwi:country_13 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 13 ;
+	 gnw:countryName "Spain" ;
+	 gnw:countryCode "ES " ;
+	 gnw:countryCapital "Madrid" ;
+	 gnw:population 45200737 ;
+	 gnw:subdivision "Spain is politically organized into 17 Autonomous Communities (comunidades autónomas) and 2 autonomous cities (ciudades autónomas) - Ceuta and Melilla. Administratively Spain also comprises fifty provinces." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(-3.7037902 40.4167754)"^^virtrdf:Geometry; 
+	 gnw:area  "53.5643978643195"^^xsd:double. 
+gnwi:country_14 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 14 ;
+	 gnw:countryName "Sweden" ;
+	 gnw:countryCode "SE " ;
+	 gnw:countryCapital "Stockholm" ;
+	 gnw:population 91962274 ;
+	 gnw:subdivision "Sweden is divided into 21 län (counties)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(18.06491 59.32893)"^^virtrdf:Geometry; 
+	 gnw:area  "79.0943865838147"^^xsd:double. 
+gnwi:country_15 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 15 ;
+	 gnw:countryName "Switzerland" ;
+	 gnw:countryCode "CH " ;
+	 gnw:countryCapital "Bern" ;
+	 gnw:population 7591400 ;
+	 gnw:subdivision "Switzerland is divided into 26 cantons (French or English), kantone (German), cantoni (Italian), chantuns (Romansh)." ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(7.4446085 46.9479222)"^^virtrdf:Geometry; 
+	 gnw:area  "4.8627652167072"^^xsd:double. 
+gnwi:country_16 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 16 ;
+	 gnw:countryName "United Kingdom" ;
+	 gnw:countryCode "UK " ;
+	 gnw:countryCapital "London" ;
+	 gnw:population 60587300 ;
+	 gnw:subdivision "Various" ;
+	 skos:broader gnwi:continent_1 ;
+	 gnw:capitalGeo  "POINT(-0.1198244 51.5112139)"^^virtrdf:Geometry; 
+	 gnw:area  "33.649921228418"^^xsd:double. 
+gnwi:country_17 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 17 ;
+	 gnw:countryName "Canada" ;
+	 gnw:countryCode "CA " ;
+	 gnw:countryCapital "Ottawa" ;
+	 gnw:population 33293000 ;
+	 gnw:subdivision "Canada is divided into ten provinces and three territories (French: territoires)." ;
+	 skos:broader gnwi:continent_2 ;
+	 gnw:capitalGeo  "POINT(-75.6971931 45.4215296)"^^virtrdf:Geometry; 
+	 gnw:area  "1692.80859346397"^^xsd:double. 
+gnwi:country_18 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 18 ;
+	 gnw:countryName "Mexico" ;
+	 gnw:countryCode "MX " ;
+	 gnw:countryCapital "Mexico D.F." ;
+	 gnw:population 108700891 ;
+	 gnw:subdivision "Mexico is divided into 31 estados (states) and one distrito federal (federal district)." ;
+	 skos:broader gnwi:continent_2 ;
+	 gnw:capitalGeo  "POINT(-99.133208 19.4326077)"^^virtrdf:Geometry; 
+	 gnw:area  "174.161624863428"^^xsd:double. 
+gnwi:country_19 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 19 ;
+	 gnw:countryName "United States" ;
+	 gnw:countryCode "USA" ;
+	 gnw:countryCapital "Washington D.C." ;
+	 gnw:population 304358000 ;
+	 gnw:subdivision "The United States is divided into fifty states and one federal district." ;
+	 skos:broader gnwi:continent_2 ;
+	 gnw:capitalGeo  "POINT(-77.0363658 38.8951118)"^^virtrdf:Geometry; 
+	 gnw:area  "1101.00155577358"^^xsd:double. 
+gnwi:country_20 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 20 ;
+	 gnw:countryName "Australia" ;
+	 gnw:countryCode "AU " ;
+	 gnw:countryCapital "Canberra" ;
+	 gnw:population 21310000 ;
+	 gnw:subdivision "Australia is divided into six states and four territories." ;
+	 skos:broader gnwi:continent_3 ;
+	 gnw:capitalGeo  "POINT(149.1286843 -35.2819998)"^^virtrdf:Geometry; 
+	 gnw:area  "695.551776815017"^^xsd:double. 
+gnwi:country_21 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 21 ;
+	 gnw:countryName "Japan" ;
+	 gnw:countryCode "JP " ;
+	 gnw:countryCapital "Tokyo" ;
+	 gnw:population 127433494 ;
+	 gnw:subdivision "Japan is divided into 43 ken (prefectures), one to (metropolis - Tokyo), one do (Area - Hokkaido), and two fu (urban prefectures - Kyoto and Osaka). The four words are combined in one, todofuken, to denote a division of any type." ;
+	 skos:broader gnwi:continent_3 ;
+	 gnw:capitalGeo  "POINT(139.6917064 35.6894875)"^^virtrdf:Geometry; 
+	 gnw:area  "38.1823427078866"^^xsd:double. 
+gnwi:country_24 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 24 ;
+	 gnw:countryName "Brazil" ;
+	 gnw:countryCode "BR " ;
+	 gnw:countryCapital "Brasilia" ;
+	 gnw:population 186757608 ;
+	 gnw:subdivision "Brazil is divided into 26 estados (states) and one distrito federal (federal district)." ;
+	 skos:broader gnwi:continent_4 ;
+	 gnw:capitalGeo  "POINT(-47.9291698 -15.7801482)"^^virtrdf:Geometry; 
+	 gnw:area  "708.094385832307"^^xsd:double. 
+gnwi:country_25 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 25 ;
+	 gnw:countryName "Venezuela" ;
+	 gnw:countryCode "VE " ;
+	 gnw:countryCapital "Caracas" ;
+	 gnw:population 28199822 ;
+	 gnw:subdivision "Venezuela is divided into 23 estados (states), one dependencias federales (federal dependencies), and one distrito capital (capital district)." ;
+	 skos:broader gnwi:continent_4 ;
+	 gnw:capitalGeo  "POINT(-66.902061 10.491016)"^^virtrdf:Geometry; 
+	 gnw:area  "74.7688879222218"^^xsd:double. 
+gnwi:country_22 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 22 ;
+	 gnw:countryName "Singapore" ;
+	 gnw:countryCode "SG " ;
+	 gnw:countryCapital "Singapore" ;
+	 gnw:population 4588600 ;
+	 gnw:subdivision "Singapore is divided into five districts." ;
+	 skos:broader gnwi:continent_3 ;
+	 gnw:capitalGeo  "POINT(103.819836 1.352083)"^^virtrdf:Geometry; 
+	 gnw:area  "0.048271626984203"^^xsd:double. 
+gnwi:country_23 a gnw:country ;
+	 qb4o:memberOf gnw:country ;
+	 gnw:countryID 23 ;
+	 gnw:countryName "Argentina" ;
+	 gnw:countryCode "AR " ;
+	 gnw:countryCapital "Buenos Aires" ;
+	 gnw:population 40677348 ;
+	 gnw:subdivision "Argentina is divided into 23 provincias (provinces) and a distrito federal (federal district)." ;
+	 skos:broader gnwi:continent_4 ;
+	 gnw:capitalGeo  "POINT(-58.3815931 -34.6037232)"^^virtrdf:Geometry; 
+	 gnw:area  "278.251166724479"^^xsd:double. 

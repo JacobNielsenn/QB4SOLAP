@@ -1,0 +1,144 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:<http://example.org/GeoNWDW#> .
+@prefix virtrdf: <http://www.openlinksw.com/schemas/virtrdf#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix qb: <http://purl.org/linked-data/cube#>.
+@prefix qb4o: <http://purl.org/qb4solap/cubes#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix gnwi: <http://qb4solap.org/cubes/instances/geonorthwind#> .
+@prefix gnw: <http://qb4solap.org/cubes/schemas/geonorthwind#> . 
+gnwi:employee_1 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 1 ;
+	 gnw:firstName "Nancy" ;
+	 gnw:lastName "Davolio" ;
+	 gnw:title "Sales Representative" ;
+	 gnw:titleOfCourtesy "Ms." ;
+	 gnw:birthDate "1948-12-08" ;
+	 gnw:hireDate "1992-05-01" ;
+	 gnw:address "507 - 20th Ave. E. Apt. 2A" ;
+	 gnw:cityName "Seattle" ;
+	 gnw:regionName "WA" ;
+	 gnw:postalCode "98122" ;
+	 gnw:countryName "USA" ; 
+	 skos:broader gnwi:employee_2 . 
+gnwi:employee_2 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 2 ;
+	 gnw:firstName "Andrew" ;
+	 gnw:lastName "Fuller" ;
+	 gnw:title "Vice President, Sales" ;
+	 gnw:titleOfCourtesy "Dr." ;
+	 gnw:birthDate "1952-02-19" ;
+	 gnw:hireDate "1992-08-14" ;
+	 gnw:address "908 W. Capital Way" ;
+	 gnw:cityName "Tacoma" ;
+	 gnw:regionName "WA" ;
+	 gnw:postalCode "98401" ;
+	 gnw:countryName "USA" ; 
+	 skos:broader gnwi:employee_ . 
+gnwi:employee_3 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 3 ;
+	 gnw:firstName "Janet" ;
+	 gnw:lastName "Leverling" ;
+	 gnw:title "Sales Representative" ;
+	 gnw:titleOfCourtesy "Ms." ;
+	 gnw:birthDate "1963-08-30" ;
+	 gnw:hireDate "1992-04-01" ;
+	 gnw:address "722 Moss Bay Blvd." ;
+	 gnw:cityName "Kirkland" ;
+	 gnw:regionName "WA" ;
+	 gnw:postalCode "98033" ;
+	 gnw:countryName "USA" ; 
+	 skos:broader gnwi:employee_2 . 
+gnwi:employee_4 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 4 ;
+	 gnw:firstName "Margaret" ;
+	 gnw:lastName "Peacock" ;
+	 gnw:title "Sales Representative" ;
+	 gnw:titleOfCourtesy "Mrs." ;
+	 gnw:birthDate "1937-09-19" ;
+	 gnw:hireDate "1993-05-03" ;
+	 gnw:address "4110 Old Redmond Rd." ;
+	 gnw:cityName "Redmond" ;
+	 gnw:regionName "WA" ;
+	 gnw:postalCode "98052" ;
+	 gnw:countryName "USA" ; 
+	 skos:broader gnwi:employee_2 . 
+gnwi:employee_5 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 5 ;
+	 gnw:firstName "Steven" ;
+	 gnw:lastName "Buchanan" ;
+	 gnw:title "Sales Manager" ;
+	 gnw:titleOfCourtesy "Mr." ;
+	 gnw:birthDate "1955-03-04" ;
+	 gnw:hireDate "1993-10-17" ;
+	 gnw:address "14 Garrett Hill" ;
+	 gnw:cityName "London" ;
+	 gnw:regionName "" ;
+	 gnw:postalCode "SW1 8JR" ;
+	 gnw:countryName "UK" ; 
+	 skos:broader gnwi:employee_2 . 
+gnwi:employee_6 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 6 ;
+	 gnw:firstName "Michael" ;
+	 gnw:lastName "Suyama" ;
+	 gnw:title "Sales Representative" ;
+	 gnw:titleOfCourtesy "Mr." ;
+	 gnw:birthDate "1963-07-02" ;
+	 gnw:hireDate "1993-10-17" ;
+	 gnw:address "Coventry House Miner Rd." ;
+	 gnw:cityName "London" ;
+	 gnw:regionName "" ;
+	 gnw:postalCode "EC2 7JR" ;
+	 gnw:countryName "UK" ; 
+	 skos:broader gnwi:employee_5 . 
+gnwi:employee_7 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 7 ;
+	 gnw:firstName "Robert" ;
+	 gnw:lastName "King" ;
+	 gnw:title "Sales Representative" ;
+	 gnw:titleOfCourtesy "Mr." ;
+	 gnw:birthDate "1960-05-29" ;
+	 gnw:hireDate "1994-01-02" ;
+	 gnw:address "Edgeham Hollow Winchester Way" ;
+	 gnw:cityName "London" ;
+	 gnw:regionName "" ;
+	 gnw:postalCode "RG1 9SP" ;
+	 gnw:countryName "UK" ; 
+	 skos:broader gnwi:employee_5 . 
+gnwi:employee_8 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 8 ;
+	 gnw:firstName "Laura" ;
+	 gnw:lastName "Callahan" ;
+	 gnw:title "Inside Sales Coordinator" ;
+	 gnw:titleOfCourtesy "Ms." ;
+	 gnw:birthDate "1958-01-09" ;
+	 gnw:hireDate "1994-03-05" ;
+	 gnw:address "4726 - 11th Ave. N.E." ;
+	 gnw:cityName "Seattle" ;
+	 gnw:regionName "WA" ;
+	 gnw:postalCode "98105" ;
+	 gnw:countryName "USA" ; 
+	 skos:broader gnwi:employee_2 . 
+gnwi:employee_9 a gnw:employee ;
+	 qb4o:memberOf gnw:employee ;
+	 gnw:employeeID 9 ;
+	 gnw:firstName "Anne" ;
+	 gnw:lastName "Dodsworth" ;
+	 gnw:title "Sales Representative" ;
+	 gnw:titleOfCourtesy "Ms." ;
+	 gnw:birthDate "1966-01-27" ;
+	 gnw:hireDate "1994-11-15" ;
+	 gnw:address "7 Houndstooth Rd." ;
+	 gnw:cityName "London" ;
+	 gnw:regionName "" ;
+	 gnw:postalCode "WG2 7LT" ;
+	 gnw:countryName "UK" ; 
+	 skos:broader gnwi:employee_5 . 

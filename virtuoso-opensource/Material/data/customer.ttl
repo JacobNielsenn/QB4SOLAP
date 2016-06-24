@@ -1,0 +1,810 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:<http://example.org/GeoNWDW#> .
+@prefix virtrdf: <http://www.openlinksw.com/schemas/virtrdf#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix qb: <http://purl.org/linked-data/cube#>.
+@prefix qb4o: <http://purl.org/qb4solap/cubes#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix gnwi: <http://qb4solap.org/cubes/instances/geonorthwind#> .
+@prefix gnw: <http://qb4solap.org/cubes/schemas/geonorthwind#> . 
+gnwi:customer_3 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 3 ;
+	 gnw:customerAltID "LINOD" ;
+	 gnw:customerName "LINO-Delicateses" ; 
+	 gnw:address "Ave. 5 de Mayo Porlamar" ; 
+	 gnw:postalCode "4980" ; 
+	 skos:broader gnwi:city_18 ; 
+	 gnw:customerGeo "POINT(-63.8354445 10.9783637)"^^virtrdf:Geometry . 
+gnwi:customer_4 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 4 ;
+	 gnw:customerAltID "MEREP" ;
+	 gnw:customerName "Mère Paillarde" ; 
+	 gnw:address "43 rue St. Laurent" ; 
+	 gnw:postalCode "H1J 1C3" ; 
+	 skos:broader gnwi:city_30 ; 
+	 gnw:customerGeo "POINT(-73.5727121 45.6111316)"^^virtrdf:Geometry . 
+gnwi:customer_5 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 5 ;
+	 gnw:customerAltID "ALFKI" ;
+	 gnw:customerName "Alfreds Futterkiste" ; 
+	 gnw:address "Obere Str. 57" ; 
+	 gnw:postalCode "12209" ; 
+	 skos:broader gnwi:city_6 ; 
+	 gnw:customerGeo "POINT(13.0997241 52.401482)"^^virtrdf:Geometry . 
+gnwi:customer_6 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 6 ;
+	 gnw:customerAltID "ANATR" ;
+	 gnw:customerName "Ana Trujillo Emparedados y helados" ; 
+	 gnw:address "Avda. de la Constitución 2222" ; 
+	 gnw:postalCode "05021" ; 
+	 skos:broader gnwi:city_28 ; 
+	 gnw:customerGeo "POINT(-99.2112811 19.2816728)"^^virtrdf:Geometry . 
+gnwi:customer_7 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 7 ;
+	 gnw:customerAltID "ANTON" ;
+	 gnw:customerName "Antonio Moreno Taquería" ; 
+	 gnw:address "Mataderos  2312" ; 
+	 gnw:postalCode "05023" ; 
+	 skos:broader gnwi:city_28 ; 
+	 gnw:customerGeo "POINT(-117.0639702 32.5203413)"^^virtrdf:Geometry . 
+gnwi:customer_9 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 9 ;
+	 gnw:customerAltID "BLAUS" ;
+	 gnw:customerName "Blauer See Delikatessen" ; 
+	 gnw:address "Forsterstr. 57" ; 
+	 gnw:postalCode "68306" ; 
+	 skos:broader gnwi:city_25 ; 
+	 gnw:customerGeo "POINT(8.5058948 49.5016534)"^^virtrdf:Geometry . 
+gnwi:customer_11 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 11 ;
+	 gnw:customerAltID "BOLID" ;
+	 gnw:customerName "Bólido Comidas preparadas" ; 
+	 gnw:address "C/ Araquil, 67" ; 
+	 gnw:postalCode "28023" ; 
+	 skos:broader gnwi:city_24 ; 
+	 gnw:customerGeo "POINT(-3.779942 40.4605267)"^^virtrdf:Geometry . 
+gnwi:customer_12 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 12 ;
+	 gnw:customerAltID "BONAP" ;
+	 gnw:customerName "Bon app'" ; 
+	 gnw:address "12, rue des Bouchers" ; 
+	 gnw:postalCode "13008" ; 
+	 skos:broader gnwi:city_26 ; 
+	 gnw:customerGeo "POINT(5.3886052 43.2611493)"^^virtrdf:Geometry . 
+gnwi:customer_13 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 13 ;
+	 gnw:customerAltID "CACTU" ;
+	 gnw:customerName "Cactus Comidas para llevar" ; 
+	 gnw:address "Cerrito 333" ; 
+	 gnw:postalCode "1010" ; 
+	 skos:broader gnwi:city_11 ; 
+	 gnw:customerGeo "POINT(-58.3821378 -34.6046102)"^^virtrdf:Geometry . 
+gnwi:customer_14 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 14 ;
+	 gnw:customerAltID "CENTC" ;
+	 gnw:customerName "Centro comercial Moctezuma" ; 
+	 gnw:address "Sierras de Granada 9993" ; 
+	 gnw:postalCode "05022" ; 
+	 skos:broader gnwi:city_28 ; 
+	 gnw:customerGeo "POINT(-99.1028501 19.326748)"^^virtrdf:Geometry . 
+gnwi:customer_15 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 15 ;
+	 gnw:customerAltID "CHOPS" ;
+	 gnw:customerName "Chop-suey Chinese" ; 
+	 gnw:address "Hauptstr. 29" ; 
+	 gnw:postalCode "3012" ; 
+	 skos:broader gnwi:city_7 ; 
+	 gnw:customerGeo "POINT(7.2130385 46.965197)"^^virtrdf:Geometry . 
+gnwi:customer_16 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 16 ;
+	 gnw:customerAltID "DUMON" ;
+	 gnw:customerName "Du monde entier" ; 
+	 gnw:address "67, rue des Cinquante Otages" ; 
+	 gnw:postalCode "44000" ; 
+	 skos:broader gnwi:city_31 ; 
+	 gnw:customerGeo "POINT(-1.5569832 47.2173036)"^^virtrdf:Geometry . 
+gnwi:customer_17 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 17 ;
+	 gnw:customerAltID "ERNSH" ;
+	 gnw:customerName "Ernst Handel" ; 
+	 gnw:address "Kirchgasse 6" ; 
+	 gnw:postalCode "8010" ; 
+	 skos:broader gnwi:city_17 ; 
+	 gnw:customerGeo "POINT(15.490906 47.1071401)"^^virtrdf:Geometry . 
+gnwi:customer_18 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 18 ;
+	 gnw:customerAltID "FISSA" ;
+	 gnw:customerName "FISSA Fabrica Inter. Salchichas S.A." ; 
+	 gnw:address "C/ Moralzarzal, 86" ; 
+	 gnw:postalCode "28034" ; 
+	 skos:broader gnwi:city_24 ; 
+	 gnw:customerGeo "POINT(-3.7123061 40.4938993)"^^virtrdf:Geometry . 
+gnwi:customer_19 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 19 ;
+	 gnw:customerAltID "FOLIG" ;
+	 gnw:customerName "Folies gourmandes" ; 
+	 gnw:address "184, chaussée de Tournai" ; 
+	 gnw:postalCode "59000" ; 
+	 skos:broader gnwi:city_19 ; 
+	 gnw:customerGeo "POINT(3.0718225 50.6351721)"^^virtrdf:Geometry . 
+gnwi:customer_20 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 20 ;
+	 gnw:customerAltID "FOLKO" ;
+	 gnw:customerName "Folk och fä HB" ; 
+	 gnw:address "Åkergatan 24" ; 
+	 gnw:postalCode "S-844 67" ; 
+	 skos:broader gnwi:city_8 ; 
+	 gnw:customerGeo "POINT(11.9254469 57.7163126)"^^virtrdf:Geometry . 
+gnwi:customer_21 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 21 ;
+	 gnw:customerAltID "FRANR" ;
+	 gnw:customerName "France restauration" ; 
+	 gnw:address "54, rue Royale" ; 
+	 gnw:postalCode "44000" ; 
+	 skos:broader gnwi:city_31 ; 
+	 gnw:customerGeo "POINT(-1.5578819 47.2143641)"^^virtrdf:Geometry . 
+gnwi:customer_22 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 22 ;
+	 gnw:customerAltID "FRANS" ;
+	 gnw:customerName "Franchi S.p.A." ; 
+	 gnw:address "Via Monte Bianco 34" ; 
+	 gnw:postalCode "10100" ; 
+	 skos:broader gnwi:city_52 ; 
+	 gnw:customerGeo "POINT(7.6665628 45.0149751)"^^virtrdf:Geometry . 
+gnwi:customer_23 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 23 ;
+	 gnw:customerAltID "FURIB" ;
+	 gnw:customerName "Furia Bacalhau e Frutos do Mar" ; 
+	 gnw:address "Jardim das rosas n. 32" ; 
+	 gnw:postalCode "1675" ; 
+	 skos:broader gnwi:city_20 ; 
+	 gnw:customerGeo "POINT(-9.1995192 38.763925)"^^virtrdf:Geometry . 
+gnwi:customer_24 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 24 ;
+	 gnw:customerAltID "GALED" ;
+	 gnw:customerName "Galería del gastrónomo" ; 
+	 gnw:address "Rambla de Cataluña, 23" ; 
+	 gnw:postalCode "08022" ; 
+	 skos:broader gnwi:city_3 ; 
+	 gnw:customerGeo "POINT(2.1662492 41.3888346)"^^virtrdf:Geometry . 
+gnwi:customer_25 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 25 ;
+	 gnw:customerAltID "GODOS" ;
+	 gnw:customerName "Godos Cocina Típica" ; 
+	 gnw:address "C/ Romero, 33" ; 
+	 gnw:postalCode "41101" ; 
+	 skos:broader gnwi:city_44 ; 
+	 gnw:customerGeo "POINT(-5.9722463 37.4076578)"^^virtrdf:Geometry . 
+gnwi:customer_26 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 26 ;
+	 gnw:customerAltID "KOENE" ;
+	 gnw:customerName "Königlich Essen" ; 
+	 gnw:address "Maubelstr. 90" ; 
+	 gnw:postalCode "14776" ; 
+	 skos:broader gnwi:city_9 ; 
+	 gnw:customerGeo "POINT(12.5608112 52.3877144)"^^virtrdf:Geometry . 
+gnwi:customer_27 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 27 ;
+	 gnw:customerAltID "LACOR" ;
+	 gnw:customerName "La corne d'abondance" ; 
+	 gnw:address "67, avenue de l'Europe" ; 
+	 gnw:postalCode "78000" ; 
+	 skos:broader gnwi:city_56 ; 
+	 gnw:customerGeo "POINT(2.1303412 48.8033031)"^^virtrdf:Geometry . 
+gnwi:customer_28 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 28 ;
+	 gnw:customerAltID "LAMAI" ;
+	 gnw:customerName "La maison d'Asie" ; 
+	 gnw:address "1 rue Alsace-Lorraine" ; 
+	 gnw:postalCode "31000" ; 
+	 skos:broader gnwi:city_53 ; 
+	 gnw:customerGeo "POINT(1.4456285 43.5995093)"^^virtrdf:Geometry . 
+gnwi:customer_30 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 30 ;
+	 gnw:customerAltID "MAISD" ;
+	 gnw:customerName "Maison Dewey" ; 
+	 gnw:address "Rue Joseph-Bens 532" ; 
+	 gnw:postalCode "B-1180" ; 
+	 skos:broader gnwi:city_10 ; 
+	 gnw:customerGeo "POINT(4.3326295 50.8068531)"^^virtrdf:Geometry . 
+gnwi:customer_32 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 32 ;
+	 gnw:customerAltID "PARIS" ;
+	 gnw:customerName "Paris spécialités" ; 
+	 gnw:address "265, boulevard Charonne" ; 
+	 gnw:postalCode "75012" ; 
+	 skos:broader gnwi:city_35 ; 
+	 gnw:customerGeo "POINT(2.3945293 48.856661)"^^virtrdf:Geometry . 
+gnwi:customer_34 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 34 ;
+	 gnw:customerAltID "PICCO" ;
+	 gnw:customerName "Piccolo und mehr" ; 
+	 gnw:address "Geislweg 14" ; 
+	 gnw:postalCode "5020" ; 
+	 skos:broader gnwi:city_41 ; 
+	 gnw:customerGeo "POINT(13.0380686 47.8051393)"^^virtrdf:Geometry . 
+gnwi:customer_35 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 35 ;
+	 gnw:customerAltID "PRINI" ;
+	 gnw:customerName "Princesa Isabel Vinhos" ; 
+	 gnw:address "Estrada da saúde n. 58" ; 
+	 gnw:postalCode "1756" ; 
+	 skos:broader gnwi:city_20 ; 
+	 gnw:customerGeo "POINT(-9.1359959 38.7156131)"^^virtrdf:Geometry . 
+gnwi:customer_36 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 36 ;
+	 gnw:customerAltID "RANCH" ;
+	 gnw:customerName "Rancho grande" ; 
+	 gnw:address "Av. del Libertador 900" ; 
+	 gnw:postalCode "1010" ; 
+	 skos:broader gnwi:city_11 ; 
+	 gnw:customerGeo "POINT(-58.3850236 -34.5870552)"^^virtrdf:Geometry . 
+gnwi:customer_37 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 37 ;
+	 gnw:customerAltID "RICSU" ;
+	 gnw:customerName "Richter Supermarkt" ; 
+	 gnw:address "Grenzacherweg 237" ; 
+	 gnw:postalCode "1203" ; 
+	 skos:broader gnwi:city_15 ; 
+	 gnw:customerGeo "POINT(6.1219092 46.2059929)"^^virtrdf:Geometry . 
+gnwi:customer_38 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 38 ;
+	 gnw:customerAltID "ROMEY" ;
+	 gnw:customerName "Romero y tomillo" ; 
+	 gnw:address "Gran Vía, 1" ; 
+	 gnw:postalCode "28001" ; 
+	 skos:broader gnwi:city_24 ; 
+	 gnw:customerGeo "POINT(-3.6981982 40.4192332)"^^virtrdf:Geometry . 
+gnwi:customer_40 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 40 ;
+	 gnw:customerAltID "SPECD" ;
+	 gnw:customerName "Spécialités du monde" ; 
+	 gnw:address "25, rue Lauriston" ; 
+	 gnw:postalCode "75016" ; 
+	 skos:broader gnwi:city_35 ; 
+	 gnw:customerGeo "POINT(2.2919763 48.8711221)"^^virtrdf:Geometry . 
+gnwi:customer_41 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 41 ;
+	 gnw:customerAltID "SUPRD" ;
+	 gnw:customerName "Suprêmes délices" ; 
+	 gnw:address "Boulevard Tirou, 255" ; 
+	 gnw:postalCode "B-6000" ; 
+	 skos:broader gnwi:city_13 ; 
+	 gnw:customerGeo "POINT(4.4446709 50.4108998)"^^virtrdf:Geometry . 
+gnwi:customer_42 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 42 ;
+	 gnw:customerAltID "TORTU" ;
+	 gnw:customerName "Tortuga Restaurante" ; 
+	 gnw:address "Avda. Azteca 123" ; 
+	 gnw:postalCode "05033" ; 
+	 skos:broader gnwi:city_28 ; 
+	 gnw:customerGeo "POINT(-99.1556919 19.327933)"^^virtrdf:Geometry . 
+gnwi:customer_43 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 43 ;
+	 gnw:customerAltID "VAFFE" ;
+	 gnw:customerName "Vaffeljernet" ; 
+	 gnw:address "Smagsloget 45" ; 
+	 gnw:postalCode "8200" ; 
+	 skos:broader gnwi:city_2 ; 
+	 gnw:customerGeo "POINT(10.1660237 56.1998772)"^^virtrdf:Geometry . 
+gnwi:customer_44 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 44 ;
+	 gnw:customerAltID "VICTE" ;
+	 gnw:customerName "Victuailles en stock" ; 
+	 gnw:address "2, rue du Commerce" ; 
+	 gnw:postalCode "69004" ; 
+	 skos:broader gnwi:city_23 ; 
+	 gnw:customerGeo "POINT(4.8126253 45.7849938)"^^virtrdf:Geometry . 
+gnwi:customer_45 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 45 ;
+	 gnw:customerAltID "VINET" ;
+	 gnw:customerName "Vins et alcools Chevalier" ; 
+	 gnw:address "59 rue de l'Abbaye" ; 
+	 gnw:postalCode "51100" ; 
+	 skos:broader gnwi:city_37 ; 
+	 gnw:customerGeo "POINT(4.031696 49.258329)"^^virtrdf:Geometry . 
+gnwi:customer_46 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 46 ;
+	 gnw:customerAltID "WANDK" ;
+	 gnw:customerName "Die Wandernde Kuh" ; 
+	 gnw:address "Adenauerallee 900" ; 
+	 gnw:postalCode "70563" ; 
+	 skos:broader gnwi:city_49 ; 
+	 gnw:customerGeo "POINT(9.18603 48.77879)"^^virtrdf:Geometry . 
+gnwi:customer_47 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 47 ;
+	 gnw:customerAltID "WARTH" ;
+	 gnw:customerName "Wartian Herkku" ; 
+	 gnw:address "Torikatu 38" ; 
+	 gnw:postalCode "90110" ; 
+	 skos:broader gnwi:city_33 ; 
+	 gnw:customerGeo "POINT(25.4650189 65.010279)"^^virtrdf:Geometry . 
+gnwi:customer_48 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 48 ;
+	 gnw:customerAltID "WOLZA" ;
+	 gnw:customerName "Wolski  Zajazd" ; 
+	 gnw:address "ul. Filtrowa 68" ; 
+	 gnw:postalCode "01-012" ; 
+	 skos:broader gnwi:city_57 ; 
+	 gnw:customerGeo "POINT(20.9860214 52.2195109)"^^virtrdf:Geometry . 
+gnwi:customer_49 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 49 ;
+	 gnw:customerAltID "DRACD" ;
+	 gnw:customerName "Drachenblut Delikatessen" ; 
+	 gnw:address "Walserweg 21" ; 
+	 gnw:postalCode "52066" ; 
+	 skos:broader gnwi:city_58 ; 
+	 gnw:customerGeo "POINT(6.1123901 50.7533438)"^^virtrdf:Geometry . 
+gnwi:customer_50 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 50 ;
+	 gnw:customerAltID "FRANK" ;
+	 gnw:customerName "Frankenversand" ; 
+	 gnw:address "Berliner Platz 43" ; 
+	 gnw:postalCode "80805" ; 
+	 skos:broader gnwi:city_69 ; 
+	 gnw:customerGeo "POINT(11.5879378 48.1730858)"^^virtrdf:Geometry . 
+gnwi:customer_51 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 51 ;
+	 gnw:customerAltID "LEHMS" ;
+	 gnw:customerName "Lehmanns Marktstand" ; 
+	 gnw:address "Magazinweg 7" ; 
+	 gnw:postalCode "60528" ; 
+	 skos:broader gnwi:city_63 ; 
+	 gnw:customerGeo "POINT(8.6361502 50.0734195)"^^virtrdf:Geometry . 
+gnwi:customer_52 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 52 ;
+	 gnw:customerAltID "MORGK" ;
+	 gnw:customerName "Morgenstern Gesundkost" ; 
+	 gnw:address "Heerstr. 22" ; 
+	 gnw:postalCode "04179" ; 
+	 skos:broader gnwi:city_68 ; 
+	 gnw:customerGeo "POINT(13.18166 51.17111)"^^virtrdf:Geometry . 
+gnwi:customer_53 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 53 ;
+	 gnw:customerAltID "OTTIK" ;
+	 gnw:customerName "Ottilies Käseladen" ; 
+	 gnw:address "Mehrheimerstr. 369" ; 
+	 gnw:postalCode "50739" ; 
+	 skos:broader gnwi:city_66 ; 
+	 gnw:customerGeo "POINT(6.9460623 50.9734578)"^^virtrdf:Geometry . 
+gnwi:customer_54 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 54 ;
+	 gnw:customerAltID "QUICK" ;
+	 gnw:customerName "QUICK-Stop" ; 
+	 gnw:address "Taucherstraße 10" ; 
+	 gnw:postalCode "01307" ; 
+	 skos:broader gnwi:city_61 ; 
+	 gnw:customerGeo "POINT(13.7688263 51.0566797)"^^virtrdf:Geometry . 
+gnwi:customer_55 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 55 ;
+	 gnw:customerAltID "REGGC" ;
+	 gnw:customerName "Reggiani Caseifici" ; 
+	 gnw:address "Strada Provinciale 124" ; 
+	 gnw:postalCode "42100" ; 
+	 skos:broader gnwi:city_71 ; 
+	 gnw:customerGeo "POINT(10.6121117 44.7412055)"^^virtrdf:Geometry . 
+gnwi:customer_56 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 56 ;
+	 gnw:customerAltID "SIMOB" ;
+	 gnw:customerName "Simons bistro" ; 
+	 gnw:address "Vinbæltet 34" ; 
+	 gnw:postalCode "1734" ; 
+	 skos:broader gnwi:city_65 ; 
+	 gnw:customerGeo "POINT(12.5458016 55.6653248)"^^virtrdf:Geometry . 
+gnwi:customer_57 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 57 ;
+	 gnw:customerAltID "TOMSP" ;
+	 gnw:customerName "Toms Spezialitäten" ; 
+	 gnw:address "Luisenstr. 48" ; 
+	 gnw:postalCode "44087" ; 
+	 skos:broader gnwi:city_70 ; 
+	 gnw:customerGeo "POINT(7.1140206 51.5746007)"^^virtrdf:Geometry . 
+gnwi:customer_58 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 58 ;
+	 gnw:customerAltID "WILMK" ;
+	 gnw:customerName "Wilman Kala" ; 
+	 gnw:address "Keskuskatu 45" ; 
+	 gnw:postalCode "21240" ; 
+	 skos:broader gnwi:city_64 ; 
+	 gnw:customerGeo "POINT(24.942781 60.1700589)"^^virtrdf:Geometry . 
+gnwi:customer_59 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 59 ;
+	 gnw:customerAltID "ISLAT" ;
+	 gnw:customerName "Island Trading" ; 
+	 gnw:address "Garden House Crowther Way" ; 
+	 gnw:postalCode "PO31 7PJ" ; 
+	 skos:broader gnwi:city_95 ; 
+	 gnw:customerGeo "POINT(-1.2955489 50.7525887)"^^virtrdf:Geometry . 
+gnwi:customer_60 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 60 ;
+	 gnw:customerAltID "AROUT" ;
+	 gnw:customerName "Around the Horn" ; 
+	 gnw:address "120 Hanover Sq." ; 
+	 gnw:postalCode "WA1 1DP" ; 
+	 skos:broader gnwi:city_109 ; 
+	 gnw:customerGeo "POINT(-0.1438197 51.5135484)"^^virtrdf:Geometry . 
+gnwi:customer_62 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 62 ;
+	 gnw:customerAltID "CONSH" ;
+	 gnw:customerName "Consolidated Holdings" ; 
+	 gnw:address "Berkeley Gardens 12  Brewery" ; 
+	 gnw:postalCode "WX1 6LT" ; 
+	 skos:broader gnwi:city_109 ; 
+	 gnw:customerGeo "POINT(-122.272747 37.8715926)"^^virtrdf:Geometry . 
+gnwi:customer_65 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 65 ;
+	 gnw:customerAltID "SEVES" ;
+	 gnw:customerName "Seven Seas Imports" ; 
+	 gnw:address "90 Wadhurst Rd." ; 
+	 gnw:postalCode "OX15 4NB" ; 
+	 skos:broader gnwi:city_109 ; 
+	 gnw:customerGeo "POINT(-1.3715772 52.0202495)"^^virtrdf:Geometry . 
+gnwi:customer_67 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 67 ;
+	 gnw:customerAltID "COMMI" ;
+	 gnw:customerName "Comércio Mineiro" ; 
+	 gnw:address "Av. dos Lusíadas, 23" ; 
+	 gnw:postalCode "05432-043" ; 
+	 skos:broader gnwi:city_72 ; 
+	 gnw:customerGeo "POINT(-47.0817073 -22.8894917)"^^virtrdf:Geometry . 
+gnwi:customer_68 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 68 ;
+	 gnw:customerAltID "FAMIA" ;
+	 gnw:customerName "Familia Arquibaldo" ; 
+	 gnw:address "Rua Orós, 92" ; 
+	 gnw:postalCode "05442-030" ; 
+	 skos:broader gnwi:city_72 ; 
+	 gnw:customerGeo "POINT(-46.6980085 -23.5436638)"^^virtrdf:Geometry . 
+gnwi:customer_69 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 69 ;
+	 gnw:customerAltID "GOURL" ;
+	 gnw:customerName "Gourmet Lanchonetes" ; 
+	 gnw:address "Av. Brasil, 442" ; 
+	 gnw:postalCode "04876-786" ; 
+	 skos:broader gnwi:city_59 ; 
+	 gnw:customerGeo "POINT(-47.0635418 -22.8905874)"^^virtrdf:Geometry . 
+gnwi:customer_70 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 70 ;
+	 gnw:customerAltID "GROSR" ;
+	 gnw:customerName "GROSELLA-Restaurante" ; 
+	 gnw:address "5ª Ave. Los Palos Grandes" ; 
+	 gnw:postalCode "1081" ; 
+	 skos:broader gnwi:city_12 ; 
+	 gnw:customerGeo "POINT(-66.8238149 10.4741761)"^^virtrdf:Geometry . 
+gnwi:customer_71 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 71 ;
+	 gnw:customerAltID "HANAR" ;
+	 gnw:customerName "Hanari Carnes" ; 
+	 gnw:address "Rua do Paço, 67" ; 
+	 gnw:postalCode "05454-876" ; 
+	 skos:broader gnwi:city_39 ; 
+	 gnw:customerGeo "POINT(-43.3588122 -22.9306427)"^^virtrdf:Geometry . 
+gnwi:customer_72 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 72 ;
+	 gnw:customerAltID "LAUGB" ;
+	 gnw:customerName "Laughing Bacchus Wine Cellars" ; 
+	 gnw:address "1900 Oak St." ; 
+	 gnw:postalCode "V3F 2K1" ; 
+	 skos:broader gnwi:city_55 ; 
+	 gnw:customerGeo "POINT(-123.1264847 49.2659893)"^^virtrdf:Geometry . 
+gnwi:customer_74 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 74 ;
+	 gnw:customerAltID "QUEEN" ;
+	 gnw:customerName "Queen Cozinha" ; 
+	 gnw:address "Alameda dos Canàrios, 891" ; 
+	 gnw:postalCode "05487-020" ; 
+	 skos:broader gnwi:city_72 ; 
+	 gnw:customerGeo "POINT(-47.6646874 -23.159425)"^^virtrdf:Geometry . 
+gnwi:customer_75 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 75 ;
+	 gnw:customerAltID "RICAR" ;
+	 gnw:customerName "Ricardo Adocicados" ; 
+	 gnw:address "Av. Copacabana, 267" ; 
+	 gnw:postalCode "02389-890" ; 
+	 skos:broader gnwi:city_39 ; 
+	 gnw:customerGeo "POINT(-43.1785657 -22.966127)"^^virtrdf:Geometry . 
+gnwi:customer_76 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 76 ;
+	 gnw:customerAltID "TRADH" ;
+	 gnw:customerName "Tradição Hipermercados" ; 
+	 gnw:address "Av. Inês de Castro, 414" ; 
+	 gnw:postalCode "05634-030" ; 
+	 skos:broader gnwi:city_72 ; 
+	 gnw:customerGeo "POINT(-47.0602026 -22.8807276)"^^virtrdf:Geometry . 
+gnwi:customer_77 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 77 ;
+	 gnw:customerAltID "GREAL" ;
+	 gnw:customerName "Great Lakes Food Market" ; 
+	 gnw:address "2732 Baker Blvd." ; 
+	 gnw:postalCode "97403" ; 
+	 skos:broader gnwi:city_100 ; 
+	 gnw:customerGeo "POINT(-123.0728977 44.0285214)"^^virtrdf:Geometry . 
+gnwi:customer_78 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 78 ;
+	 gnw:customerAltID "HUNGC" ;
+	 gnw:customerName "Hungry Coyote Import Store" ; 
+	 gnw:address "City Center Plaza 516 Main St." ; 
+	 gnw:postalCode "97827" ; 
+	 skos:broader gnwi:city_99 ; 
+	 gnw:customerGeo "POINT(-117.917434 45.5648612)"^^virtrdf:Geometry . 
+gnwi:customer_79 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 79 ;
+	 gnw:customerAltID "LAZYK" ;
+	 gnw:customerName "Lazy K Kountry Store" ; 
+	 gnw:address "12 Orchestra Terrace" ; 
+	 gnw:postalCode "99362" ; 
+	 skos:broader gnwi:city_139 ; 
+	 gnw:customerGeo "POINT(-118.3430209 46.0645809)"^^virtrdf:Geometry . 
+gnwi:customer_80 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 80 ;
+	 gnw:customerAltID "LETSS" ;
+	 gnw:customerName "Let's Stop N Shop" ; 
+	 gnw:address "87 Polk St. Suite 5" ; 
+	 gnw:postalCode "94117" ; 
+	 skos:broader gnwi:city_129 ; 
+	 gnw:customerGeo "POINT(-122.4180697 37.777432)"^^virtrdf:Geometry . 
+gnwi:customer_81 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 81 ;
+	 gnw:customerAltID "LONEP" ;
+	 gnw:customerName "Lonesome Pine Restaurant" ; 
+	 gnw:address "89 Chiaroscuro Rd." ; 
+	 gnw:postalCode "97219" ; 
+	 skos:broader gnwi:city_122 ; 
+	 gnw:customerGeo "POINT(-122.7181902 45.4618086)"^^virtrdf:Geometry . 
+gnwi:customer_82 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 82 ;
+	 gnw:customerAltID "OLDWO" ;
+	 gnw:customerName "Old World Delicatessen" ; 
+	 gnw:address "2743 Bering St." ; 
+	 gnw:postalCode "99508" ; 
+	 skos:broader gnwi:city_75 ; 
+	 gnw:customerGeo "POINT(-149.8959755 61.1952838)"^^virtrdf:Geometry . 
+gnwi:customer_83 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 83 ;
+	 gnw:customerAltID "RATTC" ;
+	 gnw:customerName "Rattlesnake Canyon Grocery" ; 
+	 gnw:address "2817 Milton Dr." ; 
+	 gnw:postalCode "87110" ; 
+	 skos:broader gnwi:city_74 ; 
+	 gnw:customerGeo "POINT(-106.6710765 35.1154472)"^^virtrdf:Geometry . 
+gnwi:customer_84 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 84 ;
+	 gnw:customerAltID "SAVEA" ;
+	 gnw:customerName "Save-a-lot Markets" ; 
+	 gnw:address "187 Suffolk Ln." ; 
+	 gnw:postalCode "83720" ; 
+	 skos:broader gnwi:city_85 ; 
+	 gnw:customerGeo "POINT(-116.3382107 43.5771053)"^^virtrdf:Geometry . 
+gnwi:customer_85 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 85 ;
+	 gnw:customerAltID "SPLIR" ;
+	 gnw:customerName "Split Rail Beer & Ale" ; 
+	 gnw:address "P.O. Box 555" ; 
+	 gnw:postalCode "82520" ; 
+	 skos:broader gnwi:city_108 ; 
+	 gnw:customerGeo "POINT(-108.7306725 42.833014)"^^virtrdf:Geometry . 
+gnwi:customer_86 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 86 ;
+	 gnw:customerAltID "THEBI" ;
+	 gnw:customerName "The Big Cheese" ; 
+	 gnw:address "89 Jefferson Way Suite 2" ; 
+	 gnw:postalCode "97201" ; 
+	 skos:broader gnwi:city_122 ; 
+	 gnw:customerGeo "POINT(-122.6755544 45.51394)"^^virtrdf:Geometry . 
+gnwi:customer_87 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 87 ;
+	 gnw:customerAltID "THECR" ;
+	 gnw:customerName "The Cracker Box" ; 
+	 gnw:address "55 Grizzly Peak Rd." ; 
+	 gnw:postalCode "59801" ; 
+	 skos:broader gnwi:city_88 ; 
+	 gnw:customerGeo "POINT(-113.9869641 46.8500521)"^^virtrdf:Geometry . 
+gnwi:customer_88 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 88 ;
+	 gnw:customerAltID "TRAIH" ;
+	 gnw:customerName "Trail's Head Gourmet Provisioners" ; 
+	 gnw:address "722 DaVinci Blvd." ; 
+	 gnw:postalCode "98034" ; 
+	 skos:broader gnwi:city_107 ; 
+	 gnw:customerGeo "POINT(-122.177559 47.709919)"^^virtrdf:Geometry . 
+gnwi:customer_89 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 89 ;
+	 gnw:customerAltID "WHITC" ;
+	 gnw:customerName "White Clover Markets" ; 
+	 gnw:address "305 - 14th Ave. S. Suite 3B" ; 
+	 gnw:postalCode "98128" ; 
+	 skos:broader gnwi:city_135 ; 
+	 gnw:customerGeo "POINT(-122.3142224 47.6045202)"^^virtrdf:Geometry . 
+gnwi:customer_8 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 8 ;
+	 gnw:customerAltID "BERGS" ;
+	 gnw:customerName "Berglunds snabbköp" ; 
+	 gnw:address "Berguvsvägen  8" ; 
+	 gnw:postalCode "S-958 22" ; 
+	 skos:broader gnwi:city_21 ; 
+	 gnw:customerGeo "POINT(14.314371 55.933657)"^^virtrdf:Geometry . 
+gnwi:customer_1 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 1 ;
+	 gnw:customerAltID "HILAA" ;
+	 gnw:customerName "HILARION-Abastos" ; 
+	 gnw:address "Carrera 21 con Esquina del Pasaje Acueducto S/N Carrera 21" ; 
+	 gnw:postalCode "5001" ; 
+	 skos:broader gnwi:city_42 ; 
+	 gnw:customerGeo "POINT(-72.219433 7.769218)"^^virtrdf:Geometry . 
+gnwi:customer_2 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 2 ;
+	 gnw:customerAltID "LILAS" ;
+	 gnw:customerName "LILA-Supermercado" ; 
+	 gnw:address "carrera 16 entre 43 y 44 Barquisimeto" ; 
+	 gnw:postalCode "3508" ; 
+	 skos:broader gnwi:city_4 ; 
+	 gnw:customerGeo "POINT(-69.334062 10.061921)"^^virtrdf:Geometry . 
+gnwi:customer_10 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 10 ;
+	 gnw:customerAltID "BLONP" ;
+	 gnw:customerName "Blondesddsl père et fils" ; 
+	 gnw:address "6 place Kléber" ; 
+	 gnw:postalCode "67000" ; 
+	 skos:broader gnwi:city_48 ; 
+	 gnw:customerGeo "POINT(7.7462935 48.5830976)"^^virtrdf:Geometry . 
+gnwi:customer_29 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 29 ;
+	 gnw:customerAltID "MAGAA" ;
+	 gnw:customerName "Magazzini Alimentari Riuniti" ; 
+	 gnw:address "Via Gabriele Camozzi, 50" ; 
+	 gnw:postalCode "24100" ; 
+	 skos:broader gnwi:city_5 ; 
+	 gnw:customerGeo "POINT(9.6729293 45.6952106)"^^virtrdf:Geometry . 
+gnwi:customer_31 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 31 ;
+	 gnw:customerAltID "OCEAN" ;
+	 gnw:customerName "Océano Atlántico Ltda." ; 
+	 gnw:address "Avenida de Mayo 825" ; 
+	 gnw:postalCode "1084" ; 
+	 skos:broader gnwi:city_11 ; 
+	 gnw:customerGeo "POINT(-58.3781574 -34.608803)"^^virtrdf:Geometry . 
+gnwi:customer_33 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 33 ;
+	 gnw:customerAltID "PERIC" ;
+	 gnw:customerName "Pericles Comidas clásicas" ; 
+	 gnw:address "Francisco I. Madero 30" ; 
+	 gnw:postalCode "6000" ; 
+	 skos:broader gnwi:city_28 ; 
+	 gnw:customerGeo "POINT(-99.1207924 19.3921634)"^^virtrdf:Geometry . 
+gnwi:customer_39 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 39 ;
+	 gnw:customerAltID "SANTG" ;
+	 gnw:customerName "Santé Gourmet" ; 
+	 gnw:address "Dronningensgate 2 " ; 
+	 gnw:postalCode "3290" ; 
+	 skos:broader gnwi:city_45 ; 
+	 gnw:customerGeo "POINT(10.0385653 58.998725)"^^virtrdf:Geometry . 
+gnwi:customer_61 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 61 ;
+	 gnw:customerAltID "BSBEV" ;
+	 gnw:customerName "B's Beverages" ; 
+	 gnw:address "1 Aldwych" ; 
+	 gnw:postalCode "WC2B 4RH" ; 
+	 skos:broader gnwi:city_109 ; 
+	 gnw:customerGeo "POINT(-0.1190523 51.5119037)"^^virtrdf:Geometry . 
+gnwi:customer_63 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 63 ;
+	 gnw:customerAltID "EASTC" ;
+	 gnw:customerName "Eastern Connection" ; 
+	 gnw:address "35 King George St" ; 
+	 gnw:postalCode "SE10 8QD" ; 
+	 skos:broader gnwi:city_109 ; 
+	 gnw:customerGeo "POINT(-0.009019 51.47602)"^^virtrdf:Geometry . 
+gnwi:customer_64 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 64 ;
+	 gnw:customerAltID "NORTS" ;
+	 gnw:customerName "North/South" ; 
+	 gnw:address "352 Queensbridge Road" ; 
+	 gnw:postalCode "E8 3AR" ; 
+	 skos:broader gnwi:city_109 ; 
+	 gnw:customerGeo "POINT(-0.0696801 51.5442411)"^^virtrdf:Geometry . 
+gnwi:customer_66 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 66 ;
+	 gnw:customerAltID "BOTTM" ;
+	 gnw:customerName "Bottom-Dollar Markets" ; 
+	 gnw:address "23 Tsawwassen Beach Road" ; 
+	 gnw:postalCode "V4M 2M4" ; 
+	 skos:broader gnwi:city_54 ; 
+	 gnw:customerGeo "POINT(-123.0896835 49.0026946)"^^virtrdf:Geometry . 
+gnwi:customer_73 a gnw:customer ;
+	 qb4o:memberOf gnw:customer ;
+	 gnw:customerID 73 ;
+	 gnw:customerAltID "QUEDE" ;
+	 gnw:customerName "Que Delícia" ; 
+	 gnw:address "Rua Pedro Alves, 179" ; 
+	 gnw:postalCode "20220-280" ; 
+	 skos:broader gnwi:city_39 ; 
+	 gnw:customerGeo "POINT(-43.2065464 -22.9043647)"^^virtrdf:Geometry . 
