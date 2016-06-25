@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="virt_jena3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/virt_jena3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
