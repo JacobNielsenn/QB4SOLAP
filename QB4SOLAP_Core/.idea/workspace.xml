@@ -1,76 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="QB4SOLAP_Core:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b59cd059-9b91-40c4-9281-41bbe6aeec1a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1).zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/QueriesOnline.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data.rar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/category.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/city.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/continent.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/country.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/customer.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/employee.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/product.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/region.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/sales.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/shipper.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/states.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/supplier.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/territories.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/data/time.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/gnw_qb4solap_schema.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../virtuoso-opensource/RDF_Data%2c_QB4SOLAP_Schema_and_SPARQL_query_examples (1)/qb4solapV2.pdf" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/StartUp.class" afterPath="$PROJECT_DIR$/target/classes/StartUp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso-temp.db" afterPath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso-temp.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso.db" afterPath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso.trx" afterPath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso.trx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QB4SOLAP_Core.iml" afterPath="$PROJECT_DIR$/QB4SOLAP_Core.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/StartUp.java" afterPath="$PROJECT_DIR$/src/main/java/StartUp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso.ini" afterPath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso.ini.sample" afterPath="$PROJECT_DIR$/../virtuoso-opensource/database/virtuoso.ini.sample" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/AUTHORS" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/AUTHORS" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/COPYING" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/COPYING" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/CREDITS" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/CREDITS" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/INSTALL" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/INSTALL" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/LICENSE" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/NEWS" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/NEWS" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.CVS" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.CVS" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.GIT" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.GIT" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.UPGRADE" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.UPGRADE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.WINDOWS" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.WINDOWS" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.hibernate" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.hibernate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.jena" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.jena" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.jsse" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.jsse" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.php5" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.php5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.sesame2" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.sesame2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.sesame3" afterPath="$PROJECT_DIR$/../virtuoso-opensource/doc/README.sesame3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/lib/sesame/create-virtuoso.xsl" afterPath="$PROJECT_DIR$/../virtuoso-opensource/lib/sesame/create-virtuoso.xsl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/lib/sesame/create.xsl" afterPath="$PROJECT_DIR$/../virtuoso-opensource/lib/sesame/create.xsl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/admin/index_left.vsp" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/admin/index_left.vsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/admin_style.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/admin_style.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/bugsfixed.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/bugsfixed.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/default.css" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/demo-index.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/demo-index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/downfr.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/downfr.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/index.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/index1.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/index1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/knownissues.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/knownissues.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/leftfr.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/leftfr.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/mainfr.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/mainfr.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/newfeatures.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/newfeatures.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/releasenotes.css" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/releasenotes.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/releasenotes.html" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/releasenotes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/robots.txt" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/robots.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/default.css" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/msg.vspx" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/msg.vspx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/oper.vspx" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/oper.vspx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/vsmx.vspx" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/vsmx.vspx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/vsmx_msg.xsl" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/vsmx_msg.xsl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/vsmx_oper.xsl" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/vsmx_oper.xsl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/vsmx_res.xsl" afterPath="$PROJECT_DIR$/../virtuoso-opensource/vsp/vsmx/vsmx_res.xsl" />
     </list>
     <ignored path="QB4SOLAP_Core.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,36 +28,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="VirtGraph.class" pinned="false" current-in-tab="false">
-              <entry file="jar://$PROJECT_DIR$/src/main/resources/virt_jena3.jar!/virtuoso/jena/driver/VirtGraph.class">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0">
-                    <caret line="115" column="64" selection-start-line="115" selection-start-column="64" selection-end-line="115" selection-end-column="64" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="VirtuosoSPARQLExample1.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/../virtjenasamples/VirtuosoSPARQLExample1.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.38822114">
-                    <caret line="45" column="99" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="99" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="QB4SOLAP_Core" />
@@ -127,11 +37,32 @@
       <file leaf-file-name="StartUp.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/StartUp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50530785">
-              <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.43128964">
+              <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#693#694#0" expanded="true" />
+                <element signature="e#748#749#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QB4SOLAP_Core.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/QB4SOLAP_Core.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.230769">
+              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,9 +72,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="335" column="17" selection-start-line="335" selection-start-column="17" selection-end-line="335" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,9 +82,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -210,11 +137,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/queries.java" />
         <option value="$PROJECT_DIR$/src/main/java/sparql.java" />
         <option value="$PROJECT_DIR$/src/test/java/query1test.java" />
         <option value="$PROJECT_DIR$/src/test/java/querytests.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/StartUp.java" />
       </list>
     </option>
@@ -267,6 +194,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -342,6 +270,20 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QB4SOLAP_Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QB4SOLAP_Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -376,7 +318,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -385,11 +326,15 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files (x86)\nodejs\node.exe" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="qb4solap_core" />
   </component>
   <component name="RunManager">
     <configuration default="false" name="querytests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -936,6 +881,7 @@
       <workItem from="1467192452069" duration="8560000" />
       <workItem from="1467271881060" duration="6087000" />
       <workItem from="1467605700246" duration="4420000" />
+      <workItem from="1467612579503" duration="6608000" />
     </task>
     <servers />
   </component>
@@ -972,7 +918,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28071000" />
+    <option name="totallyTimeSpent" value="34679000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -980,15 +926,15 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257066" sideWeight="0.25899744" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3257066" sideWeight="0.24100257" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32839838" sideWeight="0.2647815" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3257066" sideWeight="0.75899744" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839838" sideWeight="0.7352185" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2062982" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2062982" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1032,7 +978,59 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/querytests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="335" column="17" selection-start-line="335" selection-start-column="17" selection-end-line="335" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/main/resources/virt_jena3.jar!/virtuoso/jena/driver/VirtuosoQueryExecutionFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/3.1.0/jena-arq-3.1.0.jar!/org/apache/jena/sparql/engine/http/QueryEngineHTTP.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/main/resources/virt_jena3.jar!/virtuoso/jena/driver/VirtuosoQueryExecution.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/StartUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1041,9 +1039,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1051,9 +1047,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1086,7 +1080,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1095,9 +1090,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1105,9 +1098,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1140,7 +1131,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1189,7 +1181,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1231,7 +1224,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1285,14 +1279,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../virtjenasamples/VirtuosoSPARQLExample4.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7118644">
@@ -1331,6 +1317,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/querytests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="335" column="17" selection-start-line="335" selection-start-column="17" selection-end-line="335" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/src/main/resources/virt_jena3.jar!/virtuoso/jena/driver/VirtGraph.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1347,32 +1349,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sparql.java">
+    <entry file="file://$PROJECT_DIR$/QB4SOLAP_Core.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/querytests.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="335" column="17" selection-start-line="335" selection-start-column="17" selection-end-line="335" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/StartUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50530785">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.43128964">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1383,10 +1382,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>QB4SOLAP_Core:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
