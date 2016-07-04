@@ -1,0 +1,18 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:<http://example.org/GeoNWDW#> .
+@prefix virtrdf: <http://www.openlinksw.com/schemas/virtrdf#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix qb: <http://purl.org/linked-data/cube#>.
+@prefix qb4o: <http://purl.org/qb4solap/cubes#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix gnwi: <http://qb4solap.org/cubes/instances/geonorthwind#> .
+@prefix gnw: <http://qb4solap.org/cubes/schemas/geonorthwind#> . 
+gnwi:shipper_1 a gnw:shipper ;
+	 gnw:shipperID 1 ;
+	 gnw:shipperName "Speedy Express" . 
+gnwi:shipper_2 a gnw:shipper ;
+	 gnw:shipperID 2 ;
+	 gnw:shipperName "United Package" . 
+gnwi:shipper_3 a gnw:shipper ;
+	 gnw:shipperID 3 ;
+	 gnw:shipperName "Federal Shipping" . 

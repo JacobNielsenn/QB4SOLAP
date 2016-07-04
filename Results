@@ -1,0 +1,100 @@
+--Query 1. S-Slice : Total sales to the customers located in cities that are within a 100 km. buffer area from a given point.
+
+custName				totalSales
+"La corne d'abondance" 	1992.05
+"Spécialités du monde" 	2423.35
+
+--Query 2. S-Slice: Total  sales of customers in 1997, located in cities that are within a 100 km buffer area from a given point.
+
+custName				yearNo	totalSales
+"Spécialités du monde"	1997	52.35
+
+--Query 3. S-??:Distance between the customers’ locations and the center of the city which they are located
+
+custName								cityName	distance
+"Alfreds Futterkiste"					"Berlin"		24.5242
+"Ana Trujillo Emparedados y helados"	"México D.F."	18.6647
+"Antonio Moreno Taquería"				"México D.F."	2301.19
+.
+.
+.
+"Wilman Kala"							"Helsinki"		0.235053
+"Wolski  Zajazd"						"Warszawa"		2.11165
+
+87 triples total.
+
+-- Query 4. S-Dice: Total sales amount to the customers that have orders delivered by suppliers such that their locations are less than 200 km from each other.
+
+custName					distance 	totalSales
+"Around the Horn"			11.1353		228
+"B's Beverages"				9.66024		240
+"Blauer See Delikatessen"	76.1643		136.8
+.
+.
+.
+"Spécialités du monde"		5.18465		1317.5
+"Vaffeljernet"				152.694		205.2
+
+27 triples total.
+
+-- Query 5. S-??: For each supplier, number of customers located at more than 100 km from the supplier.
+
+supName								nbCustomers
+"Plutzer Lebensmittelgroßmärkte AG"	159
+"Pavlova, Ltd."						149
+"Specialty Biscuits, Ltd."			121
+.
+.
+.
+"Zaanse Snoepfabriek"				26
+"Escargots Nouveaux"				16
+
+28 triples total.
+
+-- Query 6. S- ??: For each customer, total sales amount to its closest supplier
+
+0 triples
+
+-- Query 7. S-??: Distance between the customer and supplier for customers that have orders delivered by suppliers of the same country.
+
+custName				supName						distance
+"Familia Arquibaldo"	"Refrescos Americanas LTDA"	10.8616
+"Mère Paillarde"		"Forêts d'érables"			45.6965
+"Wilman Kala"			"Karkki Oy"					202.011
+.
+.
+.
+"The Big Cheese"		"Forêts d'érables"			3801.76
+"White Clover Markets"	"Forêts d'érables"			3707.74
+
+156 triples total.
+
+-- Query 8. S-??: Total sales to customers located in a state that contains the capital city of the country.
+
+0 triples
+
+-- Query 9. S-Union ??: Spatial union of the states in the USA where at least one customer placed an order in 1997.
+
+0 triples
+
+-- Query 10. S- ??: Number of customers from European countries with an area larger than 50,000 km2.
+
+countryName	nbCustomers
+"Austria"	114
+"Portugal"	26
+"Germany"	09
+"Sweden"	94
+"Norway"	15
+"Finland"	51
+"Poland"	16
+
+-- Query 11. S- ??: For each supplier, distance between the location of the supplier and the centroid of the locations of all its customers.
+
+Virtuoso 37000 Error SP031: SPARQL compiler: Unknown function bif:st_union()
+
+
+
+
+
+Lave en Query Claas og paas den med som input til 
+VirtuosoQueryExecution vqe = VirtuosoQueryExecutionFactory.create (input, set);
