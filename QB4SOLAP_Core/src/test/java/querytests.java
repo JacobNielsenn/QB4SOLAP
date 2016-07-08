@@ -10,6 +10,7 @@ import org.junit.Test;
  * Created by Jacob on 29/06/2016.
  */
 public class querytests {
+    // prefix used in the queries below.
     String prefix = "prefix qb: <http://purl.org/linked-data/cube#>\n" +
             "prefix gnwi: <http://qb4solap.org/cubes/instances/geonorthwind#> \n" +
             "prefix gnw: <http://qb4solap.org/cubes/schemas/geonorthwind#> \n" +

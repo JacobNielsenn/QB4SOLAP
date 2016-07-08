@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>Display IP Address</title>
+</head>
+ 
+<body>
+	 
+  <script>
+ 	/*var xhr = new XMLHttpRequest();
+ 	xhr.open('GET', "http://172.25.26.110:8080/", true);
+ 	xhr.send();
+ 	xhr.onreadystatechange = processRequest;
+ 	alert("response: " + xhr.response + ".")
+ 	function processRequest(e) {
+    	var response = xhr.responseText;
+    	alert("statusText: " + xhr.statusText + ".");
+    	alert("responseText: " + response + ".");
+	}*/
+	var textBox = document.getElementById("text");
+	textBox = pjs.addSuite({
+    url: 'http://en.wikipedia.org/wiki/List_of_towns_in_Vermont',
+    scraper: function() {
+        return $('#sortable_table_id_0 tr').slice(1).map(function() {
+            var name = $('td:nth-child(2)', this).text(),
+                county = $('td:nth-child(3)', this).text(),
+                // convert relative URLs to absolute
+                link = _pjs.toFullUrl(
+                    $('td:nth-child(2) a', this).attr('href')
+                );
+            return {
+                model: "myapp.town",
+                fields: {
+                    name: name,
+                    county: county,
+                    link: link
+                }
+            }
+        }).toArray(); // don't forget .toArray() if you're using .map()
+    }
+});
+});
+  </script>
+  	<textBox type="Json" id="text"></textBox>
+</body>
+ 
+</html>

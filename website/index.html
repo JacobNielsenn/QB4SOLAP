@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script>            
+            var a = 1;
+      		function increase(){
+            var textBox = document.getElementById("text");
+            textBox.value = a;
+            a++;
+      		}
+      		function test(){
+            var textBox = document.getElementById("text1");
+			textBox.src = "http://localhost:8080/RestfulService_war_exploded/test";
+			textBox.value = "http://localhost:8080/RestfulService_war_exploded/test";
+			alert("test");
+      		}            
+        </script>
+    </head>
+
+    <body>
+        <p><button type="button" onclick="increase()">show</button></p>
+        <p><input type="text" id="text"></p>
+        <p><button type="button" onclick="test()">testing</button></p>
+        <p><textarea type="text" id="text1"></textarea></p>
+
+    </body>
+</html>​
