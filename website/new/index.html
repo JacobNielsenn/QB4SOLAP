@@ -1,48 +1,91 @@
 <!DOCTYPE html>
-<html>
- 
-<head>
-  <title>Display IP Address</title>
-</head>
- 
-<body>
-	 
-  <script>
- 	/*var xhr = new XMLHttpRequest();
- 	xhr.open('GET', "http://172.25.26.110:8080/", true);
- 	xhr.send();
- 	xhr.onreadystatechange = processRequest;
- 	alert("response: " + xhr.response + ".")
- 	function processRequest(e) {
-    	var response = xhr.responseText;
-    	alert("statusText: " + xhr.statusText + ".");
-    	alert("responseText: " + response + ".");
-	}*/
-	var textBox = document.getElementById("text");
-	textBox = pjs.addSuite({
-    url: 'http://en.wikipedia.org/wiki/List_of_towns_in_Vermont',
-    scraper: function() {
-        return $('#sortable_table_id_0 tr').slice(1).map(function() {
-            var name = $('td:nth-child(2)', this).text(),
-                county = $('td:nth-child(3)', this).text(),
-                // convert relative URLs to absolute
-                link = _pjs.toFullUrl(
-                    $('td:nth-child(2) a', this).attr('href')
-                );
-            return {
-                model: "myapp.town",
-                fields: {
-                    name: name,
-                    county: county,
-                    link: link
-                }
-            }
-        }).toArray(); // don't forget .toArray() if you're using .map()
-    }
-});
-});
-  </script>
-  	<textBox type="Json" id="text"></textBox>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <section id="shout">
+  <h1>Extended Business Intelligence</h1>
+  <p>In this project, our goal is to enable business intelligence over
+      semantic data. This includes not only making new datasets available as
+      Linked Open Data but also developing strategies for efficient execution
+      of analytical queries. 
+  </p>
+</section>    <!-- content body -->
+    <div id="content">
+      <!-- main content -->
+      <section>
+	    <article class="more-bottom-padding">
+          <h2>Paper accepted at JIST 2015</h2>
+          <date>25/09/2015</date>
+          <p class="no-top-margin">The paper <a href="/QB4SOLAP/index.php">Modeling and Querying Spatial Data Warehouses on the Semantic Web</a> was accepted for the JIST 2015 conference in the technical sessions. </p>
+        </article>
+        <article class="more-bottom-padding">
+          <h2>Paper accepted at COLD 2015</h2>
+          <date>04/08/2015</date>
+          <p class="no-top-margin">The paper <a href="/swod/index.php">Optimizing RDF Data Cubes for Efficient Processing of Analytical Queries</a> was accepted for the COLD 2015 workshop. </p>
+        </article>
+        <article class="more-bottom-padding">
+          <h2>Paper accepted at ESWC 2015</h2>
+          <date>20/05/2015</date>
+          <p class="no-top-margin">The paper <a href="/coda/index.php">Processing Aggregate Queries in a Federation of SPARQL Endpoints</a> was accepted for the ESWC 2015 conference in the research track. </p>
+        </article>
+        <article class="more-bottom-padding">
+          <h2>JIST 2014 - Chiang Mai, Thailand</h2>
+          <date>09/11/2014</date>
+          <p class="no-top-margin">The Joint International Semantic Technology 2014 conference has the mission to bring together all researchers of the Semantic Web technologies. Nurefsan G&#252;r went to Thailand to present the paper <a href="/govAgriBus/index.php">Agricultural Government Data as Semantic Web Data</a>.  </p>
+        </article>
+        <article>
+          <h2>Datahub.io</h2>
+          <date>30/08/2014</date>
+          <p class="no-top-margin">The "GovAgriBus Denmark" dataset can now be found in the latest draft of the <a href="http://lod-cloud.net/">Linked Open Data Cloud diagram</a></p>
+          <a href="/images/LinkedOpenDataCloud2014.png"><img alt="The 'GovAgriBus Denmark' dataset in the LOD cloud" src="/images/LinkedOpenDataCloud2014_small.png"></a>
+        </article>
+      </section>
+    </div>
+    <!-- right column -->
+    <aside id="right_column">
+      <h2 class="title">Publications</h2>
+      <nav>
+        <ul>
+          <li class="swod"><a href="/swod/index.php">Optimizing RDF Data Cubes for Efficient Processing of Analytical Queries (COLD 2015) </a></li>
+        </ul>
+        <ul>
+          <li class="coda"><a href="/coda/index.php">Processing Aggregate Queries in a Federation of SPARQL Endpoints (ESWC 2015)</a></li>
+        </ul>
+        <ul>
+          <li class="govAgriBus"><a href="/govAgriBus/index.php">Agricultural Government Data as Semantic Web Data (JIST 2014)</a></li>
+        </ul>
+		<ul>
+          <li class="aggview"><a href="/aggview/index.php">Optimizing Aggregate SPARQL Queries using Materialized RDF Views</a></li>
+        </ul>
+		<ul>
+          <li class="QB4SOLAP"><a href="/QB4SOLAP/index.php">Modeling and Querying Spatial Data Warehouses on the Semantic Web (JIST 2015)</a></li>
+        </ul>
+      </nav>      <h2 class="title">Webmaster</h2>
+      <section class="last">
+        <address>
+        Kim A. Jakobsen<br>
+        Email: <a>kah [at] cs.aau.dk</a>
+        </address>
+      </section>    </aside>
+  </div>
+</div>
+<!-- footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="/">EXTBI</a></p>
+  </footer>
+</div>
 </body>
- 
 </html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58880837-1', 'auto');
+  ga('send', 'pageview');
+
+</script></body>
+</html>
+
