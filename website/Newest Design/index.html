@@ -7,23 +7,27 @@
 				    left: 0;
 				    right: 0;
 				    height: 100px;
-				    background-color: #abcdef;}
+				    background-color: #abcdef;
+				}
 		.content {	position: fixed;
 				    top: 100px;
 				    bottom: 0px;
 				    left: 0;
 				    right: 0;
 				    background-color: #F63;
-				    overflow: auto;}
+				    overflow: auto;
+				}
 		.left	{	float:left;}
 		.right	{	float:right;}
 		.center {	text-align: center;
 					vertical-align: middle;
-					line-height: 100px;}
+					line-height: 100px;
+				}
 		ul 		{	list-style-type: none;
 				    margin: 0;
 				    padding: 0;
-				    overflow: hidden;}
+				    overflow: hidden;
+				}
 	    li 		{	float: right;}
 	    .padding{	padding: 16px;}
 		</style>
@@ -42,11 +46,11 @@
 		<div class="content">
 			<div class="center" style="line-height:50px;">SOLAP - Spatial Online Analytical Processing</div>
 			<div class="left" style="width:20%; background-color: pink; ">
-				<p>algorithms</p>
-				<p>item 1</p>
-				<p>item 2</p>
-				<p>item 3</p>
-				<p>item 4</p>
+				<p style="margin-left:10px;">algorithms</p>
+				<p style="margin-left:10px;">item 1</p>
+				<p style="margin-left:10px;">item 2</p>
+				<p style="margin-left:10px;">item 3</p>
+				<p style="margin-left:10px;">item 4</p>
 			</div>
 			<div class="right" style="width:79%; background-color: green;">
 				<p>setting</p>
@@ -58,7 +62,8 @@
 				</select>
 				...
 				<p>Output</p>
-				<textarea style="margin-left:10px; width:75vw; height: 30vh;">test</textarea>
+				<button>Generate Graph</button>
+				<textarea style="margin-top: 10px; margin-left:10px; width:75vw; height: 30vh;">test</textarea>
 
 			</div>
 		</div>

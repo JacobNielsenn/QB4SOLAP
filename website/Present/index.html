@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		<script type="text/javascript" src="query.js"></script>
+		<style>
+		.header {	position: fixed;
+				    top: 0;
+				    left: 0;
+				    right: 0;
+				    height: 100px;
+				    background-color: #abcdef;
+				}
+		.content {	position: fixed;
+				    top: 100px;
+				    bottom: 0px;
+				    left: 0;
+				    right: 0;
+				    background-color: #F63;
+				    overflow: auto;
+				}
+		.left	{	float:left;}
+		.right	{	float:right;}
+		.center {	text-align: center;
+					vertical-align: middle;
+					line-height: 100px;
+				}
+		ul 		{	list-style-type: none;
+				    margin: 0;
+				    padding: 0;
+				    overflow: hidden;
+				}
+	    li 		{	float: right;}
+	    .padding{	padding: 16px;}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div class="left center" style="width:10%;">Logo</div>
+			<div class="right center" style="width:89%;">
+					<ul>
+						<li class="padding">item 1</li>
+						<li class="padding">item 2</li>
+						<li class="padding">item 3</li>
+					</ul>
+			</div>
+		</div>
+		<div class="content">
+			<div class="center" style="line-height:50px;">SOLAP - Spatial Online Analytical Processing</div>
+			<div class="left" style="width:20%; background-color: pink; ">
+				<p style="margin-left:10px;">algorithms</p>
+				<p style="margin-left:10px;">item 1</p>
+				<p style="margin-left:10px;">item 2</p>
+				<p style="margin-left:10px;">item 3</p>
+				<p style="margin-left:10px;">item 4</p>
+			</div>
+			<div class="right" style="width:79%; background-color: green;">
+				<p>setting</p>
+				Cut Level: 
+				<select id="test">
+					<option>City</option>
+					<option>Region</option>
+					<option>Country</option>
+				</select>
+				...
+				<p>Output</p>
+				<button onclick="RunQuery(document.getElementById('test').value)">Generate Graph</button>
+				<textarea id="QueryData" style="margin-top: 10px; margin-left:10px; width:75vw; height: 30vh;">test</textarea>
+			</div>
+		</div>
+	</body>
+</html>
