@@ -1,0 +1,163 @@
+qb
+	levels
+		level_0
+			employee		ManyToOne
+				employeeID	|integer|
+				firstName	string
+				lastName	string
+				title		string
+				brithDate	date
+				hireDate	date
+				address		string
+				cityName	string
+				regionName	string
+				postalCode	string
+				countryName	string
+			orderDate		ManyToOne
+			dueDate			ManyToOne
+			shippedDate		ManyToOne
+			product			ManyToOne
+			order 			ManyToOne
+			shipper 		ManyToOne
+			supplier 		ManyToOne
+			customer 		ManyToOne
+		level_1
+			city
+				cityName	string
+			state
+				stateName 			string
+				englishStateName	string
+				stateType			string
+				stateCode			string
+				stateCapital		string
+			region
+				regionName	string
+				regionCode	string
+			country
+				countryName		string
+				countryCode		string
+				countryCapital	string
+				capitalGeo		
+				population		|integer|
+				subdivision		string
+			countinent
+				countinentName	string
+			time
+				date 			data
+				dayNoWeek		|integer|
+				dayNameWeek		string
+				dayNoMonth		|integer|
+				dayNoYear		|integer|
+				weekNoYear		|integer|
+			month
+				monthNumber		|integer|
+				monthName		string
+			quarter
+				quarterNo		|integer|
+			semester
+				semesterNo		|integer|
+			year
+				yearNo			|integer|
+			product
+				productID		|integer|
+				productName		string
+				quantityPerUnit	|integer|
+				-> unitPrice	decimal
+				discontinued	boolean
+			category
+				categoryID		|integer|
+				categoryName	string
+				description		string
+			order
+				orderNo 		|integer|
+				orderLineNo 	|integer|
+			shipper
+				shipperID		|integer|
+				shipperName		string
+			customer
+				customerID		|integer|
+				customerName	string
+				address			string
+				postalCode		string
+			supplier
+				supplierID		|integer|
+				supplierName	string
+				address			string
+				postalCode		string
+
+
+
+	measures
+		quantity		sum integer
+		unitPrice		avg decimal
+		discount		avg decimal
+		salesAmount		sum decimal
+		freight			sum decimal
+		netAmount		sum decimal
+
+	dimensions
+		employe
+			supervision ManyToOne
+				employee ManyToOne
+			territories
+				employee ManyToMany
+					city ManyToOne
+						state ManyToOne
+							region ManyToOne
+								country ManyToOne
+									countinent ManyToOne
+		orderDate
+			calendar
+				time ManyToOne
+					month ManyToOne
+						quarter ManyToOne
+							semester ManyToOne
+								year ManyToOne
+		dueDate
+			calendar
+		shippedDate
+			calendar
+		product
+			categories
+				product ManyToOne
+					category
+		order
+		shipper
+		customer
+		customerGeography
+			customer 
+				city
+					region
+					country 
+					state 
+						region
+						country
+						region
+							country
+								continent
+		supplier
+		supplierGeography
+			supplier
+				city
+					state
+						region
+							country
+								continent
+
+
+
+My results when i try to decode it is as follow:
+info:
+hs# child parent											
+
+hs 	customer 	city 	state 	region 	country 	continent 	[Cardinality, TopologicalRelation]
+---------------------------------------------------------------------------------------------------------------------------------------------
+hs1	customer 	city 											[ManyToOne, Within]
+hs2				city 	state 									[ManyToOne, Within]
+hs8 			city 			region 							[ManyToMany, Intersects Overlaps Within]
+hs3 			city 					country 				[ManyToOne, Within]
+hs9						state 	region 							[ManyToMany, Intersects Overlaps Within]
+hs4 					state 	region 							[ManyToOne, Within]
+hs5 					state 			country 				[ManyToOne, Within]
+hs6 							region 	country 				[ManyToOne, Within]
+hs7 									country 	continent 	[ManyToOne, Within]
