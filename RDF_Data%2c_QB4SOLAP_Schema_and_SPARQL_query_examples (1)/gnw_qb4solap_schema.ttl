@@ -266,7 +266,7 @@ gnw:orderDateDim a rdf:Property , qb:DimensionProperty ; rdfs:label "Order Date 
 # -- Calendar hierarchy 
 
 gnw:calendar a qb4o:Hierarchy ; rdfs:label "Calendar Hierarchy"@en ;
-	qb4o:inDimension gnw:orderDateDim , gnw:DueDateDim , gnw:ShippedDateDim ;
+	qb4o:inDimension gnw:orderDateDim , gnw:dueDateDim , gnw:shippedDateDim ;
     qb4o:hasLevel gnw:time , gnw:month , gnw:quarter , gnw:semester , gnw:year .
 
 
