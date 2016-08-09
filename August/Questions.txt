@@ -1,0 +1,55 @@
+id(x) - given a MD element x returns its identifier I from the graph G
+
+
+Algorithm 1:
+line 2 - GP = ?obs rdf:type qb:Observation
+line 3 - GP += ?obs LevelAttributeID(baseLevel) ?baseLevel + ?baseLevel qb4o:memberOf LevelProperty
+line 5 - GP += ?baseLevel skos:broader ?parentLevel + ?parentLevel skos:broader ?spatialLevel (repeat until no more parentLevels are found.)
+line 6 - GP += ?spatialLevel LevelAttributeID(spatialLevel) ?attributeSpatialLevel
+Algorithm 2:
+
+
+Algorithm 3:
+The algorithm runs through the levels from
+base level lb to the target spatial level ls, which
+are both given in the spatial Boolean predicate φS
+
+Algorithm 4:
+
+
+Extra:
+--------------------------------------------------------------------------------------
+Spatial operations		input1, input2, ..., inputN
+--------------------------------------------------------------------------------------
+Spatial aggregation - takes two or more spatial objects and return a new spatial object
+Union					
+Intersection
+Buffer
+ConvexHull
+MinimumBoundingRectangle
+
+Topological relations - takes two objects
+Intersects				2
+Disjoint				2
+Equals					2
+Overlaps				2
+Contains				2
+Within					2
+Touches					2
+Covers					2
+CoveredBy				2
+Crosses					2
+
+Numeric oprations - take one or more spatial objects and return a numeric value
+Perimeter				1+
+Area 					1+
+NoOfInteriorRings 		1+
+Distance 				1+
+HavesineDistance 		1+
+NearestNeighbor 		1+
+NoOfGeometries 			1+
+--------------------------------------------------------------------------------------
+
+Spatial Objects - What can a spatial objects be:
+http://mcmcweb.er.usgs.gov/sdts/SDTS_standard_nov97/part1b10.html
+

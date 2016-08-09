@@ -1,0 +1,201 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix qb4o: <http://purl.org/qb4olap/cubes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix scovo: <http://purl.org/NET/scovo#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+
+<https://w3id.org/qb4solap> rdf:type owl:Ontology, voaf:Vocabulary ;
+				vann:preferredNamespacePrefix "qb4so";
+				vann:preferredNamespaceUri "https://w3id.org/qb4solap#";
+				rdfs:label "The QB4SOLAP cube vocabulary, an extension to QB4OLAP" ;
+				dcterms:created "2015-04-14"^^xsd:date ;
+				dcterms:modified "2016-04-19"^^xsd:date ;
+				dcterms:title "QBS4OLAP: Vocabulary for extending QB4OLAP and publishing Spatial-OLAP data cubes" ;
+				rdfs:comment "This vocabulary, QB4SOLAP allows to publish and operate with OLAP cubes in RDF with spatial extensions which supports spatial OLAP operations";
+				owl:imports <http://purl.org/linked-data/cube#>, 
+				<http://purl.org/qb4olap/cubes#> ,
+				<http://www.opengis.net/ont/geosparql#> ;
+				owl:versionInfo "0.2" ;
+				dcterms:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+				dcterms:creator [foaf:mbox "nurefsan@cs.aau.dk"];
+				dcterms:contributor [foaf:mbox "nurefsan@cs.aau.dk"].
+
+#################################################################
+#
+# QB4SOLAP  Object Properties
+#
+#################################################################
+
+###  https://w3id.org/qb4solap#topologicalRelation 
+
+qb4so:topologicalRelation rdf:type owl:ObjectProperty ;  
+		rdfs:label "topological relations in levels"@en ;
+        rdfs:comment "An alternative to qb:componentProperty which allows to specify a topological relation in fact-level relationship of spatial facts with topological constraint"@en ;
+        rdfs:isDefinedBy <https://w3id.org/qb4solap> ;
+        rdfs:range qb4o:TopologicalRelation ;
+		rdfs:domain qb4o:HierarchyStep .
+		
+###  https://w3id.org/qb4solap#pcTopoRel
+
+qb4so:pcTopoRel rdf:type owl:ObjectProperty ;  
+		rdfs:label "topological relations in fact-level"@en ;
+        rdfs:comment "A property which allows to specify the topological relations in a parent-child relationship"@en;
+		rdfs:subPropertyOf qb:componentProperty ;
+        rdfs:isDefinedBy <https://w3id.org/qb4solap> ;
+        rdfs:range qb4o:TopologicalRelation .
+	
+
+#################################################################
+#
+#   QB4SOLAP Classes and Instances
+#
+#################################################################
+
+###  https://w3id.org/qb4solap#SpatialAggregateFunction
+qb4so:SpatialAggregateFunction rdf:type owl:Class ;
+    rdfs:label "Spatial aggregate function"@en ;
+    rdfs:subClassOf qb4o:AggregateFunction ;
+	dcterms:description "The class of components which represent spatial aggregate functions that are applied to compute aggregate measure values over spatial data"@en ;
+    rdfs:isDefinedBy <https://w3id.org/qb4solap> .
+
+
+###  https://w3id.org/qb4solap#Centroid
+qb4so:Centroid rdf:type owl:Class ;
+    rdfs:label "centroid"@en ;
+	rdf:instanceOf qb4o:SpatialAggregateFunction ;
+	dcterms:description "Returns the center of a polygon."@en ;
+	rdfs:comment "Such function not supported in SPARQL 1.1 & GeoSPARQL 1.0 yet."@en ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .
+
+###  https://w3id.org/qb4solap#Union
+qb4so:Union rdf:type owl:Class ;
+    rdfs:label "union"@en ;
+	rdf:instanceOf qb4o:SpatialAggregateFunction ;
+	dcterms:description "Returns the topological union (OR operation) of the specified geometry objects."@en ;
+	rdfs:comment "Such function not supported in SPARQL 1.1 & GeoSPARQL 1.0 yet."@en ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .	
+
+###  https://w3id.org/qb4solap#MBR
+qb4so:MBR rdf:type owl:Class ;         
+	rdfs:label "MBR"@en ;
+	rdf:instanceOf qb4o:SpatialAggregateFunction ; 
+	dcterms:description "Returns the minimum bounding rectangle of the specified geometry objects ."@en ;
+	rdfs:comment "built-in function (Virtuoso) bif:st_get_bounding_box(shape)"@en ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .
+
+###  https://w3id.org/qb4solap#ConvexHull
+qb4so:ConvexHull rdf:type owl:Class ;         
+	rdfs:label "convex hull"@en ;
+	rdf:instanceOf qb4o:SpatialAggregateFunction ;
+	dcterms:description "Returns the convex hull of the specified points ."@en ;
+	rdfs:comment "Such function not supported in SPARQL 1.1 & GeoSPARQL 1.0 yet."@en ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .	
+
+###  https://w3id.org/qb4solap#Intersection
+qb4so:Intersection rdf:type owl:Class ;        
+	rdfs:label "intersection"@en ; 
+	rdf:instanceOf qb4o:SpatialAggregateFunction ;
+	dcterms:description "Returns the topological intersection (AND operation) of the specified geometry objects."@en ;
+	rdfs:comment "Such function not supported in SPARQL 1.1 & GeoSPARQL 1.0 yet."@en ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .
+
+###  https://w3id.org/qb4solap#TopologicalRelation
+qb4so:TopologicalRelation rdf:type owl:Class ;
+	rdfs:label "Topological relation"@en ;
+	dcterms:description "Boolean functions for topological relations in between geometry objects based on Egenhofer relations and RCC-8 relations"@en ;
+	rdfs:seeAlso <http://www.opengis.net/spec/geosparql/1.0> ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .
+
+   
+### https://w3id.org/qb4solap#Intersects   
+qb4so:Intersects rdf:type owl:Class ;
+	rdfs:label "Intersects"@en ;
+	rdf:instanceOf qb4o:TopologicalRelation ;
+	dcterms:description "Exists if the subject geometry object is not spatially disjoint from the object geometry. DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T**** "@en ;
+	owl:sameAs geo:sfIntersects ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .   
+
+### https://w3id.org/qb4solap#Within
+qb4so:Within rdf:type owl:Class ;
+   rdfs:label "Within"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description "Exists if the subject geometry object is spatially within the object geometry. DE-9IM: T*F**F***"@en ;
+    owl:sameAs geo:sfWithin ;
+   rdfs:isDefinedBy <https://w3id.org/qb4solap> .   
+
+### https://w3id.org/qb4solap#Disjoint   
+qb4so:Disjoint rdf:type owl:Class ;
+    rdfs:label "Disjoint"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description "Exists if the subject geometry object is spatially disjoint from the object geometry. DE-9IM: FF*FF****"@en ;                     
+	owl:sameAs geo:sfDisjoint ;
+   rdfs:isDefinedBy <https://w3id.org/qb4solap> .      
+   
+### https://w3id.org/qb4solap#Touches      
+qb4so:Touches rdf:type owl:Class ;
+    rdfs:label "Touches"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description "Exists if the subject geometry spatially touches the object geometry. DE-9IM: FT******* ^ F**T***** ^ F***T**** "@en ;
+    owl:sameAs geo:sfTouches ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> . 
+
+### https://w3id.org/qb4solap#Equals
+qb4so:Equals rdf:type owl:Class ;
+    rdfs:label "Equals"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description "Exists if the subject geometry object spatially equals the object geometry. DE-9IM: TFFFTFFFT "@en ;
+    owl:sameAs geo:sfEquals ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .      
+
+### https://w3id.org/qb4solap#Covers	
+qb4so:Covers rdf:type owl:Class ;
+    rdfs:label "Covers"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description "Exists if the subject geometry object spatially covers the object geometry. DE-9IM: T*TFT*FF*"@en ;
+    owl:sameAs geo:ehCovers ; 
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .   
+
+### https://w3id.org/qb4solap#Overlaps	
+qb4so:Overlaps rdf:type owl:Class ;
+    rdfs:label "Overlaps"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description "Exists if the subject SpatialObject spatially overlaps the object SpatialObject. DE-9IM: T*T***T** "@en ;
+    owl:sameAs geo:sfOverlaps ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .      
+
+### https://w3id.org/qb4solap#CoveredBy	
+qb4so:CoveredBy rdf:type owl:Class ;
+    rdfs:label "CoveredBy"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description " Exists if the subject SpatialObject is spatially covered by the object SpatialObject. DE-9IM: TFF*TFT**"@en ;
+    owl:sameAs geo:sfCoveredBy.
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .    
+
+### https://w3id.org/qb4solap#Contains	
+qb4so:Contains rdf:type owl:Class ;
+    rdfs:label "Contains"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description "Exists if the subject SpatialObject spatially contains the object SpatialObject. DE-9IM: T*****FF*"@en ;
+    owl:sameAs geo:sfContains , geo:ehContains ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .  
+
+### https://w3id.org/qb4solap#Crosses	
+qb4so:Crosses rdf:type owl:Class ;
+    rdfs:label "Crosses"@en ;
+    rdf:instanceOf qb4o:TopologicalRelation ;
+    dcterms:description "Exists if the subject SpatialObject spatially crosses the object SpatialObject. DE-9IM: T*T******"@en ;
+    owl:sameAs geo:sfCrosses ;
+	rdfs:isDefinedBy <https://w3id.org/qb4solap> .     
+  
+
