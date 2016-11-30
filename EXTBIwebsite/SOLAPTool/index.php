@@ -1,357 +1,120 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-  <script type="text/javascript" src="scripts/interact.js"></script>
-  <title>EXTBI</title>
-  <meta charset="iso-8859-1">
-  <link rel="stylesheet" href="../styles/layout.css" type="text/css">
-  <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
-  <script type="text/javascript">
-    // Struct Factory
-    function makeStruct(names) {
-      var names = names.split(' ');
-      var count = names.length;
-      function constructor() {
-        for (var i = 0; i < count; i++) {
-          this[names[i]] = arguments[i];
-        }
-      }
-      return constructor;
-    }
-    // Structs
-    //var Item = makeStruct("id speaker country");
-    //var row = new Item(1, 'john', 'au');
-    //alert(row.speaker); // displays: john
-    var GeneratedQueryElement;
-    var QueryUnit = [];
-    var counter = 1;
-    var UniqueID = 0;
-    var NoSelectors = 0;
-    var OprSelectOptions = [""];
-    var selector = null;
-    var LastOpr = "null";
-    var currentP;
-    var selectedOpr;
-    var AvailableOperations = [];
-    window.onload = Initialize; 
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    function Initialize(){
-      //console.log("Initialize");
-      UpdateAvailableOperations();
-      GeneratedQueryElement = document.getElementById('GeneratedQuery');
-    }
+		<script type="text/javascript" src="scripts/utility/interact.js"></script>
+		<script type="text/javascript" src="scripts/utility/loadSchema.js"></script>
+		<script type="text/javascript" src="scripts/utility/jquery-3.1.0.js"></script>
+		<script type="text/javascript" src="scripts/utility/double-linked-list.js"></script>
+		<script type="text/javascript" src="scripts/BasicComponentHTML.js"></script>
+		<script type="text/javascript" src="scripts/createHTML.js"></script>
+		<script type="text/javascript" src="scripts/lookUp.js"></script>
+		<script type="text/javascript" src="scripts/menu.js"></script>
+		<script type="text/javascript" src="scripts/print.js"></script>
+		<script type="text/javascript" src="scripts/utility.js"></script>
+		<script type="text/javascript" src="scripts/buildquery.js"></script>
+		<script type="text/javascript" src="scripts/runQuery.js"></script>
+		<script type="text/javascript" src="scripts/debug.js"></script>
+		<script type="text/javascript" src="scripts/map.js"></script>
+		<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+		<title>EXTBI</title>
+		<meta charset="iso-8859-1">
+		<link rel="stylesheet" href="../styles/layout.css" type="text/css">
+		<link rel="stylesheet" href="./css/menu/build.css" type="text/css">
+		<link rel="stylesheet" href="./css/menu/RUPath.css" type="text/css">
+		<link rel="stylesheet" href="./css/button/button.css" type="text/css">
+		<link rel="stylesheet" href="./css/trash/tap.css" type="text/css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css"/>
+		<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+		<script type="text/javascript">
+		////////////////////////////////////
+		//        Global Variables        //
+			var GeneratedQueryElement;
+			var QueryStatment;
+			var ID = {};
+			var queryOfOperators = [];
 
-    function print(){
-      //console.log("print");
-      GeneratedQueryElement.innerHTML = "";
-      for(var i = 0; i < QueryUnit.length ; i++){
-        QueryUnit[i].toString();
-      }
-    }
-
-    function UID(){
-      //console.log("UID");
-      return UniqueID += 1;
-    }
-
-    function SelectMenuOptions(){
-      //console.log("SelectMenuOptions");
-      var select = document.getElementById('test');
-      for (var i = 0; i<=10; i++){
-      var opt = document.createElement('option');
-      opt.value = i;
-      opt.innerHTML = "Test";
-      select.appendChild(opt);  
-      }
-    }
-
-    function NewSelectOption(ele){
-      //console.log("NewSelectOption");
-      ele.value = ele.value.replace(/\s/g,'');
-      if(ele.value[0] == "?" && ele.value[1] != null)
-      {
-        var target = document.getElementById(ele.parentNode.id);
-        var obj = document.createElement('input');
-        obj.setAttribute('type', 'text');
-        obj.setAttribute('value', '?');
-        obj.setAttribute('onchange', 'NewSelectOption(this)');
-        obj.setAttribute('name', 'OprSelectAdded');
-        obj.setAttribute('style', 'width:40px;');
-        target.appendChild(obj);
-      }
-      else if (ele.value[0] == null && ele.name != "OprSelect1"){
-        ele.remove();
-      }
-    }
-
-    function UpdateAvailableOperations(){
-      console.log("UpdateAvailableOperations");
-  	  AvailableOperations = [];
-      console.log((selector == null ? "null" : selector.currentTarget.getAttribute('name')));
-      switch (selector == null ? "null" : selector.currentTarget.getAttribute('name')){
-      	case "null":
-      		console.log("Selected: None");
-      		LookAtQueryFor();
-      		break;
-      	case "SELECT":
-      		AvailableOperations.push("Variable", "SUM", "COUNT", "MIN");
-      		break;
-        case "S-Dice":
-          AvailableOperations.push("RUPath");
-          break;
-      }
-      ListOperations();
-    }
-
-    function LookAtQueryFor(){
-      console.log("LookAtQueryFor");
-    	switch (LastOpr){
-    		case "null":
-    			AvailableOperations.push("S-Dice");
-    		break;
-    		case "SELECT":
-    			AvailableOperations.push("WHERE");
-        break;
-        case "WHERE":
-          AvailableOperations.push("S-Dice");
-        break;
-        case "S-Dice":
-          AvailableOperations.push("RUPath");
-        break;
-    	}
-    }
-
-    function InsertBR(ele){
-      //console.log("InsertBR");
-      ele.appendChild(document.createElement('br'));
-    }
-
-    function InsertP(ele, Query){
-      //console.log("InsertP");
-    	currentP = document.createElement('p');
-      currentP.setAttribute('id', UID());
-      Query.appendChild(currentP);
-    }
-
-    function InsertTextBox(title, place){
-      //console.log("InsertTextBox");
-    	var TextBox = document.createElement('text');
-    	TextBox.setAttribute('name', title);
-    	TextBox.setAttribute('class', "tap-target noselect");  
-      TextBox.setAttribute('id', UID());
-  		TextBox.innerHTML = title;
-  		place.appendChild(TextBox);
-    }
-
-    function InsertInput(place, text){
-      //console.log("InsertInput");
-    	var ele = document.createElement('input');
-		ele.setAttribute('name', 'OprSelect1');
-		ele.setAttribute('value', text);
-		ele.setAttribute('type', 'text');
-		ele.setAttribute('style', 'width:40px;');
-    ele.setAttribute('onchange', 'inputValueChanged(this)');
-		place.appendChild(ele);
-    }
-
-    function inputValueChanged(element){
-      //console.log("inputValueChanged");
-      for (var i = 0; i < QueryUnit.length; i++){
-        if (parseInt(element.parentNode.id)+2 == String(QueryUnit[i].id)){
-            QueryUnit[i].variableName = element.value;           
-        }
-      }
-      print();
-    }
-
-    function ListOperations(){
-      //console.log("ListOperations");
-      var target = document.getElementById('OprList');
-      target.innerHTML = "";
-
-      for(var i= 0; i < AvailableOperations.length; i++){
-      	var obj =  document.createElement('text');
-      	obj.setAttribute('class', 'build-target noselect');
-        obj.setAttribute('name', AvailableOperations[i]);        
-        obj.innerHTML = AvailableOperations[i];
-        target.appendChild(obj);
-        InsertBR(target);
-      }
-    }
-    
-    function GetClosestP(element){
-    //console.log("GetClosestP");	
-    	var p = element;
-    	while (p.tagName != 'P'){
-    		p = document.getElementById(p.parentNode.id);
-    	}
-    	return p;
-    }
-    
-    interact('.tap-target')
-      .on('tap', function (event) {  
-        //console.log("Tap-Target");   
-        if(selector != null){ //Use To Deselected Query Component (only one component can be active at a time)
-          selector.currentTarget.classList.toggle('switch-color');
-        }
-        if((selector == null ? "" : selector.currentTarget.getAttribute('id')) == event.currentTarget.getAttribute('id')){ //Program will crash if you try to getAttribute from a null. This is the reason for the less desirable code.
-          selector = null;
-          UpdateAvailableOperations();
-        }
-        else{   
-          OprSelect(event);
-        }      
-    });
-
-    function OprSelect(event){
-      //console.log("OprSelect");
-      selector = event;
-      event.currentTarget.classList.toggle('switch-color');
-      selectedOpr = event.currentTarget;
-      event.preventDefault();
-      UpdateAvailableOperations();
-    }
-
-    interact('.build-target')
-      .on('tap', function (event) {
-        var selected = event.currentTarget.getAttribute('name');
-        var QueryStatment = document.getElementById('OprSelectStatement');    
-        switch (selected){
-        	case "SELECT":
-        		InsertP(event, QueryStatment);
-        		InsertTextBox("SELECT", currentP);
-        		LastOpr = selected;
-        	break;
-        	case "WHERE":
-        		InsertP(event, QueryStatment);
-        		InsertTextBox("WHERE", currentP);
-        		LastOpr = selected;
-        	break;
-        	case "SUM":
-        		InsertTextBox(" (SUM", GetClosestP(selectedOpr));
-        		InsertInput(GetClosestP(selectedOpr));
-        		InsertTextBox(" AS ", GetClosestP(selectedOpr));
-        		InsertInput(GetClosestP(selectedOpr));
-        		InsertTextBox(")", GetClosestP(selectedOpr));
-        	break;
-        	case "Variable":
-        		InsertTextBox(" ",GetClosestP(selectedOpr));
-        		InsertInput(GetClosestP(selectedOpr));
-        	break;
-          case "S-Dice":
-            InsertP(event, QueryStatment);
-            InsertTextBox("S-Dice", currentP);
-            InsertInput(currentP, "?obs");
-            LastOpr = selected;
-            var SDice = {'name': 'SDice', 'id': UID(), 'variableName': '?obs', 'toString': function(){
-              GeneratedQueryElement.innerHTML += "SELECT " + this.variableName + " WHERE\n";
-            }};
-            QueryUnit.push(SDice);
-        } 
-        UpdateAvailableOperations();
-        print();
-        event.preventDefault();
-    });
-  </script>
-  <style type="text/css">
-    .noselect {
-      -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none;   /* Chrome/Safari/Opera */
-      -khtml-user-select: none;    /* Konqueror */
-      -moz-user-select: none;      /* Firefox */
-      -ms-user-select: none;       /* Internet Explorer/Edge */
-      user-select: none;           /* Non-prefixed version, currently not supported by any browser */                               
-    }
-
-    .tap-target, .build-target {
-  cursor: pointer;
-
-  transition: all 0.3s;
-}
-
-.tap-target.switch-color{
-  color: green;
-  text-decoration: underline;
-}
-
-input[type=text], select {
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 40px;
-    box-sizing: border-box;
-}
-  </style>
-</head>
+		// - SOLAP 						  //
+			var Dimensions = ['employee', 'orderDate', 'dueDate', 'shippedDate', 'product', 'order', 'shipper', 'supplier', 'customer'];
+			var SpatialAggregation = ['Union', 'Intersection', 'Buffer', 'ConvexHull', 'MinimumBoundingRectangle'];
+			var TopologicalRelations = ['Intersects', 'Disjoint', 'Equals', 'Overlaps', 'Contains', 'Within', 'Touches', 'Covers', 'CoveredBy', 'Crosses', 'Distance'];
+			var NumericOperations = ['Perimeter', 'Area', 'NoOfInteriorRings' , 'Distance', 'HaversineDistance', 'NearstNeighbor', 'NoOfGeometries'];
+			var DataTypes = ['Point', 'Polygon', 'Multi Polygon'];
+			var RelationalOperators = ['Not equal', 'Equal', 'Greater than or equal', 'Less than or equal', 'Greater than', 'Less than'];
+			var AGG = ['MAX', 'MIN', 'AVG'];
+			var SpatialDimensions = ['supplier', 'customer'];
+		// - Enums //
+			structureLevel = {Dimenasion: 3, Level: 2, Attribute: 1};
+			spatialMode = {On: 1, Off:0};
+		////////////////////////////////////
+		// Methods - Initialize & Utility //
+			window.onload = Initialize;
+			function Initialize(){
+				GeneratedQueryElement = document.getElementById('GeneratedQuery');
+				QueryStatment = document.getElementById('StartQuery');
+				convertDataToObjects(data);
+				console.log(DataStructureDefinition);
+				document.getElementById('prefix').innerHTML = prefixes; //Fill the Prefiexs area
+				setupdebug();
+				$('#prefix').hide();
+				document.getElementById('debug').style.visibility = "hidden";
+			}
+		</script>
+	</head>
 <body class="about QB4SOLAP">
-<div class="wrapper row1">
-  <header id="header" class="clear">
-    <?php include '../logo.html';?>
-    <?php include '../menu.html';?>
-  </header>
-</div>
-<!-- content -->
-<div class="wrapper row2">
-  <div id="container" class="clear">
-    <!--<section id="slider"><a href="#"><img src="images/demo/960x360.gif" alt=""></a></section>-->
-    <?php include 'headline.html';?>
-    <!-- content body -->
-    <div id="content">
-      <!-- main content -->   
-      <aside id="left_column">
-        <h2 class="title">SOLAP<br>Operators</h2>
-          <section class="last" id="OprList" style="margin-left:10px;">
-          </section>
-        </aside>
-      <section style="margin-left:10px;">
-        <div class="no-top-margin" style="float:left;">
-          <section>
-            <div id="OprSelectStatement" style="margin-top:-20px; height:500px;  width:500px; overflow-y: scroll;">
-              <p>Query:</p>
-            </div>
-            <div>
-              <p>Generated query from the above operators:</p>
-              <textarea id="GeneratedQuery" style="margin-top:-5px; width:494px; height: 300px; overflow-y: scroll;"></textarea>
-            </div>
-          </section>   
-        </div>
-      </section>
-    </div>
-    <!-- right column -->
-    <!-- Trash 
-        <article>
-          <div id="0" ondragover="allowDrop(event)" ondrop="drop(event)" style="float: right; height:10px; width:600px; border: 1px; border-style: solid;">
-          <p class="no-top-margin" style="text-align:center">Select</p>
-          </div>
-          <div id="div3" style="float:left; background-color: black" draggable="true" ondragstart="drag(event)">
-            <div id="div1" subitems="true">Slice</div>
-              <div id="div1" subitems="true">
-              <p subitems="true">ID:<input class="name" subitems="true" type="text" value="" style="margin-left: 1px; width:35px" /></p>
-              </div>
-            </div>
-            <br><br><br><br><br>
-            <div id="div4" style="float:left; background-color: black" draggable="true" ondragstart="drag(event)">
-              <div id="div1" subitems="true">Roll-up</div>
-              <div id="div1" subitems="true">
-              <p subitems="true">ID:<input class="name" subitems="true" type="text" value="" style="margin-left: 1px; width:35px" /></p>
-              </div>
-          </div>
-        </article>     -->
-    
-    <aside id="right_column">
-      <?php include '../topics.html';?>
-      <?php include 'resources.html';?>
-      <!-- /nav -->
-      <?php include 'conference.html';?>
-      <?php include 'contact.html';?>
-    </aside>
-    <!-- / content body -->
-  </div>
-</div>
-<!-- footer -->
-<div class="wrapper row3">
-  <?php include '../footer.html';?>
-  <?php include '../analytics.html';?>
-</div>
+	<div class="wrapper row1">
+	<header id="header" class="clear">
+	<?php include '../logo.html';?>
+	<?php include '../menu.html';?>
+	</header>
+	</div>
+	<!-- content -->
+	<div class="wrapper row2">
+		<div id="container" class="clear">
+			<!--<section id="slider"><a href="#"><img src="images/demo/960x360.gif" alt=""></a></section>-->
+			<?php include 'headline.html';?>
+			<!-- content body -->
+			<div id="content" style="width:960px;">
+				<!-- main content -->   
+				<section style="margin-left:10px;">
+							<!-- old style: overflow-y: scroll; height:500px;-->
+							<P>
+								<button id="debug" class="hide" onclick="debugMenu(this)">Menus - Hide</button>
+								<div id="test">
+
+								</div>
+							</P>
+							<div id="OprSelectStatement" style="margin-top:0px; width:350px;  float:left;">
+								<p id="StartQuery" name="Start" style="margin-top: 0px; margin-bottom: 0px;">Query:</p>
+								<div id="Builder" class="dropdown" style="width: 345px; height: 25px; border: 2px solid transparent; border-color: black; border-radius: 0px 0px 5px 5px; border-style: dashed;">
+									<button class="dropbtn" style="text-align:center; margin:-2px -1px -1px -1px; height:28px; border-radius: 0px 0px 5px 5px; width:347px;">Choose an operator</button>
+								  <div id="myDropdown" class="dropdown-content">
+								    <a href="#" onclick="SSlice_within(this)">S-Slice</a>
+								    <a href="#" onclick="SDice(this)">S-Dice</a>
+								    <a href="#" onclick="fSRU(this)">SRU</a>
+								  </div>
+								</div>
+							</div>
+							<div style="float:right; width: 550px;">
+								<p>Generated query from the above operators:</p>
+                                <button id="pre" class="hide" onclick="prefixText(this)">Prefixes</button>
+								<textarea disabled id="prefix" style="margin-top:0px; width:500px; height: 200px; float:left; background-color: lightgrey; overflow:hidden;"></textarea>
+								<textarea id="GeneratedQuery" style="margin-top:0px; width:500px; height: 300px; overflow-y: scroll; float:left;"></textarea>
+                                <p id="PreventSwap">
+                                    <button id="QueryButton">Run Query</button>
+                                </p>
+								<div id="ResultFromQuery"></div>
+							</div>
+				</section>
+			</div>
+			<!-- / content body -->
+		</div>
+	</div>
+	<!-- footer -->
+	<div class="wrapper row3">
+		<?php include '../footer.html';?>
+		<?php include '../analytics.html';?>
+	</div>
 </body>
 </html>

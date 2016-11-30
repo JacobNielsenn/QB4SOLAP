@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-war" name="unnamed">
-    <output-path>$PROJECT_DIR$/out/artifacts/unnamed</output-path>
-    <root id="root">
-      <element id="artifact" artifact-name="QB4SOLAP:jar" />
-    </root>
-  </artifact>
-</component>

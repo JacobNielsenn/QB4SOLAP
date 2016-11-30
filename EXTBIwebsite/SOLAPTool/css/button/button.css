@@ -1,0 +1,27 @@
+.stylebutton {
+	border-radius: 0px;
+	/*border-color: #ccc;*/
+	transition-duration: 0.4s;
+}
+.dbutton {
+	background-color: #ff6666;
+	color: white;	
+}
+
+.dbutton:hover {
+	background-color: white;
+	color: red;
+}
+
+.udbutton {
+	background-color: #33adff;
+	color: white;	
+}
+
+.udbutton:hover {
+	background-color: white;
+	color: blue;
+}
+.stylebutton:hover{
+	/*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
+}
