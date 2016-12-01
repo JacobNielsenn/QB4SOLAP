@@ -75,7 +75,9 @@
 			<!--<section id="slider"><a href="#"><img src="images/demo/960x360.gif" alt=""></a></section>-->
 			<?php include 'headline.html';?>
 			<!-- content body -->
-            <img id="myImg" src="./images/testImage.pdf" alt="The Pulpit Rock">
+            <div id="schema">
+                <img id="myImg" src="./images/testImage.png" width="100%">
+            </div>
 			<div id="content" style="width:960px;">
 				<!-- main content -->   
 				<section style="margin-left:10px;">
