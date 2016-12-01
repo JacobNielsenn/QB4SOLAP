@@ -11,10 +11,10 @@
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
-          <root url="file://$APPLICATION_HOME_DIR$/jre/jre/bin" />
+          <root url="file://C:/Program Files/Java/jdk1.8.0_40/jre/bin" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$APPLICATION_HOME_DIR$/jre/jre/bin" />
+          <root url="file://C:/Program Files/Java/jdk1.8.0_40/jre/bin" />
         </SOURCES>
       </library>
     </orderEntry>
