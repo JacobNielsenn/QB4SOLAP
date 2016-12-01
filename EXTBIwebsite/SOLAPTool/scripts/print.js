@@ -164,10 +164,10 @@ function PSSWithin(obj){
 	var path = obj.path.split(',');
 	var aIDName = traverse(DataStructureDefinition, path[1], "levelProperty").hasGeometry[0];
 	if (obj.first.indexOf(',') != -1){
-        Filter += 'FILTER (bif:st_within(' + PFillUser(obj, obj.first) + ', ' + name('?' + aIDName, obj) + " " +'))\n';
+        Filter += 'FILTER (bif:st_within(' + PFillUser(obj, obj.first) + ', ' + name('?' + aIDName, obj) + " " +',' + obj.distance + '))\n';
 	}
 	else{
-        Filter += 'FILTER (bif:st_within(' + name('?' + aIDName, obj) + " " + ', ' + PFillUser(obj, obj.second) +'))\n';
+        Filter += 'FILTER (bif:st_within(' + name('?' + aIDName, obj) + " " + ', ' + PFillUser(obj, obj.second) +',' + obj.distance +'))\n';
 	}
 	return result;
 }
@@ -175,7 +175,7 @@ function PFillUser(obj, value){
 	var userdata;
 	switch (obj.userInput){
 		case ('Point'):
-			userdata = "bif:st_point(" + value + ")," + obj.distance;
+			userdata = "bif:st_point(" + value + ")";
 			break;
 		default:
 			break;
