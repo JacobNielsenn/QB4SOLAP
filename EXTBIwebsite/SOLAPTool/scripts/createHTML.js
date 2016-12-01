@@ -104,12 +104,17 @@ function SSlice_within(event){
 	textWithin2.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
 	var pick2 = createMenuObj(['User Input', 'Spatial Level'], '2nd Geometry from');
 	var inputpick2 = InsertSingleMenu(pick2, 125, "clickedMenu(this)");
+    var distance = InsertP('distance');
+    distance.appendChild(InsertTextBox('Input distance value: '));
+    distance.appendChild(InsertInput('', null, "clickedAttribute(this)"));
+
 	p1.appendChild(textWithin1);
 	p1.appendChild(inputpick1);
 	p2.appendChild(textWithin2);
 	p2.appendChild(inputpick2);
 	body.appendChild(p1);
 	body.appendChild(p2);
+    body.appendChild(distance);
 	body.appendChild(InsertBR());
 	p.appendChild(header);
 	p.appendChild(body);
@@ -132,6 +137,18 @@ function SDice(event){
 	p.appendChild(body);
 	addOperator(p, 'SDice');
 	QueryStatment.appendChild(p);
+}
+function SRU(event){
+    var p = InsertP('Operator', 'border: 1px solid black;');
+    var header = Insertheader('SRU');
+    var body = InsertP('body');
+    body.setAttribute('style', 'min-height: 50px; margin:0px 0px 0px 0px; background: lightgrey;');
+    body.appendChild(SpatialLevel('First selection: ', 'SpatialLevel1'));
+    body.appendChild(SpatialLevel('Second selection: ', 'SpatialLevel2'));
+    p.appendChild(header);
+    p.appendChild(body);
+    addOperator(p, 'SRU');
+    QueryStatment.appendChild(p);
 }
 // BODY UTILITY //
 function SpatialLevel(optionalName, optionalID){

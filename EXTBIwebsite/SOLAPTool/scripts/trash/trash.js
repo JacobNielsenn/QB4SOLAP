@@ -207,7 +207,7 @@ var currentP;
 var tab = '   ';
 var defaultvalue = '--Select--';
 
-var Gfilter = "aa";
+var Filter = "aa";
 
 var treeRoot = {
 	parent: null,

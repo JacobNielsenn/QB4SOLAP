@@ -92,7 +92,7 @@
 								  <div id="myDropdown" class="dropdown-content">
 								    <a href="#" onclick="SSlice_within(this)">S-Slice</a>
 								    <a href="#" onclick="SDice(this)">S-Dice</a>
-								    <a href="#" onclick="fSRU(this)">SRU</a>
+								    <a href="#" onclick="SRU(this)">SRU</a>
 								  </div>
 								</div>
 							</div>

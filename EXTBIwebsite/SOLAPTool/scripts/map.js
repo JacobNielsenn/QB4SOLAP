@@ -36,10 +36,10 @@ function UpdateObject(e){
     var obj = findOperatorInList(operator.id);
     addProperty(element, 'userInput', 'Point');
     if (element.previousElementSibling.getAttribute('name').indexOf('1') != -1){
-        addProperty(element, 'first', (e.latlng.lat + ", " + e.latlng.lng));
+        addProperty(element, 'first', (e.latlng.lng + ", " + e.latlng.lat));
     }
     else if (element.previousElementSibling.getAttribute('name').indexOf('2') != -1){
-        addProperty(element, 'second', (e.latlng.lat + ", " + e.latlng.lng));
+        addProperty(element, 'second', (e.latlng.lng + ", " + e.latlng.lat));
     }
     PComplete();
 }
