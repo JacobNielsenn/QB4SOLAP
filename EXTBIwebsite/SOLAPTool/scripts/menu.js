@@ -264,24 +264,31 @@ function clickedAttribute(element){
 			switch (obj.spatialOperator){
 				case ("within"):
 					var p = GetClosestP(element)
-					while (p.getAttribute('name').indexOf('select') == -1){
-						p = p.previousElementSibling;
+					if (p.getAttribute('name').indexOf('distance') != -1){
+                        addProperty(element, 'distance', element.value);
 					}
-					if (p.getAttribute('name').indexOf('1') != -1){
-						if (element.innerHTML != ""){
-							addProperty(element, 'first', element.innerHTML);
-						}
-						else{
-							addProperty(element, 'first', element.value);
-						}
-					}
-					else if (p.getAttribute('name').indexOf('2') != -1){
-						if (element.innerHTML != ""){
-							addProperty(element, 'second', element.innerHTML);
-						}
-						else{
-							addProperty(element, 'second', element.value);
-						}
+					else{
+                        while (p.getAttribute('name').indexOf('select') == -1){
+                            p = p.previousElementSibling;
+                        }
+                        if (p.getAttribute('name').indexOf('1') != -1){
+                            console.log("first");
+                            if (element.innerHTML != ""){
+                                addProperty(element, 'first', element.innerHTML);
+                            }
+                            else{
+                                addProperty(element, 'first', element.value);
+                            }
+                        }
+                        else if (p.getAttribute('name').indexOf('2') != -1){
+                            console.log("second");
+                            if (element.innerHTML != ""){
+                                addProperty(element, 'second', element.innerHTML);
+                            }
+                            else{
+                                addProperty(element, 'second', element.value);
+                            }
+                        }
 					}
 					break;
 			}
@@ -290,6 +297,7 @@ function clickedAttribute(element){
 			addProperty(element, 'distance', element.value);
 			break;
 		default:
+			console.log(obj, obj.spatialOperator, "is not implemented yet");
 			break;
 	}
 	PComplete();

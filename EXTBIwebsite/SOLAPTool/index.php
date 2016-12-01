@@ -75,6 +75,9 @@
 			<!--<section id="slider"><a href="#"><img src="images/demo/960x360.gif" alt=""></a></section>-->
 			<?php include 'headline.html';?>
 			<!-- content body -->
+            <div id="schema">
+                <img id="myImg" src="./images/testImage.png" width="100%">
+            </div>
 			<div id="content" style="width:960px;">
 				<!-- main content -->   
 				<section style="margin-left:10px;">
@@ -92,7 +95,7 @@
 								  <div id="myDropdown" class="dropdown-content">
 								    <a href="#" onclick="SSlice_within(this)">S-Slice</a>
 								    <a href="#" onclick="SDice(this)">S-Dice</a>
-								    <a href="#" onclick="fSRU(this)">SRU</a>
+								    <a href="#" onclick="SRU(this)">SRU</a>
 								  </div>
 								</div>
 							</div>

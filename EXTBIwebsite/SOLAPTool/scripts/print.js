@@ -1,4 +1,6 @@
 var tab = '   ';
+var Filter = "";
+var AfterFilter = "";
 function RUPath(object, additionalPath, measure){
 	var result = '';
     var path, lb, ls;
@@ -93,7 +95,7 @@ function PathName(variableName, nameSpace){
 //Printer
 function PComplete(){
 	var Query = "";
-    Gfilter = "";
+    Filter = "";
 	for (var i = 0; i < queryOfOperators.length; i++){
 	    if (i == 0){
             Query += POperator(queryOfOperators[i]);
@@ -103,7 +105,7 @@ function PComplete(){
         }
 
 	}
-    Query += Gfilter + "}";
+    Query += Filter + "}";
 	GeneratedQueryElement.innerHTML = Query;
 }
 function POperator(obj){
@@ -113,6 +115,10 @@ function POperator(obj){
 			break;
 		case ('SDice'):
 			return PSDice(obj);
+			break;
+        case ('SRU'):
+            return PSRU(obj);
+            break;
 		default:
 			break;
 	}
@@ -129,19 +135,29 @@ function PSDice(obj){
 	var result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
 	result += RUPath(obj);
     console.log(obj);
+    compareName(obj.path1.split(',')[0], obj.path1Names);
     if (!(typeof(obj.distance) == 'undefined')){
         if (obj.distance == ""){
 
-            Gfilter += 'FILTER (bif:st_within(' + '?' + obj.path1.split(',')[0] + ', ?' + obj.path2.split(',')[0] + '))\n';
+            Filter += 'FILTER (bif:st_within(' + compareName(obj.path1.split(',')[0], obj.path1Names) + ', ' + compareName(obj.path2.split(',')[0], obj.path2Names) + '))\n';
         }
         else{
-            Gfilter += 'FILTER (bif:st_within(' + '?' + obj.path1.split(',')[0] + ', ?' + obj.path2.split(',')[0] + ', ' + obj.distance + '))\n';
+            Filter += 'FILTER (bif:st_within(' + compareName(obj.path1.split(',')[0], obj.path1Names) + ', ' + compareName(obj.path2.split(',')[0], obj.path2Names) + ', ' + obj.distance + '))\n';
         }
     }
     else{
-        Gfilter += 'FILTER (bif:st_within(' + '?' + obj.path1.split(',')[0] + ', ?' + obj.path2.split(',')[0] + '))\n';
+        Filter += 'FILTER (bif:st_within(' + compareName(obj.path1.split(',')[0], obj.path1Names) + ', ' + compareName(obj.path2.split(',')[0], obj.path2Names) + '))\n';
     }
 	return result;
+}
+function PSRU(obj){
+    var result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
+    result += RUPath(obj);
+    result += "SELECT " + name("?obs", obj) + " WHERE \n{\n";
+    //result += RUPath(obj, obj.bind, obj.groupby);
+    Filter += "FILTER";
+    AfterFilter += "GroupBy";
+    return result;
 }
 function PSSWithin(obj){
 	var result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
@@ -149,10 +165,10 @@ function PSSWithin(obj){
 	var path = obj.path.split(',');
 	var aIDName = traverse(DataStructureDefinition, path[1], "levelProperty").hasGeometry[0];
 	if (obj.first.indexOf(',') != -1){
-        Gfilter += 'FILTER (bif:st_within("' + PFillUser(obj, obj.first) + '", ' + name('?' + aIDName, obj) + " " +'))\n';
+        Filter += 'FILTER (bif:st_within(' + PFillUser(obj, obj.first) + ', ' + name('?' + aIDName, obj) + " " +',' + obj.distance + '))\n';
 	}
 	else{
-        Gfilter += 'FILTER (bif:st_within(' + name('?' + aIDName, obj) + " " + ', "' + PFillUser(obj, obj.second) +'"))\n';
+        Filter += 'FILTER (bif:st_within(' + name('?' + aIDName, obj) + " " + ', ' + PFillUser(obj, obj.second) +',' + obj.distance +'))\n';
 	}
 	return result;
 }
@@ -160,7 +176,7 @@ function PFillUser(obj, value){
 	var userdata;
 	switch (obj.userInput){
 		case ('Point'):
-			userdata = "POINT(" + value.trim().replace(',', ' ') + ")";
+			userdata = "bif:st_point(" + value + ")";
 			break;
 		default:
 			break;
@@ -184,5 +200,12 @@ function name(variableName, object){
         var newName = variableName + UpdateID(variableName);
         object.names.push(newName);
         return newName;
+    }
+}
+function compareName(findname, listofNames){
+    for (var i in listofNames){
+        if (listofNames[i].replace('?','').replace(/[0-9]/g, '').indexOf(findname) != -1 ){
+            return listofNames[i];
+        }
     }
 }

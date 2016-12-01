@@ -12,7 +12,7 @@ function onMapClick(e) {
     UpdateObject(e);
 }
 function initializeMap(mapID){
-    var mymap = L.map(mapID).setView([57.04745, 9.91928], 13);
+    var mymap = L.map(mapID).setView([57.04745, 9.91928], 3);
     maps.push([mymap, mapID]);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
         maxZoom: 18,
@@ -36,10 +36,10 @@ function UpdateObject(e){
     var obj = findOperatorInList(operator.id);
     addProperty(element, 'userInput', 'Point');
     if (element.previousElementSibling.getAttribute('name').indexOf('1') != -1){
-        addProperty(element, 'first', (e.latlng.lat + ", " + e.latlng.lng));
+        addProperty(element, 'first', (e.latlng.lng + ", " + e.latlng.lat));
     }
     else if (element.previousElementSibling.getAttribute('name').indexOf('2') != -1){
-        addProperty(element, 'second', (e.latlng.lat + ", " + e.latlng.lng));
+        addProperty(element, 'second', (e.latlng.lng + ", " + e.latlng.lat));
     }
     PComplete();
 }

@@ -10,7 +10,7 @@
 
 
 @prefix qb: <http://purl.org/linked-data/cube#> .
-@prefix qb4o: <http://purl.org/qb4olap/cubes#> .
+@prefix qb4o: <http://purl.org/qb4solap/cubes#> .
 @prefix qb4so: <http://purl.org/qb4solap/cubes#> .
 @prefix gnw: <http://qb4solap.org/cubes/schemas/geonorthwind#> .
 
@@ -153,12 +153,12 @@ gnw:country a qb4o:LevelAttribute ; rdfs:label "Country"@en ;
 
 gnw:city a qb4o:LevelProperty ; rdfs:label "City Level"@en ;
 	qb4o:hasAttribute gnw:cityName ;
-	geo:hasGeometry gnw:cityGeometry .
+	geo:hasGeometry gnw:cityGeo .
 	
 
 gnw:cityName a qb4o:LevelAttribute ; rdfs:label "City Name"@en ; 
 	qb4o:inLevel gnw:city ; rdfs:range xsd:string .
-gnw:cityGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the City"@en ; 
+gnw:cityGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the City"@en ; 
 	qb4o:inLevel gnw:city ; rdfs:subPropertyOf geo:Geometry ; 
 	rdfs:domain geo:Point ; rdfs:subClassOf geo:SpatialObject;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
@@ -171,8 +171,8 @@ gnw:state a qb4o:LevelProperty ;  rdfs:label "State Level"@en ;
 	qb4o:hasAttribute gnw:stateType ;
 	qb4o:hasAttribute gnw:stateCode ;
 	qb4o:hasAttribute gnw:stateCapital ;
-	geo:hasGeometry gnw:capitalGeometry ;
-	geo:hasGeometry gnw:stateGeometry .
+	geo:hasGeometry gnw:capitalGeo ;
+	geo:hasGeometry gnw:stateGeo .
 	
 	
 gnw:stateName a qb4o:LevelAttribute ; rdfs:label "State Name"@en ; 
@@ -185,11 +185,11 @@ gnw:stateCode a qb4o:LevelAttribute ; rdfs:label "State Code"@en ;
 	qb4o:inLevel gnw:state ; rdfs:range xsd:string .
 gnw:stateCapital a qb4o:LevelAttribute ; rdfs:label "State Capital"@en ; 
 	qb4o:inLevel gnw:state ; rdfs:range xsd:string .
-gnw:capitalGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the Capital of the State"@en ; 
+gnw:capitalGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the Capital of the State"@en ; 
 	qb4o:inLevel gnw:state ; rdfs:subPropertyOf geo:Geometry ; 
 	rdfs:domain geo:Point ; rdfs:subClassOf geo:SpatialObject;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
-gnw:stateGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the State"@en ; 
+gnw:stateGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the State"@en ; 
 	qb4o:inLevel gnw:state ; rdfs:subPropertyOf geo:Geometry ; 
 	rdfs:domain geo:MultiSurface ; rdfs:subClassOf geo:SpatialObject;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
@@ -200,14 +200,14 @@ gnw:stateGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the State"@en 
 gnw:region a qb4o:LevelProperty ; rdfs:label "Region Level"@en ;
 	qb4o:hasAttribute gnw:regionName ;
 	qb4o:hasAttribute gnw:regionCode ;
-	geo:hasGeometry gnw:regionGeometry .
+	geo:hasGeometry gnw:regionGeo .
 	 
 
 gnw:regionName a qb4o:LevelAttribute ; rdfs:label "Region Type"@en ; 
 	qb4o:inLevel gnw:region ; rdfs:range xsd:string .
 gnw:regionCode a qb4o:LevelAttribute ; rdfs:label "Region Code"@en ; 
 	qb4o:inLevel gnw:region ; rdfs:range xsd:string .
-gnw:regionGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the Region"@en ; 
+gnw:regionGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the Region"@en ; 
 	qb4o:inLevel gnw:region ; rdfs:subPropertyOf geo:Geometry ; 
 	rdfs:domain geo:MultiSurface ; rdfs:subClassOf geo:SpatialObject ;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
@@ -222,7 +222,7 @@ gnw:country a qb4o:LevelProperty ; rdfs:label "Country Level"@en ;
 	qb4o:hasAttribute gnw:capitalGeo ;
 	qb4o:hasAttribute gnw:population ;
 	qb4o:hasAttribute gnw:subdivision ;
-	geo:hasGeometry gnw:countryGeometry .
+	geo:hasGeometry gnw:countryGeo .
 	
 
 gnw:countryName a qb4o:LevelAttribute ; rdfs:label "Country Name"@en ; 
@@ -235,7 +235,7 @@ gnw:population a qb4o:LevelAttribute ; rdfs:label "Population"@en ;
 	qb4o:inLevel gnw:country ; rdfs:range xsd:positiveInteger .
 gnw:subdivision a qb4o:LevelAttribute ; rdfs:label "Subdivision"@en ; 
 	qb4o:inLevel gnw:country ; rdfs:range xsd:string .
-gnw:countryGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the Country"@en ; 
+gnw:countryGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the Country"@en ; 
 	qb4o:inLevel gnw:country ; rdfs:subPropertyOf geo:Geometry ;
 	rdfs:domain geo:MultiSurface; rdfs:subClassOf geo:SpatialObject;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
@@ -245,11 +245,11 @@ gnw:countryGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the Country"
 
 gnw:continent a qb4o:LevelProperty ; rdfs:label "Continent Level"@en ;
     qb4o:hasAttribute gnw:continentName ;
-	geo:hasGeometry gnw:continentGeometry .
+	geo:hasGeometry gnw:continentGeo .
 
 gnw:continentName a qb4o:LevelAttribute ; rdfs:label "Continent Name"@en ; 
 	qb4o:inLevel gnw:continent ; rdfs:range xsd:string .
-gnw:continentGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the Continent"@en ; 
+gnw:continentGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the Continent"@en ; 
 	qb4o:inLevel gnw:continent ; rdfs:subPropertyOf geo:Geometry ; 
 	rdfs:domain geo:MultiSurface ; rdfs:subClassOf geo:SpatialObject ;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
@@ -453,7 +453,7 @@ gnw:customer a qb4o:LevelProperty ; rdfs:label "Customer Level"@en ;
 	qb4o:hasAttribute gnw:customerName ;
 	qb4o:hasAttribute gnw:address ;
 	qb4o:hasAttribute gnw:postalCode ;
-	geo:hasGeometry gnw:customerGeometry .
+	geo:hasGeometry gnw:customerGeo .
 	
 
 gnw:customerID a qb4o:LevelAttribute ; rdfs:label "Customer ID"@en ; 
@@ -464,7 +464,7 @@ gnw:address a qb4o:LevelAttribute ; rdfs:label "Address"@en ;
 	qb4o:inLevel gnw:customer; rdfs:range xsd:string .	
 gnw:postalCode a qb4o:LevelAttribute ; rdfs:label "Postal Code"@en ; 
 	qb4o:inLevel gnw:customer; rdfs:range xsd:string .	
-gnw:customerGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the Customer"@en ; 
+gnw:customerGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the Customer"@en ; 
 	qb4o:inLevel gnw:customer ; rdfs:subPropertyOf geo:Geometry ; 
 	rdfs:domain geo:Point ; rdfs:subClassOf geo:SpatialObject ;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
@@ -523,7 +523,7 @@ gnw:supplier a qb4o:LevelProperty ; rdfs:label "Supplier Level"@en ;
 	qb4o:hasAttribute gnw:supplierName ;
 	qb4o:hasAttribute gnw:address ;
 	qb4o:hasAttribute gnw:postalCode ;
-	geo:hasGeometry gnw:supplierGeometry .
+	geo:hasGeometry gnw:supplierGeo .
 	
 gnw:supplierID a qb4o:LevelAttribute ; rdfs:label "Supplier ID"@en ; 
 	qb4o:inLevel gnw:supplier ; rdfs:range xsd:positiveInteger .
@@ -533,7 +533,7 @@ gnw:address a qb4o:LevelAttribute ; rdfs:label "Address"@en ;
 	qb4o:inLevel gnw:supplier ; rdfs:range xsd:string .	
 gnw:postalCode a qb4o:LevelAttribute ; rdfs:label "Postal Code"@en ; 
 	qb4o:inLevel gnw:supplier ; rdfs:range xsd:string .	
-gnw:supplierGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the Supplier"@en ; 
+gnw:supplierGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the Supplier"@en ; 
 	qb4o:inLevel gnw:supplier ; rdfs:subPropertyOf geo:Geometry ; 
 	rdfs:domain geo:Point ; rdfs:subClassOf geo:SpatialObject ;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
