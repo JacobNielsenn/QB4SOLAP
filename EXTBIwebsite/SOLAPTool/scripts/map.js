@@ -12,7 +12,7 @@ function onMapClick(e) {
     UpdateObject(e);
 }
 function initializeMap(mapID){
-    var mymap = L.map(mapID).setView([57.04745, 9.91928], 13);
+    var mymap = L.map(mapID).setView([57.04745, 9.91928], 3);
     maps.push([mymap, mapID]);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
         maxZoom: 18,

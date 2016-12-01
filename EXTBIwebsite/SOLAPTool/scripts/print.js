@@ -135,17 +135,18 @@ function PSDice(obj){
 	var result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
 	result += RUPath(obj);
     console.log(obj);
+    compareName(obj.path1.split(',')[0], obj.path1Names);
     if (!(typeof(obj.distance) == 'undefined')){
         if (obj.distance == ""){
 
-            Filter += 'FILTER (bif:st_within(' + '?' + obj.path1.split(',')[0] + ', ?' + obj.path2.split(',')[0] + '))\n';
+            Filter += 'FILTER (bif:st_within(' + compareName(obj.path1.split(',')[0], obj.path1Names) + ', ' + compareName(obj.path2.split(',')[0], obj.path2Names) + '))\n';
         }
         else{
-            Filter += 'FILTER (bif:st_within(' + '?' + obj.path1.split(',')[0] + ', ?' + obj.path2.split(',')[0] + ', ' + obj.distance + '))\n';
+            Filter += 'FILTER (bif:st_within(' + compareName(obj.path1.split(',')[0], obj.path1Names) + ', ' + compareName(obj.path2.split(',')[0], obj.path2Names) + ', ' + obj.distance + '))\n';
         }
     }
     else{
-        Filter += 'FILTER (bif:st_within(' + '?' + obj.path1.split(',')[0] + ', ?' + obj.path2.split(',')[0] + '))\n';
+        Filter += 'FILTER (bif:st_within(' + compareName(obj.path1.split(',')[0], obj.path1Names) + ', ' + compareName(obj.path2.split(',')[0], obj.path2Names) + '))\n';
     }
 	return result;
 }
@@ -199,5 +200,12 @@ function name(variableName, object){
         var newName = variableName + UpdateID(variableName);
         object.names.push(newName);
         return newName;
+    }
+}
+function compareName(findname, listofNames){
+    for (var i in listofNames){
+        if (listofNames[i].replace('?','').replace(/[0-9]/g, '').indexOf(findname) != -1 ){
+            return listofNames[i];
+        }
     }
 }

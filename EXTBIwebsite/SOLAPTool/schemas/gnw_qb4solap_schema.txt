@@ -453,7 +453,7 @@ gnw:customer a qb4o:LevelProperty ; rdfs:label "Customer Level"@en ;
 	qb4o:hasAttribute gnw:customerName ;
 	qb4o:hasAttribute gnw:address ;
 	qb4o:hasAttribute gnw:postalCode ;
-	geo:hasGeometry gnw:customerGeometry .
+	geo:hasGeometry gnw:customerGeo .
 	
 
 gnw:customerID a qb4o:LevelAttribute ; rdfs:label "Customer ID"@en ; 
@@ -464,7 +464,7 @@ gnw:address a qb4o:LevelAttribute ; rdfs:label "Address"@en ;
 	qb4o:inLevel gnw:customer; rdfs:range xsd:string .	
 gnw:postalCode a qb4o:LevelAttribute ; rdfs:label "Postal Code"@en ; 
 	qb4o:inLevel gnw:customer; rdfs:range xsd:string .	
-gnw:customerGeometry a qb4o:LevelAttribute ; rdfs:label "Geometry of the Customer"@en ; 
+gnw:customerGeo a qb4o:LevelAttribute ; rdfs:label "Geometry of the Customer"@en ; 
 	qb4o:inLevel gnw:customer ; rdfs:subPropertyOf geo:Geometry ; 
 	rdfs:domain geo:Point ; rdfs:subClassOf geo:SpatialObject ;
 	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
