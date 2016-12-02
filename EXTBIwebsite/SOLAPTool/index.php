@@ -76,7 +76,7 @@
 			<?php include 'headline.html';?>
 			<!-- content body -->
             <div id="schema">
-                <img id="myImg" src="./images/testImage.png" width="100%">
+                <img id="myImg" src="./images/gnwSchema.png" width="100%">
             </div>
 			<div id="content" style="width:960px;">
 				<!-- main content -->   
