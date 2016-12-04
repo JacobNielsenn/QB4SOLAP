@@ -206,7 +206,7 @@ function ulMenu(){
 	innerMenu.setAttribute('name', 'ul'+innerMenuID);
 	return innerMenu;
 }
-function InsertSingleMenu(objectArrays, width, updater){
+function InsertSingleMenu(objectArrays, width, updater, field){
 	var menu = mainMenu(width);
 	var li = liMenu(width);
 	var a = atrMenu(objectArrays.name);
@@ -216,13 +216,13 @@ function InsertSingleMenu(objectArrays, width, updater){
 	li.appendChild(innerMenu);
 	for (var i in objectArrays.list){
 		var innerli = liMenu();
-		var aref = atrMenu(objectArrays.list[i].name, updater);
+		var aref = atrMenu(objectArrays.list[i][field], updater);
 		innerMenu.appendChild(innerli);
 		innerli.appendChild(aref);
 	}
 	return menu;
 }
-function InsertMultiMenu(objectArrays, width, updater){
+function InsertMultiMenu(objectArrays, width, updater, field){
 	var menu = mainMenu(width);
 	var li = liMenu(width);
 	var a = atrMenu(objectArrays.name);
@@ -232,24 +232,49 @@ function InsertMultiMenu(objectArrays, width, updater){
 	li.appendChild(innerMenu);
 	for (var i in objectArrays.list){
 		var innerli = liMenu();
-		var aref = atrMenu(objectArrays.list[i].name);
+		var aref = atrMenu(objectArrays.list[i][field]);
 		var ul = ulMenu();
 		innerMenu.appendChild(innerli);
 		innerli.appendChild(aref);
 		innerli.appendChild(ul);
 		for (var l in objectArrays.list[i].list){
 			var lli = liMenu();
-			var ref = atrMenu(objectArrays.list[i].list[l].name);
+			var ref = atrMenu(objectArrays.list[i].list[l][field]);
 			var uul = ulMenu();
 			ul.appendChild(lli);
 			lli.appendChild(ref);
 			lli.appendChild(uul);
 			for (var k in objectArrays.list[i].list[l].list){
 				var liatr = liMenu();
-				var aatr = atrMenu(objectArrays.list[i].list[l].list[k].name, updater);
+				var aatr = atrMenu(objectArrays.list[i].list[l].list[k][field], updater);
 				uul.appendChild(liatr);
 				liatr.appendChild(aatr);
 			}
+		}
+	}
+	return menu;
+}
+
+function InsertMultiMenuLevel(objectArrays, width, updater, field){
+	var menu = mainMenu(width);
+	var li = liMenu(width);
+	var a = atrMenu(objectArrays.name);
+	var innerMenu = ulMenu();
+	menu.appendChild(li);
+	li.appendChild(a);
+	li.appendChild(innerMenu);
+	for (var i in objectArrays.list){
+		var innerli = liMenu();
+		var aref = atrMenu(objectArrays.list[i][field]);
+		var ul = ulMenu();
+		innerMenu.appendChild(innerli);
+		innerli.appendChild(aref);
+		innerli.appendChild(ul);
+		for (var l in objectArrays.list[i].list){
+			var lli = liMenu();
+			var aatr = atrMenu(objectArrays.list[i].list[l][field], updater);
+			ul.appendChild(lli);
+			lli.appendChild(aatr);
 		}
 	}
 	return menu;
@@ -296,6 +321,18 @@ function clickedAttribute(element){
 		case ("SDice"):
 			addProperty(element, 'distance', element.value);
 			break;
+		case ("SRU"):
+			switch (GetClosestP(element).getAttribute('name')){
+				case ("measureLevel"):
+					addProperty(element, 'measure', element.innerHTML);
+					var agg = traverse(DataStructureDefinition.measure, element.innerHTML, "aggregateFunction");
+					addProperty(element, 'agg', agg.aggregateFunction);
+					break;
+				case ("groupBY"):
+					addProperty(element, 'groupBY', element.innerHTML);
+					break;
+			}
+			break;
 		default:
 			console.log(obj, obj.spatialOperator, "is not implemented yet");
 			break;
@@ -324,6 +361,9 @@ function clickedMultiMenu(element){
 	}
 	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel2'){
 		addProperty(element, "path2", path);
+	}
+	if (GetClosestP(element).getAttribute('name') == 'groupBY'){
+		addProperty(element, "groupBYPath", path);
 	}
 }
 function clickedMenu(element){

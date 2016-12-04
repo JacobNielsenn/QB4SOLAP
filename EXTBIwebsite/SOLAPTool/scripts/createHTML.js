@@ -145,6 +145,9 @@ function SRU(event){
     body.setAttribute('style', 'min-height: 50px; margin:0px 0px 0px 0px; background: lightgrey;');
     body.appendChild(SpatialLevel('First selection: ', 'SpatialLevel1'));
     body.appendChild(SpatialLevel('Second selection: ', 'SpatialLevel2'));
+	var test = createMenuObj(DataStructureDefinition.measure, "test", false,  structureLevel.Attribute);
+	body.appendChild(measureLevel('Select:'));
+	body.appendChild(groupBy('Select:'))
     p.appendChild(header);
     p.appendChild(body);
     addOperator(p, 'SRU');
@@ -152,7 +155,7 @@ function SRU(event){
 }
 // BODY UTILITY //
 function SpatialLevel(optionalName, optionalID){
-	var p
+	var p;
 	if(optionalID == null){
 		p = InsertP('SpatialLevel', 25, 200);
 	}
@@ -167,7 +170,45 @@ function SpatialLevel(optionalName, optionalID){
 		textWithin1 = InsertTextBox('Spatial levels:');
 	}
 	var spatialLevelObj = createMenuObj(SpatialDimensions, 'spatial levels', true, structureLevel.Dimenasion, spatialMode.On);
-	var spatialMenu = InsertMultiMenu(spatialLevelObj, 100, "SpatialLevelHelper(this)");
+	var spatialMenu = InsertMultiMenu(spatialLevelObj, 100, "SpatialLevelHelper(this)", "name");
+	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
+	p.appendChild(textWithin1);
+	p.appendChild(spatialMenu);
+	return p;
+}
+function measureLevel(name, optionalID){
+	var p;
+	var ID;
+	if(optionalID == null){
+		p = InsertP('measureLevel', 25, 200);
+	}
+	else{
+		p = InsertP(optionalID, 25, 200);
+	}
+	var textWithin1 = InsertTextBox(name);
+	var measureObj = createMenuObj(DataStructureDefinition.measure, 'spatial levels', true, structureLevel.Attribute);
+	var finalobj = {name: "measure", list: []};
+	for (var i in measureObj.list){
+		finalobj.list.push(measureObj.list[i].name);
+	}
+	var measureMenu = InsertSingleMenu(finalobj, 100, "SpatialLevelHelper(this)", "label");
+	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
+	p.appendChild(textWithin1);
+	p.appendChild(measureMenu);
+	return p;
+}
+
+function groupBy(name, optionalID){
+	var p;
+	if(optionalID == null){
+		p = InsertP('groupBY', 25, 200);
+	}
+	else{
+		p = InsertP(optionalID, 25, 200);
+	}
+	var textWithin1 = InsertTextBox(name);
+	var spatialLevelObj = createMenuObj(SpatialDimensions, 'Group by', true, structureLevel.Dimenasion, spatialMode.On);
+	var spatialMenu = InsertMultiMenuLevel(spatialLevelObj, 100, "SpatialLevelHelper(this)", "name");
 	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
 	p.appendChild(textWithin1);
 	p.appendChild(spatialMenu);

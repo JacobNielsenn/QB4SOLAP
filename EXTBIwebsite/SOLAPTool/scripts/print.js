@@ -105,7 +105,8 @@ function PComplete(){
         }
 
 	}
-    Query += Filter + "}";
+    Query += Filter + "}\n";
+    Query += AfterFilter;
 	GeneratedQueryElement.innerHTML = Query;
 }
 function POperator(obj){
@@ -151,12 +152,15 @@ function PSDice(obj){
 	return result;
 }
 function PSRU(obj){
-    var result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
+    var result = "SELECT " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " WHERE \n{\n";
     result += RUPath(obj);
-    result += "SELECT " + name("?obs", obj) + " WHERE \n{\n";
-    //result += RUPath(obj, obj.bind, obj.groupby);
-    Filter += "FILTER";
-    AfterFilter += "GroupBy";
+    //?sup skos:broader ?supplierCity
+    result += tab + PathName("?" + obj.path1.split(',')[1], obj.path1Names) + " skos:broader " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + "\n";
+    result += tab + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " qb4o:memberOf " + DataStructureDefinitionName + obj.groupBYPath.split(',')[0] + "\n";
+    result += tab + name("?obs", obj) + " " + DataStructureDefinitionName + obj.measure + " " + name("?" + obj.measure, obj) + "\n";
+    result += "SELECT " + name("?innerObs", obj) + " WHERE \n{\n";
+    Filter += "FILTER \n";
+    AfterFilter += "GROUP BY " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + "\n";
     return result;
 }
 function PSSWithin(obj){

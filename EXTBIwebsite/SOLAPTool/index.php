@@ -36,7 +36,7 @@
 			var queryOfOperators = [];
 
 		// - SOLAP 						  //
-			var Dimensions = ['employee', 'orderDate', 'dueDate', 'shippedDate', 'product', 'order', 'shipper', 'supplier', 'customer'];
+		  //var Dimensions = ['employee', 'orderDate', 'dueDate', 'shippedDate', 'product', 'order', 'shipper', 'supplier', 'customer'];
 			var SpatialAggregation = ['Union', 'Intersection', 'Buffer', 'ConvexHull', 'MinimumBoundingRectangle'];
 			var TopologicalRelations = ['Intersects', 'Disjoint', 'Equals', 'Overlaps', 'Contains', 'Within', 'Touches', 'Covers', 'CoveredBy', 'Crosses', 'Distance'];
 			var NumericOperations = ['Perimeter', 'Area', 'NoOfInteriorRings' , 'Distance', 'HaversineDistance', 'NearstNeighbor', 'NoOfGeometries'];
