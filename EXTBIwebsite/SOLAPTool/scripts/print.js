@@ -152,14 +152,24 @@ function PSDice(obj){
 	return result;
 }
 function PSRU(obj){
-    var result = "SELECT " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " WHERE \n{\n";
+    var result = "SELECT " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " (SUM(" + name("?" + obj.measure, obj) +") AS " + name("?total" + obj.measure, obj) + ")" + " WHERE \n{\n";
     result += RUPath(obj);
     //?sup skos:broader ?supplierCity
-    result += tab + PathName("?" + obj.path1.split(',')[1], obj.path1Names) + " skos:broader " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + "\n";
-    result += tab + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " qb4o:memberOf " + DataStructureDefinitionName + obj.groupBYPath.split(',')[0] + "\n";
-    result += tab + name("?obs", obj) + " " + DataStructureDefinitionName + obj.measure + " " + name("?" + obj.measure, obj) + "\n";
-    result += "SELECT " + name("?innerObs", obj) + " WHERE \n{\n";
-    Filter += "FILTER \n";
+    result += tab + PathName("?" + obj.path1.split(',')[1], obj.path1Names) + " skos:broader " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " .\n";
+    result += tab + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " qb4o:memberOf " + DataStructureDefinitionName + obj.groupBYPath.split(',')[0] + " .\n";
+    result += tab + name("?obs", obj) + " " + DataStructureDefinitionName + obj.measure + " " + name("?" + obj.measure, obj) + " .\n{\n";
+    if (obj.hasOwnProperty('innerobj') == false && obj.hasOwnProperty('innerPath1') == true && obj.hasOwnProperty('innerPath2') == true){
+        obj.innerobj = {path1: obj.innerPath1, path2: obj.innerPath2, names: []};
+    }
+    var tmp = RUPath(obj.innerobj);
+    result += "SELECT " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + " (MIN(?distance) AS ?minDistance)" + " WHERE \n{\n";
+    result += tmp;
+    result += "BIND (bif:st_distance( " + PathName("?" + obj.innerobj.path1.split(',')[0], obj.innerobj.path1Names) + ", " + PathName("?" + obj.innerobj.path2.split(',')[0], obj.innerobj.path2Names) + " ) AS ?distance)}\n";
+    result += "GROUP BY " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + "}\n";
+        //BIND (bif:st_distance( ?cust1Geo, ?sup1Geo ) AS ?distance)}
+        //GROUP BY ?cust1 }
+    Filter += "FILTER (" + PathName("?" + obj.path1.split(',')[1], obj.path1Names) + " = " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + " && bif:st_distance( " + PathName("?" + obj.path1.split(',')[0], obj.path1Names) + ", " + PathName("?" + obj.path2.split(',')[0], obj.path2Names) + " ) = ?minDistance )" + "\n";
+             //FILTER (?cust = ?cust1 && bif:st_distance( ?custGeo, ?supGeo ) = ?minDistance)
     AfterFilter += "GROUP BY " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + "\n";
     return result;
 }

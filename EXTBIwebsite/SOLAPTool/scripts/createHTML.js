@@ -148,6 +148,9 @@ function SRU(event){
 	var test = createMenuObj(DataStructureDefinition.measure, "test", false,  structureLevel.Attribute);
 	body.appendChild(measureLevel('Select:'));
 	body.appendChild(groupBy('Select:'))
+	body.appendChild(InsertTextBox('Innerselect:'))
+	body.appendChild(SpatialLevel('First selection: ', 'innerSpatialLevel1'));
+	body.appendChild(SpatialLevel('Second selection: ', 'innerSpatialLevel2'));
     p.appendChild(header);
     p.appendChild(body);
     addOperator(p, 'SRU');

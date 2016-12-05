@@ -324,8 +324,8 @@ function clickedAttribute(element){
 		case ("SRU"):
 			switch (GetClosestP(element).getAttribute('name')){
 				case ("measureLevel"):
-					addProperty(element, 'measure', element.innerHTML);
 					var agg = traverse(DataStructureDefinition.measure, element.innerHTML, "aggregateFunction");
+					addProperty(element, 'measure', agg.measure);
 					addProperty(element, 'agg', agg.aggregateFunction);
 					break;
 				case ("groupBY"):
@@ -361,6 +361,12 @@ function clickedMultiMenu(element){
 	}
 	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel2'){
 		addProperty(element, "path2", path);
+	}
+	if (GetClosestP(element).getAttribute('name') == 'innerSpatialLevel1'){
+		addProperty(element, "innerPath1", path);
+	}
+	if (GetClosestP(element).getAttribute('name') == 'innerSpatialLevel2'){
+		addProperty(element, "innerPath2", path);
 	}
 	if (GetClosestP(element).getAttribute('name') == 'groupBY'){
 		addProperty(element, "groupBYPath", path);
