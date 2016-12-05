@@ -43,15 +43,22 @@ function bDelete(){
 // HEADER UTILITY //
 function Delete(element){
 	//console.log(queryOfOperators);
+	var operator = searchOperator(element);
+	deleteOperatorInList(operator.id);
 	GetClosestP(element).remove();
+	PComplete();
 }
 function MoveDown(element){
 	var test = GetClosestP(element);
+	swapOperatorInList(test, test.nextSibling);
 	swapElements(test, test.nextSibling);
+	PComplete();
 }
 function MoveUp(element){
 	var test = GetClosestP(element);
+	swapOperatorInList(test, test.previousSibling);
 	swapElements(test, test.previousSibling);
+	PComplete();
 }
 function Reset(element){
 	//reset.png is taken from endless icons which is free to use.
@@ -99,11 +106,11 @@ function SSlice_within(event){
 	var textWithin1 = InsertTextBox('Select:');
 	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
 	var pick1 = createMenuObj(['User Input', 'Spatial Level'], '1st Geometry from');
-	var inputpick1 = InsertSingleMenu(pick1, 125, "clickedMenu(this)");
+	var inputpick1 = InsertSingleMenu(pick1, 125, "clickedMenu(this)", "name");
 	var textWithin2 = InsertTextBox('Select:');
 	textWithin2.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
 	var pick2 = createMenuObj(['User Input', 'Spatial Level'], '2nd Geometry from');
-	var inputpick2 = InsertSingleMenu(pick2, 125, "clickedMenu(this)");
+	var inputpick2 = InsertSingleMenu(pick2, 125, "clickedMenu(this)", "name");
     var distance = InsertP('distance');
     distance.appendChild(InsertTextBox('Input distance value: '));
     distance.appendChild(InsertInput('', null, "clickedAttribute(this)"));

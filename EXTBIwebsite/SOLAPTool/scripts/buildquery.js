@@ -17,8 +17,26 @@ function findOperatorInList(id){
         }
     }
 }
+function deleteOperatorInList(id){
+    for (var i in queryOfOperators){
+        if(queryOfOperators[i].id == id){
+            queryOfOperators.splice(i,1);
+        }
+    }
+}
 function addProperty(ele, name, value){
     var operator = searchOperator(ele);
     var obj = findOperatorInList(operator.id);
     obj[name] = value;
+}
+function swapOperatorInList(ele1, ele2){
+    console.log('Start', ele1.id, ele2.id);
+    for (var i in queryOfOperators){
+        for (var j in queryOfOperators) {
+            if (queryOfOperators[i].id == ele1.id && queryOfOperators[j].id == ele2.id) {
+                queryOfOperators[j] = queryOfOperators.splice(i, 1, queryOfOperators[j])[0];
+                return null;
+            }
+        }
+    }
 }

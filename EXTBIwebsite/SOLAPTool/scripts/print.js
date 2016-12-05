@@ -105,7 +105,9 @@ function PComplete(){
         }
 
 	}
-    Query += Filter + "}\n";
+	if (Query != ""){
+        Query += Filter + "}\n";
+    }
     Query += AfterFilter;
 	GeneratedQueryElement.innerHTML = Query;
 }
