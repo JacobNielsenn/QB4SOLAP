@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="scripts/runQuery.js"></script>
 		<script type="text/javascript" src="scripts/debug.js"></script>
 		<script type="text/javascript" src="scripts/map.js"></script>
+		<script type="text/javascript" src="scripts/options.js"></script>
 		<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 		<title>EXTBI</title>
 		<meta charset="iso-8859-1">
@@ -101,7 +102,8 @@
 							</div>
 							<div style="float:right; width: 550px;">
 								<p>Generated query from the above operators:</p>
-                                <button id="pre" class="hide" onclick="prefixText(this)">Prefixes</button>
+                                <button id="pre" style="float:left;" class="hide" onclick="prefixText(this)">Prefixes</button>
+								<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Measures OFF</button>
 								<textarea disabled id="prefix" style="margin-top:0px; width:500px; height: 200px; float:left; background-color: lightgrey; overflow:hidden;"></textarea>
 								<textarea id="GeneratedQuery" style="margin-top:0px; width:500px; height: 300px; overflow-y: scroll; float:left;"></textarea>
                                 <p id="PreventSwap">
