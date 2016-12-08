@@ -6,10 +6,14 @@ function Mes(ele){
         ele.innerHTML = "Measures ON"
         $("#mes").addClass("show");
         $("#mes").removeClass("hide");
+        additionalQuery = true;
+        PComplete();
     }
     else {
         ele.innerHTML = "Measures OFF"
         $("#mes").addClass("hide");
         $("#mes").removeClass("show");
+        additionalQuery = false;
+        PComplete();
     }
 }

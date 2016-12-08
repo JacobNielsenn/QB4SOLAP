@@ -135,8 +135,20 @@ function PSSlice(obj){
 	}
 }
 function PSDice(obj){
-	var result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
+	var result;
+    if (additionalQuery){
+        result = "SELECT " + AdditionalQueryOptions(obj) + " WHERE \n{\n";
+    }
+    else{
+        result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
+    }
 	result += RUPath(obj);
+    if (additionalQuery){
+        result += AdditionalQueryOptionsInRUPath(obj);
+    }
+    else{
+        //Nothing
+    }
     console.log(obj);
     compareName(obj.path1.split(',')[0], obj.path1Names);
     if (!(typeof(obj.distance) == 'undefined')){
@@ -176,8 +188,20 @@ function PSRU(obj){
     return result;
 }
 function PSSWithin(obj){
-	var result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
-	result += RUPath(obj);
+    var result;
+    if (additionalQuery){
+        result = "SELECT " + AdditionalQueryOptions(obj) + " WHERE \n{\n";
+    }
+    else{
+        result = "SELECT " + name("?obs", obj) + " WHERE \n{\n";
+    }
+    result += RUPath(obj);
+    if (additionalQuery){
+        result += AdditionalQueryOptionsInRUPath(obj);
+    }
+    else{
+        //Nothing
+    }
 	var path = obj.path.split(',');
 	var aIDName = traverse(DataStructureDefinition, path[1], "levelProperty").hasGeometry[0];
 	if (obj.first.indexOf(',') != -1){
@@ -199,6 +223,51 @@ function PFillUser(obj, value){
 	}
 	return userdata;
 }
+function AdditionalQueryOptions(obj){
+    var query = name("?cityName",obj) + " (SUM(" + name("?sales",obj) + ") AS " + name("?totalSales",obj) + " )\n(SUM(" + name("?quantity",obj) + ") AS " + name("?totalQuantity",obj) +
+        ")\n(AVG(" + name("?discount",obj) + ") AS " + name("?averageDiscount",obj) + ")\n(AVG(" + name("?unitPrice",obj) + ") AS " + name("?averageUnitPrice",obj) +
+        ")\n(SUM(" + name("?freight",obj) + ") AS " + name("?totalFreight",obj) + ")";
+    return query;
+}
+function AdditionalQueryOptionsInRUPath(obj) {
+    var query = "";
+    if (isNameInNamespace("?customer", obj, "names")){
+        if (isNameInNamespace("?city", obj, "names")){
+            query += tab + PathName("?city", obj.names) + " gnw:cityName " + name("?cityName",obj) + " .\n"
+        }
+        else{
+            query += tab + PathName("?customer", obj.names) + " skos:broader " + PathName("?city",obj.names) + " .\n" +
+                tab + PathName("?city", obj.names) + " qb4o:memberOf gnw:city  .\n" +
+                tab + PathName("?city", obj.names) + " gnw:cityName " + name("?cityName",obj) + " .\n";
+        }
+    }
+    else if (isNameInNamespace("?customer", obj, "path1Names")){
+        if (isNameInNamespace("?city", obj, "path1Names")){
+            query += tab + PathName("?city", obj.path1Names) + " gnw:cityName " + name("?cityName",obj) + " .\n"
+        }
+        else{
+            query += tab + PathName("?customer", obj.path1Names) + " skos:broader " + PathName("?city",obj.path1Names) + " .\n" +
+                tab + PathName("?city", obj.path1Names) + " qb4o:memberOf gnw:city  .\n" +
+                tab + PathName("?city", obj.path1Names) + " gnw:cityName " + name("?cityName",obj) + " .\n";
+        }
+    }
+    else if (isNameInNamespace("?customer", obj, "path2Names")){
+        if (isNameInNamespace("?city", obj, "path2Names")){
+            query += tab + PathName("?city", obj.path2Names) + " gnw:cityName " + name("?cityName",obj) + " .\n"
+        }
+        else{
+            query += tab + PathName("?customer", obj.path2Names) + " skos:broader " + PathName("?city",obj.path2Names) + " .\n" +
+            tab + PathName("?city", obj.path2Names) + " qb4o:memberOf gnw:city  .\n" +
+            tab + PathName("?city", obj.path2Names) + " gnw:cityName " + name("?cityName",obj) + " .\n";
+        }
+    }
+    query += tab + name("?obs", obj) + " gnw:salesAmount " + name("?sales",obj) + " .\n" +
+            tab + name("?obs", obj) + " gnw:quantity " + name("?quantity",obj) + " .\n" +
+            tab + name("?obs", obj) + " gnw:discount " + name("?discount",obj) + " .\n" +
+            tab + name("?obs", obj) + " gnw:unitPrice " + name("?unitPrice",obj) + " .\n" +
+            tab + name("?obs", obj) + " gnw:freight " + name("?freight",obj) + " .\n";
+    return query;
+}
 // Helper functions
 function name(variableName, object){
     if (!(object.hasOwnProperty("names"))){
@@ -208,7 +277,7 @@ function name(variableName, object){
         return newName;
     }
     else{
-        for (number in object.names){
+        for (var number in object.names){
             if (object.names[number].replace(/[0-9]/g, '') == variableName){
                 return object.names[number];
             }
@@ -223,5 +292,19 @@ function compareName(findname, listofNames){
         if (listofNames[i].replace('?','').replace(/[0-9]/g, '').indexOf(findname) != -1 ){
             return listofNames[i];
         }
+    }
+}
+
+function isNameInNamespace(variableName, object, field){
+    if (!(object.hasOwnProperty(field))){
+        return false;
+    }
+    else{
+        for (var number in object[field]){
+            if (object[field][number].replace(/[0-9]/g, '') == variableName){
+                return true;
+            }
+        }
+        return false;
     }
 }

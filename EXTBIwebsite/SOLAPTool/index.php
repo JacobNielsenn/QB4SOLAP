@@ -35,6 +35,7 @@
 			var QueryStatment;
 			var ID = {};
 			var queryOfOperators = [];
+			var additionalQuery = false;
 
 		// - SOLAP 						  //
 		  //var Dimensions = ['employee', 'orderDate', 'dueDate', 'shippedDate', 'product', 'order', 'shipper', 'supplier', 'customer'];
