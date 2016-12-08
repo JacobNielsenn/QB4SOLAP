@@ -104,7 +104,7 @@
 							<div style="float:right; width: 550px;">
 								<p>Generated query from the above operators:</p>
                                 <button id="pre" style="float:left;" class="hide" onclick="prefixText(this)">Prefixes</button>
-								<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Measures OFF</button>
+								<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Aggregate</button>
 								<textarea disabled id="prefix" style="margin-top:0px; width:500px; height: 200px; float:left; background-color: lightgrey; overflow:hidden;"></textarea>
 								<textarea id="GeneratedQuery" style="margin-top:0px; width:500px; height: 300px; overflow-y: scroll; float:left;"></textarea>
                                 <p id="PreventSwap">

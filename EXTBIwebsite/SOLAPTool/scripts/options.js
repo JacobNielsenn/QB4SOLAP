@@ -3,14 +3,14 @@
  */
 function Mes(ele){
     if (ele.classList.contains('hide')){
-        ele.innerHTML = "Measures ON"
+        ele.innerHTML = "Disaggregate"
         $("#mes").addClass("show");
         $("#mes").removeClass("hide");
         additionalQuery = true;
         PComplete();
     }
     else {
-        ele.innerHTML = "Measures OFF"
+        ele.innerHTML = "Aggregate"
         $("#mes").addClass("hide");
         $("#mes").removeClass("show");
         additionalQuery = false;
