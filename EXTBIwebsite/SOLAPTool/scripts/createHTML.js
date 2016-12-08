@@ -103,16 +103,16 @@ function SSlice_within(event){
 	body.setAttribute('style', 'min-height: 50px; margin:0px 0px 0px 0px; background: lightgrey;');
 	var p1 = InsertP('select1', 25, 100);
 	var p2 = InsertP('select2', 25, 100);
-	var textWithin1 = InsertTextBox('Select:');
+	var textWithin1 = InsertTextBox('Select Geometry: ');
 	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
-	var pick1 = createMenuObj(['User Input', 'Spatial Level'], '1st Geometry from');
+	var pick1 = createMenuObj(['User Input', 'Spatial Level'], 'Geometry#1 from');
 	var inputpick1 = InsertSingleMenu(pick1, 125, "clickedMenu(this)", "name");
-	var textWithin2 = InsertTextBox('Select:');
+	var textWithin2 = InsertTextBox('Select Geometry: ');
 	textWithin2.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
-	var pick2 = createMenuObj(['User Input', 'Spatial Level'], '2nd Geometry from');
+	var pick2 = createMenuObj(['User Input', 'Spatial Level'], 'Geometry#2 from');
 	var inputpick2 = InsertSingleMenu(pick2, 125, "clickedMenu(this)", "name");
     var distance = InsertP('distance');
-    distance.appendChild(InsertTextBox('Input distance value: '));
+    distance.appendChild(InsertTextBox('Input precision value: '));
     distance.appendChild(InsertInput('', null, "clickedAttribute(this)"));
 
 	p1.appendChild(textWithin1);
@@ -134,10 +134,10 @@ function SDice(event){
 	var header = Insertheader('S-Dice');
 	var body = InsertP('body');
 	body.setAttribute('style', 'min-height: 50px; margin:0px 0px 0px 0px; background: lightgrey;');
-	body.appendChild(SpatialLevel('First selection: ', 'SpatialLevel1'));
-	body.appendChild(SpatialLevel('Second selection: ', 'SpatialLevel2'));
+	body.appendChild(SpatialLevel('Select Spatial Attribute#1 from: ', 'SpatialLevel1'));
+	body.appendChild(SpatialLevel('Select Spatial Attribute#2 from: ', 'SpatialLevel2'));
 	var distance = InsertP('distance');
-	distance.appendChild(InsertTextBox('Input distance value: '));
+	distance.appendChild(InsertTextBox('Input precision value: '));
 	distance.appendChild(InsertInput('', null, "clickedAttribute(this)"));
 	body.appendChild(distance);
 	p.appendChild(header);
@@ -147,17 +147,17 @@ function SDice(event){
 }
 function SRU(event){
     var p = InsertP('Operator', 'border: 1px solid black;');
-    var header = Insertheader('SRU');
+    var header = Insertheader('S-Roll-up');
     var body = InsertP('body');
     body.setAttribute('style', 'min-height: 50px; margin:0px 0px 0px 0px; background: lightgrey;');
-    body.appendChild(SpatialLevel('First selection: ', 'SpatialLevel1'));
-    body.appendChild(SpatialLevel('Second selection: ', 'SpatialLevel2'));
+    body.appendChild(SpatialLevel('Select Spatial Attribute#1 from: ', 'SpatialLevel1'));
+    body.appendChild(SpatialLevel('Select Spatial Attribute#2 from: ', 'SpatialLevel2'));
 	var test = createMenuObj(DataStructureDefinition.measure, "test", false,  structureLevel.Attribute);
-	body.appendChild(measureLevel('Select:'));
-	body.appendChild(groupBy('Select:'))
-	body.appendChild(InsertTextBox('Innerselect:'))
-	body.appendChild(SpatialLevel('First selection: ', 'innerSpatialLevel1'));
-	body.appendChild(SpatialLevel('Second selection: ', 'innerSpatialLevel2'));
+	body.appendChild(measureLevel('Select Measure:'));
+	body.appendChild(groupBy('Select Aggregation Level: '))
+	body.appendChild(InsertTextBox('Inner Select:'))
+	body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel1'));
+	body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel2'));
     p.appendChild(header);
     p.appendChild(body);
     addOperator(p, 'SRU');
@@ -231,11 +231,11 @@ function within(){
 	var p2 = InsertP('select2', 25, 100);
 	var textWithin1 = InsertTextBox('Select:');
 	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
-	var pick1 = createMenuObj(['User Input', 'Spatial Level'], '1st Geometry from');
+	var pick1 = createMenuObj(['User Input', 'Spatial Level'], 'Geometry#1 from');
 	var inputpick1 = InsertSingleMenu(pick1, 125, "clickedMenu(this)");
 	var textWithin2 = InsertTextBox('Select:');
 	textWithin2.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
-	var pick2 = createMenuObj(['User Input', 'Spatial Level'], '2nd Geometry from');
+	var pick2 = createMenuObj(['User Input', 'Spatial Level'], 'Geometry#2 from');
 	var inputpick2 = InsertSingleMenu(pick2, 125, "clickedMenu(this)");
 	p1.appendChild(textWithin1);
 	p1.appendChild(inputpick1);
