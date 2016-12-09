@@ -110,9 +110,11 @@
                                 <p id="PreventSwap">
                                     <button id="QueryButton">Run Query</button>
                                 </p>
-								<div id="ResultFromQuery"></div>
 							</div>
+
 				</section>
+				<div id="ResultFromQuery" style="float:left; width: 100%; padding-top: 10px;">
+				</div>
 			</div>
 			<!-- / content body -->
 		</div>
