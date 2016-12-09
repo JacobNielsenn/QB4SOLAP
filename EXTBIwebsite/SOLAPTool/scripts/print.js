@@ -96,6 +96,7 @@ function PathName(variableName, nameSpace){
 function PComplete(){
 	var Query = "";
     Filter = "";
+    AfterFilter = "";
 	for (var i = 0; i < queryOfOperators.length; i++){
 	    if (i == 0){
             Query += POperator(queryOfOperators[i]);

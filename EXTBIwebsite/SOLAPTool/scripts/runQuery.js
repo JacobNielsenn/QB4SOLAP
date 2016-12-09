@@ -13,3 +13,13 @@ $(document).ready(function(){
         });
     });
 });
+
+function runQuery(){
+    var ele = document.getElementById('GeneratedQuery');
+    var actualquery = prefixes + "\n" + ele.value;
+    console.log(actualquery);
+    $.post('http://localhost:8890/sparql', {query: actualquery, format:'text/html'}, function(data) {
+        console.log(data);
+        $('#ResultFromQuery').html(data);
+    });
+}

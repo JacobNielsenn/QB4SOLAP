@@ -105,11 +105,11 @@ function SSlice_within(event){
 	var p2 = InsertP('select2', 25, 100);
 	var textWithin1 = InsertTextBox('Select Geometry: ');
 	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
-	var pick1 = createMenuObj(['User Input', 'Spatial Level'], 'Geometry#1 from');
+	var pick1 = createMenuObj(['Map', 'Spatial Level'], 'Geometry#1 from');
 	var inputpick1 = InsertSingleMenu(pick1, 125, "clickedMenu(this)", "name");
 	var textWithin2 = InsertTextBox('Select Geometry: ');
 	textWithin2.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
-	var pick2 = createMenuObj(['User Input', 'Spatial Level'], 'Geometry#2 from');
+	var pick2 = createMenuObj(['Map', 'Spatial Level'], 'Geometry#2 from');
 	var inputpick2 = InsertSingleMenu(pick2, 125, "clickedMenu(this)", "name");
     var distance = InsertP('distance');
     distance.appendChild(InsertTextBox('Input precision value: '));
@@ -225,17 +225,19 @@ function groupBy(name, optionalID){
 	return p;
 }
 // Operator //
+/*
 function within(){
+	console.log("im called");
 	var elements = [];
 	var p1 = InsertP('select1', 25, 100);
 	var p2 = InsertP('select2', 25, 100);
 	var textWithin1 = InsertTextBox('Select:');
 	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
-	var pick1 = createMenuObj(['User Input', 'Spatial Level'], 'Geometry#1 from');
+	var pick1 = createMenuObj(['Map', 'Spatial Level'], 'Geometry#1 from');
 	var inputpick1 = InsertSingleMenu(pick1, 125, "clickedMenu(this)");
 	var textWithin2 = InsertTextBox('Select:');
 	textWithin2.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
-	var pick2 = createMenuObj(['User Input', 'Spatial Level'], 'Geometry#2 from');
+	var pick2 = createMenuObj(['Map', 'Spatial Level'], 'Geometry#2 from');
 	var inputpick2 = InsertSingleMenu(pick2, 125, "clickedMenu(this)");
 	p1.appendChild(textWithin1);
 	p1.appendChild(inputpick1);
@@ -245,6 +247,7 @@ function within(){
 	elements.push(p2);
 	return elements;
 }
+*/
 // Helper //
 function UserInput(){
 	var div = document.createElement('div');

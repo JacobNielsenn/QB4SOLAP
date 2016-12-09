@@ -91,7 +91,7 @@
 								</div>
 							</P>
 							<div id="OprSelectStatement" style="margin-top:0px; width:350px;  float:left;">
-								<p id="StartQuery" name="Start" style="margin-top: 0px; margin-bottom: 0px;">Query:</p>
+								<p id="StartQuery" name="Start" style="margin-top: 0px; margin-bottom: 0px;"></p>
 								<div id="Builder" class="dropdown" style="width: 345px; height: 25px; border: 2px solid transparent; border-color: black; border-radius: 0px 0px 5px 5px; border-style: dashed;">
 									<button class="dropbtn" style="text-align:center; margin:-2px -1px -1px -1px; height:28px; border-radius: 0px 0px 5px 5px; width:347px;">Choose an operator</button>
 								  <div id="myDropdown" class="dropdown-content">
@@ -102,13 +102,13 @@
 								</div>
 							</div>
 							<div style="float:right; width: 550px;">
-								<p>Generated query from the above operators:</p>
-                                <button id="pre" style="float:left;" class="hide" onclick="prefixText(this)">Prefixes</button>
-								<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Aggregate</button>
+								<p></p>
+								<button id="pre" style="float:left;" class="hide" onclick="prefixText(this)">Prefixes</button>
 								<textarea disabled id="prefix" style="margin-top:0px; width:500px; height: 200px; float:left; background-color: lightgrey; overflow:hidden;"></textarea>
 								<textarea id="GeneratedQuery" style="margin-top:0px; width:500px; height: 300px; overflow-y: scroll; float:left;"></textarea>
                                 <p id="PreventSwap">
-                                    <button id="QueryButton">Run Query</button>
+                                    <button id="QueryButton" style="float: left" onclick="runQuery()">Run Query</button>
+									<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Aggregate</button>
                                 </p>
 							</div>
 

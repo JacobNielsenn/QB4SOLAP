@@ -9,6 +9,9 @@ function searchOperator(ele){
 function addOperator(ele, name){
     var obj = {id: ele.id, name: name};
     queryOfOperators.push(obj);
+    if (queryOfOperators[0].name == "SRU"){
+        document.getElementById('mes').disabled = true;
+    }
 }
 function findOperatorInList(id){
     for (var i in queryOfOperators){

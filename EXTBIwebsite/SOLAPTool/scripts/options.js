@@ -8,6 +8,7 @@ function Mes(ele){
         $("#mes").removeClass("hide");
         additionalQuery = true;
         PComplete();
+        runQuery();
     }
     else {
         ele.innerHTML = "Aggregate"
@@ -15,5 +16,6 @@ function Mes(ele){
         $("#mes").removeClass("show");
         additionalQuery = false;
         PComplete();
+        runQuery();
     }
 }

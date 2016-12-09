@@ -392,10 +392,10 @@ function clickedMenu(element){
 			}
 			addProperty(element, 'spatialOperator', 'within');
 			break;
-		case ('User Input'):
+		case ('Map'):
 			//menuHeaderElement.innerHTML = element.innerHTML;
 			var p = GetClosestP(element);
-			ChangeMenuName('User Input', element);
+			ChangeMenuName('Map', element);
 			var data = UserInput();
 			insertAfter(data[0], p);
 			initializeMap(data[1]);
