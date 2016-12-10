@@ -150,14 +150,14 @@ function SRU(event){
     var header = Insertheader('S-Roll-up');
     var body = InsertP('body');
     body.setAttribute('style', 'min-height: 50px; margin:0px 0px 0px 0px; background: lightgrey;');
-    body.appendChild(SpatialLevel('Select Spatial Attribute#1 from: ', 'SpatialLevel1'));
-    body.appendChild(SpatialLevel('Select Spatial Attribute#2 from: ', 'SpatialLevel2'));
+    body.appendChild(SpatialLevel('Select Spatial Attribute#1 from: ', 'SpatialLevel1SRU'));
+    body.appendChild(SpatialLevel('Select Spatial Attribute#2 from: ', 'SpatialLevel2SRU'));
 	var test = createMenuObj(DataStructureDefinition.measure, "test", false,  structureLevel.Attribute);
 	body.appendChild(measureLevel('Select Measure:'));
 	body.appendChild(groupBy('Select Aggregation Level: '))
-	body.appendChild(InsertTextBox('Inner Select:'))
-	body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel1'));
-	body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel2'));
+	//body.appendChild(InsertTextBox('Inner Select:'))
+	//body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel1'));
+	//body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel2'));
     p.appendChild(header);
     p.appendChild(body);
     addOperator(p, 'SRU');

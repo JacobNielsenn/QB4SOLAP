@@ -362,10 +362,12 @@ function clickedMultiMenu(element){
 	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel2'){
 		addProperty(element, "path2", path);
 	}
-	if (GetClosestP(element).getAttribute('name') == 'innerSpatialLevel1'){
+	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel1SRU'){
+		addProperty(element, "path1", path);
 		addProperty(element, "innerPath1", path);
 	}
-	if (GetClosestP(element).getAttribute('name') == 'innerSpatialLevel2'){
+	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel2SRU'){
+		addProperty(element, "path2", path);
 		addProperty(element, "innerPath2", path);
 	}
 	if (GetClosestP(element).getAttribute('name') == 'groupBY'){
