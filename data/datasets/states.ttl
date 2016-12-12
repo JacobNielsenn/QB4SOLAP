@@ -7,21 +7,6 @@
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix gnwi: <http://qb4solap.org/cubes/instances/geonorthwind#> .
 @prefix gnw: <http://qb4solap.org/cubes/schemas/geonorthwind#> . 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 gnwi:state_234 a gnw:state ;
 	 qb4o:memberOf gnw:state ;
 	 gnw:stateID 234 ;
