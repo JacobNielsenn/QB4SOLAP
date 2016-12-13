@@ -56,6 +56,7 @@
 				GeneratedQueryElement = document.getElementById('GeneratedQuery');
 				QueryStatment = document.getElementById('StartQuery');
 				convertDataToObjects(data);
+				RemoveRegionFromDataStructureDefinition(DataStructureDefinition);
 				console.log(DataStructureDefinition);
 				document.getElementById('prefix').innerHTML = prefixes; //Fill the Prefiexs area
 				setupdebug();
