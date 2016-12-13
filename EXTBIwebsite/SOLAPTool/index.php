@@ -109,6 +109,7 @@
                                 <p id="PreventSwap">
                                     <button id="QueryButton" style="float: left" onclick="runQuery()">Run Query</button>
 									<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Aggregate</button>
+									<button id="cls" style="float:left;" class="hide" onclick="Cls(this)">Clear Tables</button>
                                 </p>
 							</div>
 
