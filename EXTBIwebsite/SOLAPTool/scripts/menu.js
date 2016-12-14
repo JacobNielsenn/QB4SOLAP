@@ -331,6 +331,12 @@ function clickedAttribute(element){
 				case ("groupBY"):
 					addProperty(element, 'groupBY', element.innerHTML);
 					break;
+				case ("spatialFunction"):
+					addProperty(element, 'spatialFunction', "bif:" + element.innerHTML);
+					break;
+				case ("agg"):
+					addProperty(element, 'aggFunction', element.innerHTML);
+					break;
 			}
 			break;
 		default:

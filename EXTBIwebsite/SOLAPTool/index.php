@@ -34,6 +34,7 @@
 			var GeneratedQueryElement;
 			var QueryStatment;
 			var ID = {};
+			var NameID = {};
 			var queryOfOperators = [];
 			var additionalQuery = false;
 
@@ -46,6 +47,7 @@
 			var RelationalOperators = ['Not equal', 'Equal', 'Greater than or equal', 'Less than or equal', 'Greater than', 'Less than'];
 			var AGG = ['MAX', 'MIN', 'AVG'];
 			var SpatialDimensions = ['supplier', 'customer'];
+			var SpatialFunction = ['st_distance'];
 		// - Enums //
 			structureLevel = {Dimenasion: 3, Level: 2, Attribute: 1};
 			spatialMode = {On: 1, Off:0};

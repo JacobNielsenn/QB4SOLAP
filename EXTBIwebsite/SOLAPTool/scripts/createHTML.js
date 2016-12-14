@@ -154,7 +154,9 @@ function SRU(event){
     body.appendChild(SpatialLevel('Select Spatial Attribute#2 from: ', 'SpatialLevel2SRU'));
 	var test = createMenuObj(DataStructureDefinition.measure, "test", false,  structureLevel.Attribute);
 	body.appendChild(measureLevel('Select Measure:'));
-	body.appendChild(groupBy('Select Aggregation Level: '))
+	body.appendChild(groupBy('Select Aggregation Level: '));
+	body.appendChild(sFunction('Select Spatial Function: '));
+	body.appendChild(aggFunction('Select Agg Function: '));
 	//body.appendChild(InsertTextBox('Inner Select:'))
 	//body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel1'));
 	//body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel2'));
@@ -219,6 +221,40 @@ function groupBy(name, optionalID){
 	var textWithin1 = InsertTextBox(name);
 	var spatialLevelObj = createMenuObj(SpatialDimensions, 'Group by', true, structureLevel.Dimenasion, spatialMode.On);
 	var spatialMenu = InsertMultiMenuLevel(spatialLevelObj, 100, "SpatialLevelHelper(this)", "name");
+	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
+	p.appendChild(textWithin1);
+	p.appendChild(spatialMenu);
+	return p;
+}
+
+function sFunction(name, optionalID){
+	var p;
+	if(optionalID == null){
+		p = InsertP('spatialFunction', 25, 200);
+	}
+	else{
+		p = InsertP(optionalID, 25, 200);
+	}
+	var textWithin1 = InsertTextBox(name);
+	var spatialLevelObj = createMenuObj(SpatialFunction, 'Spatial Function', false, SpatialFunction, spatialMode.Off);
+	var spatialMenu = InsertSingleMenu(spatialLevelObj, 110, "SpatialLevelHelper(this)", "name");
+	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
+	p.appendChild(textWithin1);
+	p.appendChild(spatialMenu);
+	return p;
+}
+
+function aggFunction(name, optionalID){
+	var p;
+	if(optionalID == null){
+		p = InsertP('agg', 25, 200);
+	}
+	else{
+		p = InsertP(optionalID, 25, 200);
+	}
+	var textWithin1 = InsertTextBox(name);
+	var spatialLevelObj = createMenuObj(AGG, 'Agg Function', false, AGG, spatialMode.Off);
+	var spatialMenu = InsertSingleMenu(spatialLevelObj, 110, "SpatialLevelHelper(this)", "name");
 	textWithin1.setAttribute('style', 'padding: 0px 0px 0px 5px; float: left;');
 	p.appendChild(textWithin1);
 	p.appendChild(spatialMenu);

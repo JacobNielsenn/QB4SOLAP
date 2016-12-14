@@ -82,13 +82,23 @@ function nextLevel(currentLevel){
 		}
 	}
 }
+function UpdateNameID(name){
+    for (var i in NameID){
+        if (i == name){
+            NameID[i] += 1;
+            return NameID[i];
+        }
+    }
+    NameID[name] = 1;
+    return NameID[name];
+}
 function PathName(variableName, nameSpace){
     for (var name in nameSpace){
         if (nameSpace[name].replace(/[0-9]/g, '') == variableName){
             return nameSpace[name];
         }
     }
-    var newName = variableName + UpdateID(variableName);
+    var newName = variableName + UpdateNameID(variableName);
     nameSpace.push(newName);
     return newName;
 }
@@ -111,6 +121,7 @@ function PComplete(){
     }
     Query += AfterFilter;
 	GeneratedQueryElement.innerHTML = Query;
+    cleanUp(queryOfOperators);
 }
 function POperator(obj){
 	switch (obj.name){
@@ -167,7 +178,7 @@ function PSDice(obj){
 	return result;
 }
 function PSRU(obj){
-    var result = "SELECT " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " (SUM(" + name("?" + obj.measure, obj) +") AS " + name("?total" + obj.measure, obj) + ")" + " WHERE \n{\n";
+    var result = "SELECT " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " (" + obj.agg.toUpperCase() + "(" + name("?" + obj.measure, obj) +") AS " + name("?total" + obj.measure, obj) + ")" + " WHERE \n{\n";
     result += RUPath(obj);
     //?sup skos:broader ?supplierCity
     result += tab + PathName("?" + obj.path1.split(',')[1], obj.path1Names) + " skos:broader " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + " .\n";
@@ -177,13 +188,13 @@ function PSRU(obj){
         obj.innerobj = {path1: obj.innerPath1, path2: obj.innerPath2, names: []};
     }
     var tmp = RUPath(obj.innerobj);
-    result += "SELECT " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + " (MIN(?distance) AS ?minDistance)" + " WHERE \n{\n";
+    result += "SELECT " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + " (" + obj.aggFunction + "(" + name("?" + obj.spatialFunction.split('_')[1], obj) + ") AS " + name("?" + obj.aggFunction + obj.spatialFunction.split('_')[1], obj) + ")" + " WHERE \n{\n";
     result += tmp;
-    result += "BIND (bif:st_distance( " + PathName("?" + obj.innerobj.path1.split(',')[0], obj.innerobj.path1Names) + ", " + PathName("?" + obj.innerobj.path2.split(',')[0], obj.innerobj.path2Names) + " ) AS ?distance)}\n";
+    result += "BIND (" + obj.spatialFunction + "( " + PathName("?" + obj.innerobj.path1.split(',')[0], obj.innerobj.path1Names) + ", " + PathName("?" + obj.innerobj.path2.split(',')[0], obj.innerobj.path2Names) + " ) AS " + name("?" + obj.spatialFunction.split('_')[1], obj) + ")}\n";
     result += "GROUP BY " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + "}\n";
         //BIND (bif:st_distance( ?cust1Geo, ?sup1Geo ) AS ?distance)}
         //GROUP BY ?cust1 }
-    Filter += "FILTER (" + PathName("?" + obj.path1.split(',')[1], obj.path1Names) + " = " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + " && bif:st_distance( " + PathName("?" + obj.path1.split(',')[0], obj.path1Names) + ", " + PathName("?" + obj.path2.split(',')[0], obj.path2Names) + " ) = ?minDistance )" + "\n";
+    Filter += "FILTER (" + PathName("?" + obj.path1.split(',')[1], obj.path1Names) + " = " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + " && " + obj.spatialFunction + "( " + PathName("?" + obj.path1.split(',')[0], obj.path1Names) + ", " + PathName("?" + obj.path2.split(',')[0], obj.path2Names) + " ) = " + name("?" + obj.aggFunction + obj.spatialFunction.split('_')[1], obj) + " )" + "\n";
              //FILTER (?cust = ?cust1 && bif:st_distance( ?custGeo, ?supGeo ) = ?minDistance)
     AfterFilter += "GROUP BY " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + "\n";
     return result;
@@ -273,7 +284,7 @@ function AdditionalQueryOptionsInRUPath(obj) {
 function name(variableName, object){
     if (!(object.hasOwnProperty("names"))){
         object.names = [];
-        var newName = variableName + UpdateID(variableName);
+        var newName = variableName + UpdateNameID(variableName);
         object.names.push(newName);
         return newName;
     }
@@ -283,7 +294,7 @@ function name(variableName, object){
                 return object.names[number];
             }
         }
-        var newName = variableName + UpdateID(variableName);
+        var newName = variableName + UpdateNameID(variableName);
         object.names.push(newName);
         return newName;
     }
@@ -295,7 +306,20 @@ function compareName(findname, listofNames){
         }
     }
 }
-
+function cleanUp(operators){
+    for (var i in operators){
+        if (operators[i].hasOwnProperty('names')){
+            delete operators[i].names;
+        }
+        if (operators[i].hasOwnProperty('path1Names')){
+            delete operators[i].path1Names;
+        }
+        if (operators[i].hasOwnProperty('path2Names')){
+            delete operators[i].path2Names;
+        }
+    }
+    NameID = {};
+}
 function isNameInNamespace(variableName, object, field){
     if (!(object.hasOwnProperty(field))){
         return false;
