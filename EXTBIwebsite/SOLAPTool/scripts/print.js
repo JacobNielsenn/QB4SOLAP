@@ -236,15 +236,26 @@ function PFillUser(obj, value){
 	return userdata;
 }
 function AdditionalQueryOptions(obj){
-    var query = name("?cityName",obj) + " (SUM(" + name("?sales",obj) + ") AS " + name("?totalSales",obj) + " )\n(SUM(" + name("?quantity",obj) + ") AS " + name("?totalQuantity",obj) +
-        ")\n(AVG(" + name("?discount",obj) + ") AS " + name("?averageDiscount",obj) + ")\n(AVG(" + name("?unitPrice",obj) + ") AS " + name("?averageUnitPrice",obj) +
-        ")\n(SUM(" + name("?freight",obj) + ") AS " + name("?totalFreight",obj) + ")";
-    return query;
+    if (highestGeoLevel(obj) == "customer" || highestGeoLevel(obj) == "supplier"){
+        var result = name("?cityName",obj) + " (SUM(" + name("?sales",obj) + ") AS " + name("?totalSales",obj) + " )\n(SUM(" + name("?quantity",obj) + ") AS " + name("?totalQuantity",obj) +
+            ")\n(AVG(" + name("?discount",obj) + ") AS " + name("?averageDiscount",obj) + ")\n(AVG(" + name("?unitPrice",obj) + ") AS " + name("?averageUnitPrice",obj) +
+            ")\n(SUM(" + name("?freight",obj) + ") AS " + name("?totalFreight",obj) + ")";
+        return result;
+    }
+    else{
+        var result = name("?" + highestGeoLevel(obj) + "Name",obj) + " (SUM(" + name("?sales",obj) + ") AS " + name("?totalSales",obj) + " )\n(SUM(" + name("?quantity",obj) + ") AS " + name("?totalQuantity",obj) +
+            ")\n(AVG(" + name("?discount",obj) + ") AS " + name("?averageDiscount",obj) + ")\n(AVG(" + name("?unitPrice",obj) + ") AS " + name("?averageUnitPrice",obj) +
+            ")\n(SUM(" + name("?freight",obj) + ") AS " + name("?totalFreight",obj) + ")";
+        return result;
+    }
 }
 function AdditionalQueryOptionsInRUPath(obj) {
     var query = "";
     if (isNameInNamespace("?customer", obj, "names")){
-        if (isNameInNamespace("?city", obj, "names")){
+        if (traverse(DataStructureDefinition.dimension, obj.path.split(',')[1], '0').indexOf(obj.path.split(',')[1]) > 1){
+            query += tab + PathName("?"+highestGeoLevel(obj), obj.names) + " gnw:" + highestGeoLevel(obj) + "Name " + name("?" + highestGeoLevel(obj) + "Name",obj) + " .\n"
+        }
+        else if (isNameInNamespace("?city", obj, "names")){
             query += tab + PathName("?city", obj.names) + " gnw:cityName " + name("?cityName",obj) + " .\n"
         }
         else{
@@ -254,7 +265,10 @@ function AdditionalQueryOptionsInRUPath(obj) {
         }
     }
     else if (isNameInNamespace("?customer", obj, "path1Names")){
-        if (isNameInNamespace("?city", obj, "path1Names")){
+        if (traverse(DataStructureDefinition.dimension, obj.path1.split(',')[1], '0').indexOf(obj.path1.split(',')[1]) > 1){
+            query += tab + PathName("?"+highestGeoLevel(obj), obj.path1Names) + " gnw:" + highestGeoLevel(obj) + "Name " + name("?" + highestGeoLevel(obj) + "Name",obj) + " .\n"
+        }
+        else if (isNameInNamespace("?city", obj, "path1Names")){
             query += tab + PathName("?city", obj.path1Names) + " gnw:cityName " + name("?cityName",obj) + " .\n"
         }
         else{
@@ -264,7 +278,10 @@ function AdditionalQueryOptionsInRUPath(obj) {
         }
     }
     else if (isNameInNamespace("?customer", obj, "path2Names")){
-        if (isNameInNamespace("?city", obj, "path2Names")){
+        if (traverse(DataStructureDefinition.dimension, obj.path2.split(',')[1], '0').indexOf(obj.path2.split(',')[1]) > 1){
+            query += tab + PathName("?"+highestGeoLevel(obj), obj.path2Names) + " gnw:" + highestGeoLevel(obj) + "Name " + name("?" + highestGeoLevel(obj) + "Name",obj) + " .\n"
+        }
+        else if (isNameInNamespace("?city", obj, "path2Names")){
             query += tab + PathName("?city", obj.path2Names) + " gnw:cityName " + name("?cityName",obj) + " .\n"
         }
         else{
@@ -305,6 +322,23 @@ function compareName(findname, listofNames){
             return listofNames[i];
         }
     }
+}
+function highestGeoLevel(obj){
+    if (obj.hasOwnProperty('path')){
+        return obj.path.split(',')[1];
+    }
+    if (obj.hasOwnProperty('path1') && obj.hasOwnProperty('path2')){
+        var path1geo = traverse(DataStructureDefinition.dimension, obj.path1.split(',')[1], '0').indexOf(obj.path1.split(',')[1]);
+        var path2geo = traverse(DataStructureDefinition.dimension, obj.path2.split(',')[1], '0').indexOf(obj.path2.split(',')[1]);
+        if (path2geo <= path1geo){
+            return obj.path1.split(',')[1];
+        }
+        else{
+            return obj.path2.split(',')[1];
+        }
+
+    }
+
 }
 function cleanUp(operators){
     for (var i in operators){
