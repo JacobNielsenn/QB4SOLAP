@@ -103,11 +103,25 @@ function PathName(variableName, nameSpace){
     return newName;
 }
 //Printer
+var Query;
 function PComplete(){
-	var Query = "";
+    if (queryOfOperators.length > 1){
+        console.log('working');
+        document.getElementById('mes').disabled = true;
+    }
+    else{
+        document.getElementById('mes').disabled = false;
+    }
+    var specialcase = false;
+    Query = "";
     Filter = "";
     AfterFilter = "";
 	for (var i = 0; i < queryOfOperators.length; i++){
+	    if (queryOfOperators.length == 2 && queryOfOperators[0].name == "SSlice" && queryOfOperators[1].name == "SRU"){
+	        Query = PSSliceSRU(queryOfOperators[0], queryOfOperators[1]);
+            specialcase = true;
+            break;
+        }
 	    if (i == 0){
             Query += POperator(queryOfOperators[i]);
         }
@@ -116,7 +130,7 @@ function PComplete(){
         }
 
 	}
-	if (Query != ""){
+	if (Query != "" && !specialcase){
         Query += Filter + "}\n";
     }
     Query += AfterFilter;
@@ -192,10 +206,10 @@ function PSRU(obj){
     result += tmp;
     result += "BIND (" + obj.spatialFunction + "( " + PathName("?" + obj.innerobj.path1.split(',')[0], obj.innerobj.path1Names) + ", " + PathName("?" + obj.innerobj.path2.split(',')[0], obj.innerobj.path2Names) + " ) AS " + name("?" + obj.spatialFunction.split('_')[1], obj) + ")}\n";
     result += "GROUP BY " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + "}\n";
-        //BIND (bif:st_distance( ?cust1Geo, ?sup1Geo ) AS ?distance)}
-        //GROUP BY ?cust1 }
+    //BIND (bif:st_distance( ?cust1Geo, ?sup1Geo ) AS ?distance)}
+    //GROUP BY ?cust1 }
     Filter += "FILTER (" + PathName("?" + obj.path1.split(',')[1], obj.path1Names) + " = " + PathName("?" + obj.innerobj.path1.split(',')[1], obj.innerobj.path1Names) + " && " + obj.spatialFunction + "( " + PathName("?" + obj.path1.split(',')[0], obj.path1Names) + ", " + PathName("?" + obj.path2.split(',')[0], obj.path2Names) + " ) = " + name("?" + obj.aggFunction + obj.spatialFunction.split('_')[1], obj) + " )" + "\n";
-             //FILTER (?cust = ?cust1 && bif:st_distance( ?custGeo, ?supGeo ) = ?minDistance)
+    //FILTER (?cust = ?cust1 && bif:st_distance( ?custGeo, ?supGeo ) = ?minDistance)
     AfterFilter += "GROUP BY " + name("?obs", obj) + " " + name("?" + obj.groupBYPath.split(',')[1] + obj.groupBYPath.split(',')[0], obj) + "\n";
     return result;
 }
@@ -223,6 +237,50 @@ function PSSWithin(obj){
         Filter += 'FILTER (bif:st_within(' + name('?' + aIDName, obj) + " " + ', ' + PFillUser(obj, obj.second) +',' + obj.distance +'))\n';
 	}
 	return result;
+}
+function PSSliceSRU(obj1, obj2){
+    var result = 'SELECT ?obs1 ?supplierCity1 (SUM(?sales1) AS ?totalSales1) WHERE \n' +
+    '{\n' +
+    tab + '?obs1 rdf:type qb:Observation .\n' +
+    tab + '?obs1 gnw:customerID ?customer1  .\n' +
+    tab + '?obs1 gnw:supplierID ?supplier1 .\n' +
+    tab + '?customer1  qb4o:memberOf gnw:customer .\n' +
+    tab + '?customer1  skos:broader ?city1 .\n' +
+    tab + '?customer1 gnw:customerGeo ?customerGeo1 .\n' +
+    tab + '?supplier1 qb4o:memberOf gnw:supplier .\n' +
+    tab + '?supplier1 gnw:supplierGeo ?supplierGeo1 .\n' +
+    tab + '?supplier1 skos:broader ?supplierCity1 .\n' +
+    tab + '?supplierCity1 qb4o:memberOf gnw:city .\n' +
+    tab + '?city1  qb4o:memberOf gnw:city .\n' +
+    tab + '?city1  skos:broader ?state1  .\n' +
+    tab + '?state1  qb4o:memberOf gnw:state .\n' +
+    tab + '?state1  skos:broader ?country1  .\n' +
+    tab + '?country1  qb4o:memberOf gnw:country .\n' +
+    tab + '?country1  gnw:countryGeo ?countryGeo1  .\n' +
+    tab + '?obs1 gnw:salesAmount ?sales1 .\n' +
+    '{ SELECT ?customer2 (MIN(?distance1) AS ?minDistance1)\n' +
+    'WHERE {\n' +
+    tab + '?obs2 rdf:type qb:Observation .\n' +
+    tab + '?obs2 gnw:customerID ?customer2 .\n' +
+    tab + '?obs2 gnw:supplierID ?supplier2 .\n' +
+    tab + '?supplier2 qb4o:memberOf gnw:supplier .\n' +
+    tab + '?supplier2 gnw:supplierGeo ?supplierGeo2 .\n' +
+    tab + '?customer2 qb4o:memberOf gnw:customer .\n' +
+    tab + '?customer2 gnw:customerGeo ?customerGeo2 .\n' +
+    'BIND (bif:st_distance( ?customerGeo2, ?supplierGeo2 ) AS ?distance1)}\n' +
+    'GROUP BY ?customer2 }\n' +
+    'FILTER (?customer1 = ?customer2 && bif:st_distance( ?customerGeo1, ?supplierGeo1 ) = ?minDistance1)\n' +
+    'FILTER (bif:st_within(bif:st_point(' + obj1.first + '), ?countryGeo1 ,32))\n' +
+    '} GROUP BY ?obs1 ?supplierCity1\n';
+    if (obj2.hasOwnProperty('agg') && obj2.hasOwnProperty('aggFunction') &&
+        obj2.hasOwnProperty('groupBY') && obj2.hasOwnProperty('groupBYPath') &&
+        obj2.hasOwnProperty('innerPath1') && obj2.hasOwnProperty('innerPath2') &&
+        obj2.hasOwnProperty('measure') && obj2.hasOwnProperty('spatialFunction')){
+        return result;
+    }
+    else{
+        return PSSlice(obj1);
+    }
 }
 function PFillUser(obj, value){
 	var userdata;
