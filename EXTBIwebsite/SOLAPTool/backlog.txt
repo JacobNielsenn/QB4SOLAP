@@ -1,0 +1,1 @@
+- Aggregate button is not working when it is selected for the second time in s-dice operator
