@@ -1,7 +1,7 @@
 # QB4SOLAP
 
 ## Install Virtuoso on Windows 10
-First download the files from the homepage located here. This guide uses Virtuoso 7.2.4 64-bit version which can be found under pre-built binaries for Windows on their homepage.
+First download the files from the homepage located here https://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VOSDownload. This guide uses Virtuoso 7.2.4 64-bit version which can be found under pre-built binaries for Windows on their homepage.
 Unpack the files to a location of your choice. For simplicity, this guide stores the unpacked files at “C:\Virtuoso”.
 To start the virtuoso through command prompt you will need to first setup the Environment Variables, which can be done by opening up the Control Panel -> System -> Advanced system settings -> Environment Variables. In the bottom of the new windows the System variables is located select the variable Path and double click on it, this opens up another windows, now we need to add two new variables paths this is done by clicking on the button New, and type/copy in the following path “C:\Virtuoso\virtuoso-opensource\bin” and repeat for “C:\Virtuoso\virtuoso-opensource\lib”. After that close the windows and open up the command prompt and make sure you run it as administrator, then type in “virtuoso-t -?” and a list of commands should appear, If not, that means that the environment variables have not been setup correctly.
 
