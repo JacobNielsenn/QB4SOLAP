@@ -112,7 +112,6 @@ function PComplete(){
     else{
         document.getElementById('mes').disabled = false;
     }
-    var specialcase = false;
     Query = "";
     Filter = "";
     AfterFilter = "";
@@ -124,7 +123,7 @@ function PComplete(){
             Query += "{" + POperator(queryOfOperators[i]) + "}}\n";
         }
 	}
-	if (Query != "" && !specialcase){
+	if (Query != ""){
         Query += Filter + "}\n";
     }
     Query += AfterFilter;
