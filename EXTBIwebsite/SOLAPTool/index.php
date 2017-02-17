@@ -18,6 +18,11 @@
 		<script type="text/javascript" src="scripts/debug.js"></script>
 		<script type="text/javascript" src="scripts/map.js"></script>
 		<script type="text/javascript" src="scripts/options.js"></script>
+        <script type="text/javascript" src="scripts/classes/operator.js"></script>
+        <script type="text/javascript" src="scripts/classes/rdf.js"></script>
+        <script type="text/javascript" src="scripts/classes/select.js"></script>
+        <script type="text/javascript" src="scripts/classes/rdfHandler.js"></script>
+        <script type="text/javascript" src="scripts/classes/query.js"></script>
 		<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 		<title>EXTBI</title>
 		<meta charset="iso-8859-1">
@@ -64,7 +69,17 @@
 				setupdebug();
 				$('#prefix').hide();
 				document.getElementById('debug').style.visibility = "hidden";
+				testing();
 			}
+
+			function testing(){
+			    var a = new Query();
+                var b = new ODice("test", 2);
+                b.selRDF.add("?TestingVariable1");
+                b.selRDF.add("?TestingVariable2");
+                b.spaRDF.add(new RDF("test", "bla", "sefse"));
+                GeneratedQueryElement.innerHTML = a.returnQuery;
+            }
 		</script>
 	</head>
 <body class="about QB4SOLAP">

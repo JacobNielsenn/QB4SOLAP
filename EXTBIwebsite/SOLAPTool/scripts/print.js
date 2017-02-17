@@ -103,7 +103,7 @@ function PathName(variableName, nameSpace){
     return newName;
 }
 //Printer
-var Query;
+var QueryString;
 function PComplete(){
     if (queryOfOperators.length > 1){
         console.log('working');
@@ -112,22 +112,23 @@ function PComplete(){
     else{
         document.getElementById('mes').disabled = false;
     }
-    Query = "";
+    QueryString = "";
     Filter = "";
     AfterFilter = "";
 	for (var i = 0; i < queryOfOperators.length; i++){
+	    console.log(queryOfOperators[i]);
 	    if (i == 0){
-            Query += POperator(queryOfOperators[i]);
+            QueryString += POperator(queryOfOperators[i]);
         }
         else{
-            Query += "{" + POperator(queryOfOperators[i]) + "}}\n";
+            QueryString += "{" + POperator(queryOfOperators[i]) + "}}\n";
         }
 	}
-	if (Query != ""){
-        Query += Filter + "}\n";
+	if (QueryString != ""){
+        QueryString += Filter + "}\n";
     }
     Query += AfterFilter;
-	GeneratedQueryElement.innerHTML = Query;
+	GeneratedQueryElement.innerHTML = QueryString;
     cleanUp(queryOfOperators);
 }
 function POperator(obj){

@@ -8,4 +8,7 @@ class RDF{
         this.Object = object;
     }
 
+    returnRDF(){
+        return this.Subject + " " + this.Predicate + " " + this.Object;
+    }
 }
