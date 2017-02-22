@@ -307,7 +307,10 @@ function AdditionalQueryOptionsInRUPath(obj) {
     return query;
 }
 // Helper functions
-function name(variableName, object){
+function name(variableName, object, forceNewName){
+    if (forceNewName == null){
+        forceNewName = false;
+    }
     if (!(object.hasOwnProperty("names"))){
         object.names = [];
         var newName = variableName + UpdateNameID(variableName);
@@ -316,7 +319,7 @@ function name(variableName, object){
     }
     else{
         for (var number in object.names){
-            if (object.names[number].replace(/[0-9]/g, '') == variableName){
+            if (forceNewName == false && object.names[number].replace(/[0-9]/g, '') == variableName){
                 return object.names[number];
             }
         }

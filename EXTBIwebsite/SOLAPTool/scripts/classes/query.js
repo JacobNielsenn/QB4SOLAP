@@ -4,10 +4,13 @@
 class Query{
     constructor(){
         this.opertorList = [];
+        this.rdfList = new RDFHandler();
     }
 
     add(operator){
-        if (operator.constructor == Operator){
+        if (operator.constructor == ODice ||
+            operator.constructor == OSlice ||
+            operator.constructor == OSRU){
             this.opertorList.push(operator);
         }
         else{
@@ -48,7 +51,24 @@ class Query{
         return true;
     }
 
+    merge(opr1, opr2){
+        var spa1 = opr1;
+        var spa2 = opr2;
+        for (var opr in spa1){
+            this.rdfList.add(spa1[opr]);
+        }
+        for (var opr in spa2){
+            this.rdfList.add(spa2[opr]);
+        }
+    }
+
     get returnQuery(){
-        return "entire query nested or not.";
+        for (var i = 1; i < this.opertorList.length; i++){
+            this.merge(this.opertorList[i-1].returnSpatialRDF, this.opertorList[i].returnSpatialRDF);
+        }
+        for (var i = 1; i < this.opertorList.length; i++){
+            this.merge(this.opertorList[i-1].returnAttributeRDF, this.opertorList[i].returnAttributeRDF);
+        }
+        return this.rdfList;
     }
 }

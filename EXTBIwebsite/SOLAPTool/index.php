@@ -18,11 +18,13 @@
 		<script type="text/javascript" src="scripts/debug.js"></script>
 		<script type="text/javascript" src="scripts/map.js"></script>
 		<script type="text/javascript" src="scripts/options.js"></script>
-        <script type="text/javascript" src="scripts/classes/operator.js"></script>
         <script type="text/javascript" src="scripts/classes/rdf.js"></script>
         <script type="text/javascript" src="scripts/classes/select.js"></script>
         <script type="text/javascript" src="scripts/classes/rdfHandler.js"></script>
         <script type="text/javascript" src="scripts/classes/query.js"></script>
+        <script type="text/javascript" src="scripts/classes/path.js"></script>
+        <script type="text/javascript" src="scripts/classes/levels.js"></script>
+        <script type="text/javascript" src="scripts/classes/operator.js"></script>
 		<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 		<title>EXTBI</title>
 		<meta charset="iso-8859-1">
@@ -42,6 +44,9 @@
 			var NameID = {};
 			var queryOfOperators = [];
 			var additionalQuery = false;
+			var innerScoopCount = 0;
+			var global = {};
+			var globalPath = {};
 
 		// - SOLAP 						  //
 		  //var Dimensions = ['employee', 'orderDate', 'dueDate', 'shippedDate', 'product', 'order', 'shipper', 'supplier', 'customer'];
@@ -75,10 +80,26 @@
 			function testing(){
 			    var a = new Query();
                 var b = new ODice("test", 2);
-                b.selRDF.add("?TestingVariable1");
-                b.selRDF.add("?TestingVariable2");
-                b.spaRDF.add(new RDF("test", "bla", "sefse"));
-                GeneratedQueryElement.innerHTML = a.returnQuery;
+                b.setPath1 = 'supplierGeo,supplier,supplier,spatial levels,';
+                b.setPath2 = 'customerGeo,customer,customer,spatial levels,';
+                b.distance = 100;
+                b.generatePath(1);
+                b.generatePath(1);
+                b.generateAttri(1);
+                b.generateAttri(2);
+                var c = new OSlice("test1", 3);
+                c.setPath1 = 'countryGeo,country,customer,spatial levels,';
+                c.generatePath(1);
+                c.generateAttri(1);
+                c.first = '8.437500000000002, 58.015861473731434';
+                c.second = 'countryGeo';
+                c.spatialOperator = 'within';
+                c.userInput = 'Point';
+                a.add(b);
+                a.add(c);
+                console.log(a);
+                console.log(a.returnQuery);
+                GeneratedQueryElement.innerHTML += a.returnQuery.returnRDFQuery();
             }
 		</script>
 	</head>
