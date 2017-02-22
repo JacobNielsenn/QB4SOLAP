@@ -62,7 +62,7 @@ class Operator{
             this.spaRDF.add(new RDF(
                 name('?'+this['levels'+pathNumber][i], globalPath, unique),
                 "qb4o:memberOf",
-                "gwn:"+this['levels'+pathNumber][i]));
+                "gnw:"+this['levels'+pathNumber][i]));
 
         }
         console.log(this.pathNames1)
@@ -72,7 +72,7 @@ class Operator{
         console.log(this.path1);
         this.attRDF.add(new RDF(
             name('?'+this['path'+pathNumber].returnEndLevel(), globalPath),
-            "gwn:"+this['path'+pathNumber].returnAttribute(),
+            "gnw:"+this['path'+pathNumber].returnAttribute(),
             name('?'+this['path'+pathNumber].returnAttribute(), globalPath)));
         console.log(this.pathNames1)
     }

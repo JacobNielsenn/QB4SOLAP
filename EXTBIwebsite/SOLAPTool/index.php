@@ -95,8 +95,17 @@
                 c.second = 'countryGeo';
                 c.spatialOperator = 'within';
                 c.userInput = 'Point';
+                var d = new OSlice("test1", 3);
+                c.setPath1 = 'cityGeo,city,customer,spatial levels,';
+                c.generatePath(1);
+                c.generateAttri(1);
+                c.first = '12.437500000000002, 64.015861473731434';
+                c.second = 'cityGeo';
+                c.spatialOperator = 'within';
+                c.userInput = 'Point';
                 a.add(b);
                 a.add(c);
+                a.add(d);
                 console.log(a);
                 console.log(a.returnQuery);
                 GeneratedQueryElement.innerHTML += a.returnQuery.returnRDFQuery();
