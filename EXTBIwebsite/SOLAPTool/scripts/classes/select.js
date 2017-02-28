@@ -9,7 +9,18 @@ class Select{
     }
 
     add(variable){
-        this.variables.push(variable);
+        if(!this.detectedDuplicate(variable)){
+            this.variables.push(variable);
+        }
+    }
+
+    detectedDuplicate(variable){
+        for (var i in this.variables){
+            if(this.variables[i] == variable){
+                return true;
+            }
+        }
+        return false;
     }
 
     remove(variable){
@@ -21,6 +32,10 @@ class Select{
     }
 
     get returnSelect(){
-        return this.select + " " + this.variables.join().replace(",", " ") + " " + this.where;
+        var rdf = new RDF(this.select, this.variables.join().replace(",", " "), this.where);
+        console.log(rdf);
+        var grp = [];
+        grp.push(rdf);
+        return grp;
     }
 }

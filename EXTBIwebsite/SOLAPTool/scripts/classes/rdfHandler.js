@@ -22,6 +22,7 @@ class RDFHandler{
         }
         else{
             alert('You need to add an rdf and not a string');
+            console.log('Should be rdf but is this:', rdf);
         }
     }
 
@@ -41,7 +42,15 @@ class RDFHandler{
     returnRDFQuery(){
         var text = "";
         for (var i in this.rdfs){
-            text += this.rdfs[i].returnRDF() + " .\n";
+            if (this.rdfs[i].returnSubject == "SELECT"){
+                text += this.rdfs[i].returnRDF() + " {\n";
+            }
+            else if (this.rdfs[i].returnObject == null){
+                text += this.rdfs[i].returnRDF() + " \n";
+            }
+            else {
+                text += this.rdfs[i].returnRDF() + " .\n";
+            }
         }
         return text;
     }

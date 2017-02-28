@@ -18,6 +18,11 @@ class RDF{
         return this.Object;
     }
     returnRDF(){
-        return this.Subject + " " + this.Predicate + " " + this.Object;
+        if (this.Predicate == null && this.Object == null){
+            return this.Subject;
+        }
+        else{
+            return this.Subject + " " + this.Predicate + " " + this.Object;
+        }
     }
 }

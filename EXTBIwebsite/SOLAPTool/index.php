@@ -25,6 +25,7 @@
         <script type="text/javascript" src="scripts/classes/path.js"></script>
         <script type="text/javascript" src="scripts/classes/levels.js"></script>
         <script type="text/javascript" src="scripts/classes/operator.js"></script>
+        <script type="text/javascript" src="scripts/classes/filter.js"></script>
 		<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 		<title>EXTBI</title>
 		<meta charset="iso-8859-1">
@@ -47,6 +48,7 @@
 			var innerScoopCount = 0;
 			var global = {};
 			var globalPath = {};
+            var Q = new Query();
 
 		// - SOLAP 						  //
 		  //var Dimensions = ['employee', 'orderDate', 'dueDate', 'shippedDate', 'product', 'order', 'shipper', 'supplier', 'customer'];
@@ -74,7 +76,7 @@
 				setupdebug();
 				$('#prefix').hide();
 				document.getElementById('debug').style.visibility = "hidden";
-				testing();
+				//testing();
 			}
 
 			function testing(){

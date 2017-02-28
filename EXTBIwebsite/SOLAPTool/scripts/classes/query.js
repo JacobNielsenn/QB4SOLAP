@@ -19,6 +19,10 @@ class Query{
         }
     }
 
+    get list(){
+        return this.opertorList;
+    }
+
     get mainOperator(){
         return this.opertorList[0];
     }
@@ -62,12 +66,33 @@ class Query{
         }
     }
 
-    get returnQuery(){
-        for (var i = 1; i < this.opertorList.length; i++){
-            this.merge(this.opertorList[i-1].returnSpatialRDF, this.opertorList[i].returnSpatialRDF);
+    addToList(rdfList){
+        var list = rdfList;
+        for (var i in list){
+            this.rdfList.add(list[i]);
         }
-        for (var i = 1; i < this.opertorList.length; i++){
-            this.merge(this.opertorList[i-1].returnAttributeRDF, this.opertorList[i].returnAttributeRDF);
+    }
+
+    get returnQuery(){
+        this.rdfList = new RDFHandler();
+        this.addToList(this.opertorList[0].returnSelectRDF);
+        if (this.opertorList.length == 1){
+            this.addToList(this.opertorList[0].returnSpatialRDF);
+            this.addToList(this.opertorList[0].returnAttributeRDF);
+            this.addToList(this.opertorList[0].returnFilter);
+            this.addToList([new RDF('}', null, null)]);
+        }
+        else{
+            for (var i = 1; i < this.opertorList.length; i++){
+                this.merge(this.opertorList[i-1].returnSpatialRDF, this.opertorList[i].returnSpatialRDF);
+            }
+            for (var i = 1; i < this.opertorList.length; i++){
+                this.merge(this.opertorList[i-1].returnAttributeRDF, this.opertorList[i].returnAttributeRDF);
+            }
+            for (var i = 1; i < this.opertorList.length; i++){
+                this.merge(this.opertorList[i-1].returnFilter, this.opertorList[i].returnFilter);
+            }
+            this.addToList([new RDF('}', null, null)]);
         }
         return this.rdfList;
     }

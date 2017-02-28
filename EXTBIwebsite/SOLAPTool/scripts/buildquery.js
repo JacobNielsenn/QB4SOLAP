@@ -13,6 +13,7 @@ function addOperator(ele, name){
         document.getElementById('mes').disabled = true;
     }
 }
+
 function findOperatorInList(id){
     for (var i in queryOfOperators){
         if(queryOfOperators[i].id == id){
@@ -20,6 +21,16 @@ function findOperatorInList(id){
         }
     }
 }
+
+function findOperatorInClass(id){
+    console.log("Search for:", id);
+    for (var i in Q.list){
+        if(Q.list[i].id == id){
+            return Q.list[i];
+        }
+    }
+}
+
 function deleteOperatorInList(id){
     for (var i in queryOfOperators){
         if(queryOfOperators[i].id == id){

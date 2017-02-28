@@ -283,7 +283,7 @@ function InsertMultiMenuLevel(objectArrays, width, updater, field){
 function clickedAttribute(element){
 	var operator = searchOperator(element);
 	var obj = findOperatorInList(operator.id);
-	console.log(element, operator, obj);
+	var cls = findOperatorInClass(operator.id);
 	switch (obj.name){
 		case ("SSlice"):
 			switch (obj.spatialOperator){
@@ -291,6 +291,8 @@ function clickedAttribute(element){
 					var p = GetClosestP(element)
 					if (p.getAttribute('name').indexOf('distance') != -1){
                         addProperty(element, 'distance', element.value);
+                        console.log('distance changed', cls);
+                        cls.setDistance = element.value;
 					}
 					else{
                         while (p.getAttribute('name').indexOf('select') == -1){
@@ -300,18 +302,22 @@ function clickedAttribute(element){
                             console.log("first");
                             if (element.innerHTML != ""){
                                 addProperty(element, 'first', element.innerHTML);
+                                cls.setFirst = element.innerHTML;
                             }
                             else{
                                 addProperty(element, 'first', element.value);
+                                cls.setFirst = element.value;
                             }
                         }
                         else if (p.getAttribute('name').indexOf('2') != -1){
                             console.log("second");
                             if (element.innerHTML != ""){
                                 addProperty(element, 'second', element.innerHTML);
+                                cls.setSecond = element.innerHTML;
                             }
                             else{
                                 addProperty(element, 'second', element.value);
+                                cls.setSecond = element.value;
                             }
                         }
 					}
@@ -320,22 +326,30 @@ function clickedAttribute(element){
 			break;
 		case ("SDice"):
 			addProperty(element, 'distance', element.value);
+			if (element.value != undefined){
+                cls.setDistance = element.value;
+			}
 			break;
 		case ("SRU"):
 			switch (GetClosestP(element).getAttribute('name')){
 				case ("measureLevel"):
 					var agg = traverse(DataStructureDefinition.measure, element.innerHTML, "aggregateFunction");
 					addProperty(element, 'measure', agg.measure);
+                    cls.setMeasure = agg.measure;
 					addProperty(element, 'agg', agg.aggregateFunction);
+                    cls.setAgg = agg.aggregateFunction;
 					break;
 				case ("groupBY"):
 					addProperty(element, 'groupBY', element.innerHTML);
+                    cls.setGroupBY = element.innerHTML;
 					break;
 				case ("spatialFunction"):
 					addProperty(element, 'spatialFunction', "bif:" + element.innerHTML);
+                    cls.setSpatialFunction = "bif:" + element.innerHTML;
 					break;
 				case ("agg"):
 					addProperty(element, 'aggFunction', element.innerHTML);
+                    cls.setAggFunction = "bif:" + element.innerHTML;
 					break;
 			}
 			break;
@@ -343,12 +357,14 @@ function clickedAttribute(element){
 			console.log(obj, obj.spatialOperator, "is not implemented yet");
 			break;
 	}
+    console.log(operator, obj, cls);
 	PComplete();
 }
 // Used to change the name of the multimenu after it has been clicked.
 function clickedMultiMenu(element){
 	var operator = searchOperator(element);
 	var obj = findOperatorInList(operator.id);
+    var cls = findOperatorInClass(operator.id);
 	var ele = element;
 	var path = "";
 	while (ele.getAttribute('id').indexOf('menu') == -1){
@@ -361,20 +377,26 @@ function clickedMultiMenu(element){
 	ChangeMenuName(element.innerHTML, element);
 	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel'){
 		addProperty(element, "path", path);
+		cls.setPath1 = path;
+
 	}
 	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel1'){
 		addProperty(element, "path1", path);
+        cls.setPath1 = path;
 	}
 	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel2'){
 		addProperty(element, "path2", path);
+        cls.setPath2 = path;
 	}
 	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel1SRU'){
 		addProperty(element, "path1", path);
 		addProperty(element, "innerPath1", path);
+        cls.setPath1 = path;
 	}
 	if (GetClosestP(element).getAttribute('name') == 'SpatialLevel2SRU'){
 		addProperty(element, "path2", path);
 		addProperty(element, "innerPath2", path);
+        cls.setPath2 = path;
 	}
 	if (GetClosestP(element).getAttribute('name') == 'groupBY'){
 		addProperty(element, "groupBYPath", path);

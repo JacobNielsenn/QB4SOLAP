@@ -105,6 +105,9 @@ function PathName(variableName, nameSpace){
 //Printer
 var QueryString;
 function PComplete(){
+    console.log("Trying");
+    GeneratedQueryElement.innerHTML = Q.returnQuery.returnRDFQuery();
+    /*
     if (queryOfOperators.length > 1){
         console.log('working');
         document.getElementById('mes').disabled = true;
@@ -130,6 +133,7 @@ function PComplete(){
     Query += AfterFilter;
 	GeneratedQueryElement.innerHTML = QueryString;
     cleanUp(queryOfOperators);
+    */
 }
 function POperator(obj){
 	switch (obj.name){
