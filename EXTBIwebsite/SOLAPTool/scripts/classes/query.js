@@ -74,13 +74,24 @@ class Query{
     }
 
     get returnQuery(){
+        var SRUCase = {};
         this.rdfList = new RDFHandler();
         this.addToList(this.opertorList[0].returnSelectRDF);
         if (this.opertorList.length == 1){
             this.addToList(this.opertorList[0].returnSpatialRDF);
             this.addToList(this.opertorList[0].returnAttributeRDF);
+            if (this.opertorList[0].constructor == OSRU){
+                this.addToList([new RDF('{', null, null)]);
+                this.addToList(this.opertorList[0].returnInnerSelectRDF);
+                this.addToList(this.opertorList[0].returnInnerSpatialRDF);
+                this.addToList(this.opertorList[0].returnInnerAttributeRDF);
+                this.addToList(this.opertorList[0].returnBIND);
+                this.addToList([new RDF('}', null, null)]);
+                this.addToList(this.opertorList[0].returnGroupBy);
+                this.addToList([new RDF('} ', null, null)]);
+            }
             this.addToList(this.opertorList[0].returnFilter);
-            this.addToList([new RDF('}', null, null)]);
+            this.addToList([new RDF('}  ', null, null)]);
         }
         else{
             for (var i = 1; i < this.opertorList.length; i++){
@@ -89,8 +100,24 @@ class Query{
             for (var i = 1; i < this.opertorList.length; i++){
                 this.merge(this.opertorList[i-1].returnAttributeRDF, this.opertorList[i].returnAttributeRDF);
             }
+            for (var i = 1; i < this.opertorList.length; i++) {
+                this.merge(this.opertorList[i - 1].returnFilter, this.opertorList[i].returnFilter);
+            }
             for (var i = 1; i < this.opertorList.length; i++){
-                this.merge(this.opertorList[i-1].returnFilter, this.opertorList[i].returnFilter);
+                if (this.opertorList[i].constructor == OSRU){
+                    SRUCase.push(i);
+                }
+            }
+            if (SRUCase.length > 0){
+                this.addToList([new RDF('{', null, null)]);
+            }
+            while (SRUCase.length != 0){
+                var i = 1;
+                this.merge(this.opertorList[SRUCase[i-1]].returnSpatialRDF, this.opertorList[SRUCase[i]].returnSpatialRDF);
+                i++;
+            }
+            if (SRUCase.length > 0){
+                this.addToList([new RDF('}', null, null)]);
             }
             this.addToList([new RDF('}', null, null)]);
         }

@@ -129,7 +129,11 @@ function SSlice_within(event){
 	addProperty(p, 'spatialOperator', 'within');
 	Q.add(new OSlice("SSlice", p.id));
 	QueryStatment.appendChild(p);
-	console.log(Q);
+	console.log("Query", Q);
+	console.log("Global", global);
+	console.log("GlobalPath", globalPath);
+	console.log("InnerGlobal", innerGlobal);
+	console.log("InnerGlobalPath", innerGLobalPath);
 }
 function SDice(event){
 	var p = InsertP('Operator', 'border: 1px solid black;');
@@ -147,7 +151,11 @@ function SDice(event){
 	addOperator(p, 'SDice');
     Q.add(new ODice("SDice", p.id));
 	QueryStatment.appendChild(p);
-    console.log(Q);
+    console.log("Query", Q);
+    console.log("Global", global);
+    console.log("GlobalPath", globalPath);
+    console.log("InnerGlobal", innerGlobal);
+    console.log("InnerGlobalPath", innerGLobalPath);
 }
 function SRU(event){
     var p = InsertP('Operator', 'border: 1px solid black;');
@@ -169,7 +177,11 @@ function SRU(event){
     addOperator(p, 'SRU');
     Q.add(new OSRU("SRU", p.id));
     QueryStatment.appendChild(p);
-    console.log(Q);
+    console.log("Query", Q);
+    console.log("Global", global);
+    console.log("GlobalPath", globalPath);
+    console.log("InnerGlobal", innerGlobal);
+    console.log("InnerGlobalPath", innerGLobalPath);
 }
 // BODY UTILITY //
 function SpatialLevel(optionalName, optionalID){

@@ -20,10 +20,15 @@ class Operator{
         this.userInput = null;
         //return lists containing RDF lines.
         this.selRDF = new Select();
+        this.innerSelRDF = new Select();
         this.spaRDF = new RDFHandler();
+        this.innerSpaRDF = new RDFHandler();
         this.mesRDF = new RDFHandler();
         this.attRDF = new RDFHandler();
+        this.innerAttRDF = new RDFHandler();
         this.filters = new Filters();
+        this.bind = new Binds();
+        this.groupBy = new GroupBy();
     }
 
     set setPath1(pathname){
@@ -58,8 +63,12 @@ class Operator{
         this.filter = new Filters();
         this.generatePath(1);
         this.generatePath(2);
+        this.generateInnerPath(1);
+        this.generateInnerPath(2);
         this.generateAttri(1);
         this.generateAttri(2);
+        this.generateInnerAttri(1);
+        this.generateInnerAttri(2);
     }
 
     generatePath(pathNumber){
@@ -67,30 +76,61 @@ class Operator{
 
         }
         else{
-            var unique = false;
-            if (pathNumber == 2){
-                unique = false; // true
-            }
             if (this.measure == null){
                 this.spaRDF.add(new RDF(name("?obs", global), 'rdf:type', 'qb:Observation' ));
                 this.selRDF.add(name("?obs", global));
             }
             else{
-                this.spaRDF.add(new RDF(name("?obs", global), DataStructureDefinitionName + this.measure, '?'));
+                this.spaRDF.add(new RDF(name("?obs", global), 'rdf:type', 'qb:Observation' ));
+                this.spaRDF.add(new RDF(name("?obs", global), 'gnw:'+this.measure, '?'+name(this.measure, global)));
+                this.selRDF.add(name("?obs", global));
+                this.selRDF.add("(" + this.setAgg + "(?" + name(this.measure, global) + ") AS ?" + name("total"+this.measure, global) + ")");
+
             }
             this.spaRDF.add(new RDF(
                 name("?obs", global),
                 DataStructureDefinitionName + this['levels'+pathNumber][0] + 'ID',
-                name('?'+this['levels'+pathNumber][0], globalPath, unique)));
+                name('?'+this['levels'+pathNumber][0], globalPath)));
             for (var i = 0; i < this['levels'+pathNumber].length; i++){
                 if (i != this['levels'+pathNumber].length && i != 0 && this['levels'+pathNumber].length > 2){
                     this.spaRDF.add(new RDF(
-                        name('?'+this['levels'+pathNumber][i-1], globalPath, unique),
+                        name('?'+this['levels'+pathNumber][i-1], globalPath),
                         "skos:broader",
-                        name('?'+this['levels'+pathNumber][i], globalPath, unique)));
+                        name('?'+this['levels'+pathNumber][i], globalPath)));
                 }
                 this.spaRDF.add(new RDF(
-                    name('?'+this['levels'+pathNumber][i], globalPath, unique),
+                    name('?'+this['levels'+pathNumber][i], globalPath),
+                    "qb4o:memberOf",
+                    "gnw:"+this['levels'+pathNumber][i]));
+
+            }
+        }
+    }
+
+    generateInnerPath(pathNumber){
+        if (this['levels'+pathNumber] == null){
+
+        }
+        else{
+            this.innerSpaRDF.add(new RDF(name("?obs", innerGlobal), 'rdf:type', 'qb:Observation' ));
+            if (this.measure != null && this.setAggFunction != null && this.setSpatialFunction != null){
+                this.innerSelRDF.add(name("?"+this.levels1[0], innerGLobalPath));
+                //(MIN(?distance1) AS ?MINdistance1)
+                this.innerSelRDF.add("("+this.setAggFunction+"(?"+name(this.setSpatialFunction.split("_")[1], innerGlobal)+") AS ?"+name(this.setAggFunction+this.setSpatialFunction.split("_")[1], innerGlobal)+")");
+            }
+            this.innerSpaRDF.add(new RDF(
+                name("?obs", innerGlobal),
+                DataStructureDefinitionName + this['levels'+pathNumber][0] + 'ID',
+                name('?'+this['levels'+pathNumber][0], innerGLobalPath)));
+            for (var i = 0; i < this['levels'+pathNumber].length; i++){
+                if (i != this['levels'+pathNumber].length && i != 0 && this['levels'+pathNumber].length > 2){
+                    this.innerSpaRDF.add(new RDF(
+                        name('?'+this['levels'+pathNumber][i-1], innerGLobalPath),
+                        "skos:broader",
+                        name('?'+this['levels'+pathNumber][i], innerGLobalPath)));
+                }
+                this.innerSpaRDF.add(new RDF(
+                    name('?'+this['levels'+pathNumber][i], innerGLobalPath),
                     "qb4o:memberOf",
                     "gnw:"+this['levels'+pathNumber][i]));
 
@@ -109,21 +149,52 @@ class Operator{
                 name('?' + this['path' + pathNumber].returnAttribute(), globalPath)));
         }
     }
+    generateInnerAttri(pathNumber){
+        if (this['path'+pathNumber] == null){
+
+        }
+        else {
+            this.innerAttRDF.add(new RDF(
+                name('?' + this['path' + pathNumber].returnEndLevel(), innerGLobalPath),
+                "gnw:" + this['path' + pathNumber].returnAttribute(),
+                name('?' + this['path' + pathNumber].returnAttribute(), innerGLobalPath)));
+        }
+    }
     get returnSelectRDF(){
+        this.generate();
         return this.selRDF.returnSelect;
     };
+
+    get returnInnerSelectRDF(){
+        this.generate();
+        return this.innerSelRDF.returnSelect;
+    };
+
     get returnSpatialRDF(){
         this.generate();
         var tmp = jQuery.extend(true, {}, this.spaRDF.returnRDF());
         //this.spaRDF.reset();
         return tmp;
     };
+
+    get returnInnerSpatialRDF(){
+        this.generate();
+        var tmp = jQuery.extend(true, {}, this.innerSpaRDF.returnRDF());
+        //this.spaRDF.reset();
+        return tmp;
+    };
+
     get returnMeasuresRDF(){
         return this.mesRDF.returnRDF();
     };
     get returnAttributeRDF(){
         this.generate();
         return this.attRDF.returnRDF();
+    };
+
+    get returnInnerAttributeRDF(){
+        this.generate();
+        return this.innerAttRDF.returnRDF();
     };
 }
 
@@ -147,6 +218,24 @@ class OSRU extends Operator {
 
     set setMeasure(value){
         this.measure = value;
+    }
+
+    get returnBIND(){
+        //BIND (bif:st_distance( ?supplierGeo2, ?customerGeo2 ) AS ?distance1)
+        this.bind.setBIND = 'BIND (bif:'+this.setSpatialFunction+"("+name('?'+this.path1.returnAttribute(), innerGLobalPath)+', '+name('?'+this.path2.returnAttribute(), innerGLobalPath)+') AS ?'+name(this.setSpatialFunction.split("_")[1], innerGlobal)+')';
+        return this.bind.returnBIND;
+    }
+
+    get returnGroupBy(){
+        //GROUP BY ?supplier2
+        this.bind.setBIND = 'GROUP BY '+name("?"+this.levels1[0], innerGLobalPath);
+        return this.bind.returnBIND;
+    }
+
+    get returnFilter(){
+        //FILTER (?supplier1 = ?supplier2 && bif:st_distance( ?supplierGeo1, ?customerGeo1 ) = ?MINdistance1 )
+        this.filters.setFilter = 'FILTER ('+name("?"+this.levels1[0], globalPath)+' = '+name("?"+this.levels1[0], innerGLobalPath)+' && bif:'+this.setSpatialFunction+'('+name('?'+this.path1.returnAttribute(), globalPath)+', '+name('?'+this.path2.returnAttribute(), globalPath)+') = '+name(this.setAggFunction+this.setSpatialFunction.split("_")[1], innerGlobal)+')';
+        return this.filters.returnFilter;
     }
 }
 

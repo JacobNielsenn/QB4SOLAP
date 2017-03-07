@@ -26,6 +26,8 @@
         <script type="text/javascript" src="scripts/classes/levels.js"></script>
         <script type="text/javascript" src="scripts/classes/operator.js"></script>
         <script type="text/javascript" src="scripts/classes/filter.js"></script>
+        <script type="text/javascript" src="scripts/classes/bind.js"></script>
+        <script type="text/javascript" src="scripts/classes/groupBy.js"></script>
 		<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 		<title>EXTBI</title>
 		<meta charset="iso-8859-1">
@@ -48,6 +50,8 @@
 			var innerScoopCount = 0;
 			var global = {};
 			var globalPath = {};
+			var innerGlobal = {};
+			var innerGLobalPath = {};
             var Q = new Query();
 
 		// - SOLAP 						  //

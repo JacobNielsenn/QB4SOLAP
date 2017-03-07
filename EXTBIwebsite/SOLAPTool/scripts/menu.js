@@ -345,11 +345,11 @@ function clickedAttribute(element){
 					break;
 				case ("spatialFunction"):
 					addProperty(element, 'spatialFunction', "bif:" + element.innerHTML);
-                    cls.setSpatialFunction = "bif:" + element.innerHTML;
+                    cls.setSpatialFunction = element.innerHTML;
 					break;
 				case ("agg"):
 					addProperty(element, 'aggFunction', element.innerHTML);
-                    cls.setAggFunction = "bif:" + element.innerHTML;
+                    cls.setAggFunction = element.innerHTML;
 					break;
 			}
 			break;
