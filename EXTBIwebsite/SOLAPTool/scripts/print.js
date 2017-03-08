@@ -128,7 +128,6 @@ function PComplete(){
         else{
             Query += "{" + POperator(queryOfOperators[i]) + "}}\n";
         }
-
 	}
 	if (Query != "" && !specialcase){
         Query += Filter + "}\n";
