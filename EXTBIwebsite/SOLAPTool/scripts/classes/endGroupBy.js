@@ -1,11 +1,10 @@
 /**
- * Created by JN on 14/02/2017.
+ * Created by JN on 09/03/2017.
  */
-class Select{
+class EndGroupBy{
     constructor(){
-        this.select = "SELECT";
+        this.group = "GROUP BY";
         this.variables = [];
-        this.where = "WHERE";
     }
 
     add(variable){
@@ -32,8 +31,8 @@ class Select{
         }
     }
 
-    get returnSelect(){
-        var rdf = new RDF(this.select, this.variables.join().replace(/,/g, " "), this.where);
+    get returnEndGroupBy(){
+        var rdf = new RDF(this.group, this.variables.join().replace(/,/g, " "), null);
         console.log(rdf);
         var grp = [];
         grp.push(rdf);

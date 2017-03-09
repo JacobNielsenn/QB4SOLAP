@@ -28,6 +28,7 @@
         <script type="text/javascript" src="scripts/classes/filter.js"></script>
         <script type="text/javascript" src="scripts/classes/bind.js"></script>
         <script type="text/javascript" src="scripts/classes/groupBy.js"></script>
+        <script type="text/javascript" src="scripts/classes/endGroupBy.js"></script>
 		<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 		<title>EXTBI</title>
 		<meta charset="iso-8859-1">

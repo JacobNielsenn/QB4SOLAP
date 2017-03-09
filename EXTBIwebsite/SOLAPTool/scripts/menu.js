@@ -341,7 +341,15 @@ function clickedAttribute(element){
 					break;
 				case ("groupBY"):
 					addProperty(element, 'groupBY', element.innerHTML);
-                    cls.setGroupBY = element.innerHTML;
+                    var path = "";
+                    while (element.getAttribute('id').indexOf('menu') == -1){
+                        element = element.parentNode;
+                        if (element.constructor == HTMLLIElement)
+                        {
+                            path += element.childNodes[0].innerHTML + ","
+                        }
+                    }
+                    cls.setAggregationLevel = path;
 					break;
 				case ("spatialFunction"):
 					addProperty(element, 'spatialFunction', "bif:" + element.innerHTML);

@@ -16,6 +16,7 @@ class Operator{
         this.distance = null;
         this.levels1 = null;
         this.levels2 = null;
+        this.levelsGroupByPath = null;
         this.spatialOperator = null;
         this.userInput = null;
         //return lists containing RDF lines.
@@ -26,20 +27,23 @@ class Operator{
         this.mesRDF = new RDFHandler();
         this.attRDF = new RDFHandler();
         this.innerAttRDF = new RDFHandler();
+        this.groupBYRDF = new RDFHandler();
         this.filters = new Filters();
         this.bind = new Binds();
         this.groupBy = new GroupBy();
+        this.aggregationLevel = null;
+        this.endGroupBy = new EndGroupBy();
     }
 
     set setPath1(pathname){
         this.path1 = new Path(pathname);
-        var tmp = new Levels(pathname);
+        var tmp = new Levels(pathname, false);
         this.levels1 = tmp.returnLevels;
     };
 
     set setPath2(pathname){
         this.path2 = new Path(pathname);
-        var tmp = new Levels(pathname);
+        var tmp = new Levels(pathname, false);
         this.levels2 = tmp.returnLevels;
     };
 
@@ -55,6 +59,12 @@ class Operator{
         this.distance = value;
     }
 
+    set setAggregationLevel(string){
+        this.aggregationLevel = new Path("blank,"+string);
+        var tmp = new Levels("blank,"+string, true);
+        this.levelsGroupByPath = tmp.returnLevels;
+    }
+
     generate(){
         this.selRDF = new Select();
         this.spaRDF = new RDFHandler();
@@ -63,6 +73,7 @@ class Operator{
         this.filter = new Filters();
         this.generatePath(1);
         this.generatePath(2);
+        this.generateGroupByPath();
         this.generateInnerPath(1);
         this.generateInnerPath(2);
         this.generateAttri(1);
@@ -102,6 +113,48 @@ class Operator{
                     name('?'+this['levels'+pathNumber][i], globalPath),
                     "qb4o:memberOf",
                     "gnw:"+this['levels'+pathNumber][i]));
+
+            }
+        }
+    }
+
+    generateGroupByPath(){
+        var specialName;
+        if (this.levelsGroupByPath == null){
+        }
+        else{
+            for (var i = 0; i < this.levelsGroupByPath.length; i++){
+                if (i != this.levelsGroupByPath.length && i != 0 && this.levelsGroupByPath.length > 2){
+                    if (i == this.levelsGroupByPath.length-1){
+                        specialName = name('?'+this.aggregationLevel.startLevel+this.levelsGroupByPath[i], globalPath);
+                        this.spaRDF.add(new RDF(
+                            name('?'+this.levelsGroupByPath[i-1], globalPath),
+                            "skos:broader",
+                            specialName));
+                    }
+                    else{
+                        this.spaRDF.add(new RDF(
+                            name('?'+this.levelsGroupByPath[i-1], globalPath),
+                            "skos:broader",
+                            name('?'+this.levelsGroupByPath[i], globalPath)));
+                    }
+
+                }
+                if (i == this.levelsGroupByPath.length-1){
+                    this.spaRDF.add(new RDF(
+                        specialName,
+                        "qb4o:memberOf",
+                        "gnw:"+this.levelsGroupByPath[i]));
+                }
+                else{
+                    this.spaRDF.add(new RDF(
+                        name('?'+this.levelsGroupByPath[i], globalPath),
+                        "qb4o:memberOf",
+                        "gnw:"+this.levelsGroupByPath[i]));
+                }
+                if (i == this.levelsGroupByPath.length-1){
+                    this.selRDF.add(specialName);
+                }
 
             }
         }
@@ -234,7 +287,7 @@ class OSRU extends Operator {
 
     get returnFilter(){
         //FILTER (?supplier1 = ?supplier2 && bif:st_distance( ?supplierGeo1, ?customerGeo1 ) = ?MINdistance1 )
-        this.filters.setFilter = 'FILTER ('+name("?"+this.levels1[0], globalPath)+' = '+name("?"+this.levels1[0], innerGLobalPath)+' && bif:'+this.setSpatialFunction+'('+name('?'+this.path1.returnAttribute(), globalPath)+', '+name('?'+this.path2.returnAttribute(), globalPath)+') = '+name(this.setAggFunction+this.setSpatialFunction.split("_")[1], innerGlobal)+')';
+        this.filters.setFilter = 'FILTER ('+name("?"+this.levels1[0], globalPath)+' = '+name("?"+this.levels1[0], innerGLobalPath)+' && bif:'+this.setSpatialFunction+'('+name('?'+this.path1.returnAttribute(), globalPath)+', '+name('?'+this.path2.returnAttribute(), globalPath)+') = ?'+name(this.setAggFunction+this.setSpatialFunction.split("_")[1], innerGlobal)+')';
         return this.filters.returnFilter;
     }
 }
