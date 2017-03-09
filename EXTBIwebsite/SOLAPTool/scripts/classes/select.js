@@ -32,6 +32,17 @@ class Select{
         }
     }
 
+    get returnVariables(){
+        var tmp = [];
+        for (var i = 0; i < this.variables.length; i++){
+            if (this.variables[i][0] == '('){}
+            else {
+                tmp.push(this.variables[i]);
+            }
+        }
+        return tmp;
+    }
+
     get returnSelect(){
         var rdf = new RDF(this.select, this.variables.join().replace(/,/g, " "), this.where);
         console.log(rdf);

@@ -21,6 +21,9 @@ class RDF{
         if (this.Predicate == null && this.Object == null){
             return this.Subject;
         }
+        else if (this.Object == null){
+            return this.Subject + " " + this.Predicate;
+        }
         else{
             return this.Subject + " " + this.Predicate + " " + this.Object;
         }

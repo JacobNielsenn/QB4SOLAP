@@ -14,6 +14,12 @@ class EndGroupBy{
         }
     }
 
+    adds(variables){
+        for (var i = 0; i < variables.length; i++){
+            this.add(variables[i]);
+        }
+    }
+
     detectedDuplicate(variable){
         for (var i in this.variables){
             if(this.variables[i] == variable){

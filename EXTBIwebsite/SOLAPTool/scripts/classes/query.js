@@ -92,6 +92,7 @@ class Query{
             }
             this.addToList(this.opertorList[0].returnFilter);
             this.addToList([new RDF('}  ', null, null)]);
+            this.addToList(this.opertorList[0].endGroupBy.returnEndGroupBy);
         }
         else{
             for (var i = 1; i < this.opertorList.length; i++){

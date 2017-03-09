@@ -124,7 +124,7 @@ class Operator{
         }
         else{
             for (var i = 0; i < this.levelsGroupByPath.length; i++){
-                if (i != this.levelsGroupByPath.length && i != 0 && this.levelsGroupByPath.length > 2){
+                if (i != this.levelsGroupByPath.length && i != 0 && this.levelsGroupByPath.length > 1){
                     if (i == this.levelsGroupByPath.length-1){
                         specialName = name('?'+this.aggregationLevel.startLevel+this.levelsGroupByPath[i], globalPath);
                         this.spaRDF.add(new RDF(
@@ -154,6 +154,7 @@ class Operator{
                 }
                 if (i == this.levelsGroupByPath.length-1){
                     this.selRDF.add(specialName);
+                    this.endGroupBy.adds(this.selRDF.returnVariables);
                 }
 
             }
