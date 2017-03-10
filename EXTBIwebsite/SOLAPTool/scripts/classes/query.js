@@ -5,6 +5,7 @@ class Query{
     constructor(){
         this.opertorList = [];
         this.rdfList = new RDFHandler();
+        this.select = new Select();
     }
 
     add(operator){
@@ -76,7 +77,10 @@ class Query{
     get returnQuery(){
         var SRUCase = [];
         this.rdfList = new RDFHandler();
-        this.addToList(this.opertorList[0].returnSelectRDF);
+        for (var i = 0; i < this.opertorList.length; i++){
+            this.select.adds(this.opertorList[i].selRDF.returnVariables);
+        }
+        this.addToList(this.select.returnSelect);
         if (this.opertorList.length == 1){
             this.addToList(this.opertorList[0].returnSpatialRDF);
             this.addToList(this.opertorList[0].returnAttributeRDF);
@@ -92,9 +96,12 @@ class Query{
             }
             this.addToList(this.opertorList[0].returnFilter);
             this.addToList([new RDF('}  ', null, null)]);
-            this.addToList(this.opertorList[0].endGroupBy.returnEndGroupBy);
+            if (this.opertorList[0].constructor == OSRU) {
+                this.addToList(this.opertorList[0].endGroupBy.returnEndGroupBy);
+            }
         }
         else{
+
             for (var i = 1; i < this.opertorList.length; i++){
                 this.merge(this.opertorList[i-1].returnSpatialRDF, this.opertorList[i].returnSpatialRDF);
             }
@@ -110,30 +117,33 @@ class Query{
             }
             if (SRUCase.length > 0){
                 this.addToList([new RDF('{', null, null)]);
-            }
-            if (SRUCase.length > 1){
-                for (var i = 1; i < this.SRUCase.length; i++){
-                    this.merge(this.opertorList[SRUCase[i-1]].returnInnerSpatialRDF, this.opertorList[SRUCase[i]].returnInnerSpatialRDF);
+                if (SRUCase.length > 1){
+                    for (var i = 1; i < this.SRUCase.length; i++){
+                        this.merge(this.opertorList[SRUCase[i-1]].returnInnerSpatialRDF, this.opertorList[SRUCase[i]].returnInnerSpatialRDF);
+                    }
                 }
-            }
-            else {
-                console.log(this.opertorList[SRUCase[0]], SRUCase[0]);
-                this.addToList([new RDF('{', null, null)]);
-                this.addToList(this.opertorList[SRUCase[0]].returnInnerSelectRDF);
-                this.addToList(this.opertorList[SRUCase[0]].returnInnerSpatialRDF);
-                this.addToList(this.opertorList[SRUCase[0]].returnInnerAttributeRDF);
-                this.addToList(this.opertorList[SRUCase[0]].returnBIND);
-                this.addToList([new RDF('}', null, null)]);
-                this.addToList(this.opertorList[SRUCase[0]].returnGroupBy);
-                this.addToList([new RDF('} ', null, null)]);
+                else {
+                    console.log(this.opertorList[SRUCase[0]], SRUCase[0]);
+                    this.addToList([new RDF('{', null, null)]);
+                    this.addToList(this.opertorList[SRUCase[0]].returnInnerSelectRDF);
+                    this.addToList(this.opertorList[SRUCase[0]].returnInnerSpatialRDF);
+                    this.addToList(this.opertorList[SRUCase[0]].returnInnerAttributeRDF);
+                    this.addToList(this.opertorList[SRUCase[0]].returnBIND);
+                    this.addToList([new RDF('}', null, null)]);
+                    this.addToList(this.opertorList[SRUCase[0]].returnGroupBy);
+                    this.addToList([new RDF('} ', null, null)]);
+                }
             }
             for (var i = 1; i < this.opertorList.length; i++) {
                 this.merge(this.opertorList[i - 1].returnFilter, this.opertorList[i].returnFilter);
             }
+            this.addToList([new RDF('}        ', null, null)]);
             if (SRUCase.length > 0){
-                this.addToList([new RDF('}', null, null)]);
+                console.log("SRUCase:", SRUCase.length);
+                for (var i = 0; i < SRUCase.length; i++){
+                    this.addToList(this.opertorList[SRUCase[i]].endGroupBy.returnEndGroupBy);
+                }
             }
-            this.addToList([new RDF('}', null, null)]);
         }
         return this.rdfList;
     }

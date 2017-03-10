@@ -154,7 +154,7 @@ class Operator{
                 }
                 if (i == this.levelsGroupByPath.length-1){
                     this.selRDF.add(specialName);
-                    this.endGroupBy.adds(this.selRDF.returnVariables);
+                    this.endGroupBy.adds(this.selRDF.returnVariablesForGroup);
                 }
 
             }

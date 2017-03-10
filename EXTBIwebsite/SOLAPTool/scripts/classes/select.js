@@ -15,6 +15,12 @@ class Select{
         }
     }
 
+    adds(variables){
+        for (var i = 0; i < variables.length; i++){
+            this.add(variables[i]);
+        }
+    }
+
     detectedDuplicate(variable){
         for (var i in this.variables){
             if(this.variables[i] == variable){
@@ -35,7 +41,21 @@ class Select{
     get returnVariables(){
         var tmp = [];
         for (var i = 0; i < this.variables.length; i++){
-            if (this.variables[i][0] == '('){}
+            if (this.variables[i][0] == '('){
+                tmp.push(this.variables[i]);
+            }
+            else {
+                tmp.push(this.variables[i]);
+            }
+        }
+        return tmp;
+    }
+
+    get returnVariablesForGroup(){
+        var tmp = [];
+        for (var i = 0; i < this.variables.length; i++){
+            if (this.variables[i][0] == '('){
+            }
             else {
                 tmp.push(this.variables[i]);
             }
