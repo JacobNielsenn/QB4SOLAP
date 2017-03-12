@@ -42,21 +42,25 @@ function bDelete(){
 }
 // HEADER UTILITY //
 function Delete(element){
-	//console.log(queryOfOperators);
-	var operator = searchOperator(element);
-	deleteOperatorInList(operator.id);
+	console.log(Q.opertorList, GetClosestP(element));
+	Q.deleteOperator(GetClosestP(element).id);
+	//var operator = searchOperator(element);
+	//deleteOperatorInList(operator.id);
+    console.log(Q);
 	GetClosestP(element).remove();
 	PComplete();
 }
 function MoveDown(element){
 	var test = GetClosestP(element);
 	swapOperatorInList(test, test.nextSibling);
+	Q.swapOperator(test, test.nextSibling);
 	swapElements(test, test.nextSibling);
 	PComplete();
 }
 function MoveUp(element){
 	var test = GetClosestP(element);
 	swapOperatorInList(test, test.previousSibling);
+	Q.swapOperator(test, test.previousSibling);
 	swapElements(test, test.previousSibling);
 	PComplete();
 }

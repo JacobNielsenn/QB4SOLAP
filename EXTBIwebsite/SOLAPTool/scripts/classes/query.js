@@ -6,6 +6,7 @@ class Query{
         this.opertorList = [];
         this.rdfList = new RDFHandler();
         this.select = new Select();
+        this.aggregate = false;
     }
 
     add(operator){
@@ -20,12 +21,48 @@ class Query{
         }
     }
 
+    findHighestLevel(){
+        console.log(this.rdfList.returnRDF().length);
+        var firstSelect = false;
+        var level;
+        var index;
+        for (var i = 0; i < this.rdfList.returnRDF().length; i++){
+            if (this.rdfList.returnRDF()[i].returnSubject == "SELECT"){
+                firstSelect = !firstSelect;
+            }
+            if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:') !== -1 ){
+                level = this.rdfList.returnRDF()[i];
+                index = i;
+            }
+        }
+        return {level:level, index:index};
+    }
+
     get list(){
         return this.opertorList;
     }
 
     get mainOperator(){
         return this.opertorList[0];
+    }
+
+    swapOperator(ele1, ele2){
+        for (var i in this.opertorList){
+            for (var j in this.opertorList) {
+                if (this.opertorList[i].id == ele1.id && this.opertorList[j].id == ele2.id) {
+                    this.opertorList[j] = this.opertorList.splice(i, 1, this.opertorList[j])[0];
+                    return null;
+                }
+            }
+        }
+    }
+
+    deleteOperator(operatorID){
+        for (var i = 0; i < this.opertorList.length; i++){
+            if (this.opertorList[i].id == operatorID){
+                this.opertorList.splice(i,1);
+            }
+        }
     }
 
     get check(){
@@ -76,7 +113,11 @@ class Query{
 
     get returnQuery(){
         var SRUCase = [];
+        this.select = new Select();
         this.rdfList = new RDFHandler();
+        if (this.opertorList.length == 0){
+            return this.rdfList;
+        }
         for (var i = 0; i < this.opertorList.length; i++){
             this.select.adds(this.opertorList[i].selRDF.returnVariables);
         }
@@ -144,6 +185,37 @@ class Query{
                     this.addToList(this.opertorList[SRUCase[i]].endGroupBy.returnEndGroupBy);
                 }
             }
+        }
+        if (this.aggregate == true){
+            //?countryName
+            //(SUM(?sales2) AS ?totalSales2 )
+            //(SUM(?quantity2) AS ?totalQuantity2)
+            //(AVG(?discount2) AS ?averageDiscount2)
+            //(AVG(?unitPrice2) AS ?averageUnitPrice2)
+            //(SUM(?freight2) AS ?totalFreight2)
+            this.select.add(this.findHighestLevel().level.returnSubject.replace(/[0-9]/g,'')+'Name');
+            this.select.add('(SUM(?sales1) AS ?totalSales1 )');
+            this.select.add('(SUM(?quantity1) AS ?totalQuantity1)');
+            this.select.add('(AVG(?discount1) AS ?averageDiscount1)');
+            this.select.add('(AVG(?unitPrice1) AS ?averageUnitPrice1)');
+            this.select.add('(SUM(?freight1) AS ?totalFreight1)');
+            this.select.remove(name('?obs',global));
+            this.rdfList.replaceAtIndex(0, this.select.returnSelect[0]);
+            var tmp = this.findHighestLevel().level;
+            var index = this.findHighestLevel().index;
+            //console.log(tmp.returnSubject, 'gnw:'+tmp.returnSubject.replace(/[0-9]/g,'').replace(/\?/g,'')+'Name', tmp.returnSubject.replace(/[0-9]/g,'')+'Name');
+            this.rdfList.addAtIndex(index, new RDF(tmp.returnSubject, 'gnw:'+tmp.returnSubject.replace(/[0-9]/g,'').replace(/\?/g,'')+'Name', tmp.returnSubject.replace(/[0-9]/g,'')+'Name'));
+            this.rdfList.addAtIndex(index, new RDF('?obs1', 'gnw:salesAmount', '?sales1'));
+            this.rdfList.addAtIndex(index, new RDF('?obs1', 'gnw:quantity', '?quantity1'));
+            this.rdfList.addAtIndex(index, new RDF('?obs1', 'gnw:discount', '?discount1'));
+            this.rdfList.addAtIndex(index, new RDF('?obs1', 'gnw:unitPrice', '?unitPrice1'));
+            this.rdfList.addAtIndex(index, new RDF('?obs1', 'gnw:freight', '?freight1'));
+            //?obs1 gnw:salesAmount ?sales2 .
+            //?obs1 gnw:quantity ?quantity2 .
+            //?obs1 gnw:discount ?discount2 .
+            //?obs1 gnw:unitPrice ?unitPrice2 .
+            //?obs1 gnw:freight ?freight2 .
+
         }
         return this.rdfList;
     }

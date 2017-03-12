@@ -26,6 +26,21 @@ class RDFHandler{
         }
     }
 
+    addAtIndex(index, rdf){
+        if (rdf.constructor == RDF){
+            if (!this.detectDuplicate(rdf))
+                this.rdfs.splice(index, 0, rdf);
+        }
+        else{
+            alert('You need to add an rdf and not a string');
+            console.log('Should be rdf but is this:', rdf);
+        }
+    }
+
+    replaceAtIndex(index, rdf){
+        this.rdfs[index] = rdf;
+    }
+
     detectDuplicate(rdf){
         for (var ele in this.rdfs){
             if (this.rdfs[ele].returnSubject == rdf.returnSubject){
@@ -45,7 +60,7 @@ class RDFHandler{
             if (this.rdfs[i].returnSubject == "SELECT"){
                 text += this.rdfs[i].returnRDF() + " {\n";
             }
-            else if (this.rdfs[i].returnObject == null){
+            else if (this.rdfs[i].returnObject == ""){
                 text += this.rdfs[i].returnRDF() + " \n";
             }
             else {

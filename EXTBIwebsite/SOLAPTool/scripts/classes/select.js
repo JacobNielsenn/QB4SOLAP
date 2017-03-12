@@ -33,7 +33,7 @@ class Select{
     remove(variable){
         for (var i in this.variables){
             if (this.variables[i] == variable){
-                this.variables[i].remove(i);
+                this.variables.splice(i,1);
             }
         }
     }

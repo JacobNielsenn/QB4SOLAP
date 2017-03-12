@@ -9,12 +9,21 @@ class RDF{
     }
 
     get returnSubject(){
+        if (this.Subject == null){
+            return "";
+        }
         return this.Subject;
     }
     get returnPredicate(){
+        if (this.Predicate == null){
+            return "";
+        }
         return this.Predicate;
     }
     get returnObject(){
+        if (this.Object == null){
+            return "";
+        }
         return this.Object;
     }
     returnRDF(){

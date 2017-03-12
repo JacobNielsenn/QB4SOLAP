@@ -7,6 +7,7 @@ function Mes(ele){
         $("#mes").addClass("show");
         $("#mes").removeClass("hide");
         additionalQuery = true;
+        Q.aggregate = true;
         PComplete();
         runQuery();
     }
@@ -15,6 +16,7 @@ function Mes(ele){
         $("#mes").addClass("hide");
         $("#mes").removeClass("show");
         additionalQuery = false;
+        Q.aggregate = false;
         PComplete();
         runQuery();
     }
