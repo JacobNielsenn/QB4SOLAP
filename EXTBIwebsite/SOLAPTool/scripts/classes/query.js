@@ -24,18 +24,55 @@ class Query{
     findHighestLevel(){
         console.log(this.rdfList.returnRDF().length);
         var firstSelect = false;
-        var level;
+        var level = [7];
         var index;
+        var Vname;
         for (var i = 0; i < this.rdfList.returnRDF().length; i++){
             if (this.rdfList.returnRDF()[i].returnSubject == "SELECT"){
                 firstSelect = !firstSelect;
             }
-            if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:') !== -1 ){
-                level = this.rdfList.returnRDF()[i];
+            if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:customer') !== -1 ){
+                level[0] = this.rdfList.returnRDF()[i];
                 index = i;
+                Vname = 'gnw:customerName';
+            }
+            else if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:supplier') !== -1 ){
+                level[1] = this.rdfList.returnRDF()[i];
+                index = i;
+                Vname = 'gnw:supplierName';
+            }
+            else if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:city') !== -1 ){
+                level[2] = this.rdfList.returnRDF()[i];
+                index = i;
+                Vname = 'gnw:cityName';
+            }
+            else if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:state') !== -1 ){
+                level[3] = this.rdfList.returnRDF()[i];
+                index = i;
+                Vname = 'gnw:stateName';
+            }
+            else if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:capital') !== -1 ){
+                level[4] = this.rdfList.returnRDF()[i];
+                index = i;
+                Vname = 'gnw:capitalName';
+            }
+            else if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:country') !== -1 ){
+                level[5] = this.rdfList.returnRDF()[i];
+                index = i;
+                Vname = 'gnw:countryName';
+            }
+            else if (firstSelect == true && (this.rdfList.returnRDF()[i].returnPredicate).indexOf('gnw:continent') !== -1 ){
+                level[6] = this.rdfList.returnRDF()[i];
+                index = i;
+                Vname = 'gnw:continentName';
             }
         }
-        return {level:level, index:index};
+        for (var i = 6; i >= 0; i--){
+            if(level[i] != undefined){
+                console.log(Vname);
+                return {level:level[i], Vname:Vname, index:index};
+            }
+        }
     }
 
     get list(){
@@ -203,8 +240,9 @@ class Query{
             this.rdfList.replaceAtIndex(0, this.select.returnSelect[0]);
             var tmp = this.findHighestLevel().level;
             var index = this.findHighestLevel().index;
+            var Vname = this.findHighestLevel().Vname;
             //console.log(tmp.returnSubject, 'gnw:'+tmp.returnSubject.replace(/[0-9]/g,'').replace(/\?/g,'')+'Name', tmp.returnSubject.replace(/[0-9]/g,'')+'Name');
-            this.rdfList.addAtIndex(index, new RDF(tmp.returnSubject, 'gnw:'+tmp.returnSubject.replace(/[0-9]/g,'').replace(/\?/g,'')+'Name', tmp.returnSubject.replace(/[0-9]/g,'')+'Name'));
+            this.rdfList.addAtIndex(index, new RDF(tmp.returnSubject, Vname, tmp.returnSubject.replace(/[0-9]/g,'')+'Name'));
             this.rdfList.addAtIndex(index, new RDF('?obs1', 'gnw:salesAmount', '?sales1'));
             this.rdfList.addAtIndex(index, new RDF('?obs1', 'gnw:quantity', '?quantity1'));
             this.rdfList.addAtIndex(index, new RDF('?obs1', 'gnw:discount', '?discount1'));
