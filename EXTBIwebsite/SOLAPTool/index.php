@@ -160,7 +160,7 @@
 								<p></p>
 								<button id="pre" style="float:left;" class="hide" onclick="prefixText(this)">Prefixes</button>
 								<textarea disabled id="prefix" style="margin-top:0px; width:500px; height: 200px; float:left; background-color: lightgrey; overflow:hidden;"></textarea>
-								<textarea disabled id="GeneratedQuery" style="margin-top:0px; width:500px; height: 300px; overflow-y: scroll; float:left;"></textarea>
+								<textarea id="GeneratedQuery" style="margin-top:0px; width:500px; height: 300px; overflow-y: scroll; float:left;"></textarea>
                                 <p id="PreventSwap">
                                     <button id="QueryButton" style="float: left" onclick="runQuery()">Run Query</button>
 									<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Aggregate</button>
