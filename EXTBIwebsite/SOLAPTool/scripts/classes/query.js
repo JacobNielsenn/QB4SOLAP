@@ -95,34 +95,6 @@ class Query{
         }
     }
 
-    get check(){
-        //Tell the user if the nesting is incorrect.
-        var countInList = 2;
-        if (this.opertorList.length = 0){ //No operator in list.
-            return false;
-        }
-        else if (this.opertorList.length = 1){ //Only one operator in list.
-            return true;
-        }
-        while (countInList != this.opertorList.length){
-            switch (this.opertorList[countInList].constructor){
-                case(ODice):
-                    if (this.opertorList[countInList-1].constructor == ODice){
-                        return false;
-                    }
-                    break;
-                case(OSlice):
-                    break;
-                case(OSRU):
-                    break;
-                default:
-                    return false;
-            }
-            countInList++;
-        }
-        return true;
-    }
-
     avaiableOperators(){
         var opr = this.opertorList[this.opertorList.length-1].constructor;
         var oprLength = this.opertorList.length;
@@ -145,7 +117,7 @@ class Query{
             menuNoAvailableOperators.setAttribute('style', "");
         }
         else if (opr == OSlice) {
-            menuSDice.setAttribute('style', "display: none;");
+            menuSDice.setAttribute('style', "");
             menuSRU.setAttribute('style', "");
             menuSSlice.setAttribute('style', "");
             menuNoAvailableOperators.setAttribute('style', "display: none;");
