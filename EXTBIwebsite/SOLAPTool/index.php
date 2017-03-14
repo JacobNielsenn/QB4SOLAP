@@ -54,7 +54,11 @@
 			var innerGlobal = {};
 			var innerGLobalPath = {};
             var Q = new Query();
-
+            // MenuBottons
+            var menuSSlice;
+            var menuSDice;
+            var menuSRU;
+            var menuNoAvailableOperators;
 		// - SOLAP 						  //
 		  //var Dimensions = ['employee', 'orderDate', 'dueDate', 'shippedDate', 'product', 'order', 'shipper', 'supplier', 'customer'];
 			var SpatialAggregation = ['Union', 'Intersection', 'Buffer', 'ConvexHull', 'MinimumBoundingRectangle'];
@@ -81,6 +85,10 @@
 				setupdebug();
 				$('#prefix').hide();
 				document.getElementById('debug').style.visibility = "hidden";
+                menuSDice = document.getElementById('menuSDICE');
+                menuSRU = document.getElementById('menuSRU');
+                menuSSlice = document.getElementById('menuSSLICE');
+                menuNoAvailableOperators = document.getElementById('menuNoAvailableOperators');
 				//testing();
 			}
 
@@ -150,9 +158,10 @@
 								<div id="Builder" class="dropdown" style="width: 345px; height: 25px; border: 2px solid transparent; border-color: black; border-radius: 0px 0px 5px 5px; border-style: dashed;">
 									<button class="dropbtn" style="text-align:center; margin:-2px -1px -1px -1px; height:28px; border-radius: 0px 0px 5px 5px; width:347px;">Choose an operator</button>
 								  <div id="myDropdown" class="dropdown-content">
-								    <a href="#" onclick="SSlice_within(this)">S-Slice</a>
-								    <a href="#" onclick="SDice(this)">S-Dice</a>
-								    <a href="#" onclick="SRU(this)">S-Roll-up</a>
+								    <a href="#" id="menuSSLICE" onclick="SSlice_within(this)">S-Slice</a>
+								    <a href="#" id="menuSDICE" onclick="SDice(this)">S-Dice</a>
+								    <a href="#" id="menuSRU" onclick="SRU(this)">S-Roll-up</a>
+                                      <a href="#" id="menuNoAvailableOperators" style="display: none;">No available operators</a>
 								  </div>
 								</div>
 							</div>
@@ -160,7 +169,7 @@
 								<p></p>
 								<button id="pre" style="float:left;" class="hide" onclick="prefixText(this)">Prefixes</button>
 								<textarea disabled id="prefix" style="margin-top:0px; width:500px; height: 200px; float:left; background-color: lightgrey; overflow:hidden;"></textarea>
-								<textarea disabled id="GeneratedQuery" style="margin-top:0px; width:500px; height: 300px; overflow-y: scroll; float:left;"></textarea>
+								<textarea id="GeneratedQuery" style="margin-top:0px; width:500px; height: 300px; overflow-y: scroll; float:left;"></textarea>
                                 <p id="PreventSwap">
                                     <button id="QueryButton" style="float: left" onclick="runQuery()">Run Query</button>
 									<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Aggregate</button>

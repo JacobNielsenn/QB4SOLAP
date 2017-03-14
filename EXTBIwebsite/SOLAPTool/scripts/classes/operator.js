@@ -66,6 +66,7 @@ class Operator{
     }
 
     generate(){
+        Q.avaiableOperators();
         this.selRDF = new Select();
         this.spaRDF = new RDFHandler();
         this.mesRDF = new RDFHandler();

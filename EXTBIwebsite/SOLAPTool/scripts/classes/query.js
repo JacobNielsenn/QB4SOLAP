@@ -14,6 +14,7 @@ class Query{
             operator.constructor == OSlice ||
             operator.constructor == OSRU){
             this.opertorList.push(operator);
+            console.log(this.opertorList.length);
         }
         else{
             alert("Query could not add constructor to list, see log for more info");
@@ -120,6 +121,41 @@ class Query{
             countInList++;
         }
         return true;
+    }
+
+    avaiableOperators(){
+        var opr = this.opertorList[this.opertorList.length-1].constructor;
+        var oprLength = this.opertorList.length;
+        if (this.opertorList.length == 0){
+            menuSDice.setAttribute('style', "");
+            menuSRU.setAttribute('style', "");
+            menuSSlice.setAttribute('style', "");
+            menuNoAvailableOperators.setAttribute('style', "display: none;");
+        }
+        else if (opr == ODice && oprLength == 1) {
+            menuSDice.setAttribute('style', "display: none;");
+            menuSRU.setAttribute('style', "");
+            menuSSlice.setAttribute('style', "");
+            menuNoAvailableOperators.setAttribute('style', "display: none;");
+        }
+        else if (opr == ODice){
+            menuSDice.setAttribute('style', "display: none;");
+            menuSRU.setAttribute('style', "display: none;");
+            menuSSlice.setAttribute('style', "display: none;");
+            menuNoAvailableOperators.setAttribute('style', "");
+        }
+        else if (opr == OSlice) {
+            menuSDice.setAttribute('style', "display: none;");
+            menuSRU.setAttribute('style', "");
+            menuSSlice.setAttribute('style', "");
+            menuNoAvailableOperators.setAttribute('style', "display: none;");
+        }
+        else if (opr == OSRU) {
+            menuSDice.setAttribute('style', "");
+            menuSRU.setAttribute('style', "");
+            menuSSlice.setAttribute('style', "display: none;");
+            menuNoAvailableOperators.setAttribute('style', "display: none;");
+        }
     }
 
     merge(opr1, opr2){

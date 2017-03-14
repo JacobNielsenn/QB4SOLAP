@@ -42,6 +42,7 @@ function bDelete(){
 }
 // HEADER UTILITY //
 function Delete(element){
+	Q.avaiableOperators();
 	console.log(Q.opertorList, GetClosestP(element));
 	Q.deleteOperator(GetClosestP(element).id);
 	//var operator = searchOperator(element);
@@ -51,18 +52,24 @@ function Delete(element){
 	PComplete();
 }
 function MoveDown(element){
-	var test = GetClosestP(element);
-	swapOperatorInList(test, test.nextSibling);
-	Q.swapOperator(test, test.nextSibling);
-	swapElements(test, test.nextSibling);
-	PComplete();
+    Q.avaiableOperators();
+    if (Q.opertorList.length != 1){
+        var test = GetClosestP(element);
+        swapOperatorInList(test, test.nextSibling);
+        Q.swapOperator(test, test.nextSibling);
+        swapElements(test, test.nextSibling);
+        PComplete();
+	}
 }
 function MoveUp(element){
-	var test = GetClosestP(element);
-	swapOperatorInList(test, test.previousSibling);
-	Q.swapOperator(test, test.previousSibling);
-	swapElements(test, test.previousSibling);
-	PComplete();
+    Q.avaiableOperators();
+    if (Q.opertorList.length != 1){
+        var test = GetClosestP(element);
+        swapOperatorInList(test, test.previousSibling);
+        Q.swapOperator(test, test.previousSibling);
+        swapElements(test, test.previousSibling);
+        PComplete();
+	}
 }
 function Reset(element){
 	//reset.png is taken from endless icons which is free to use.
@@ -94,10 +101,12 @@ function swapElements(obj1, obj2) {
 	}
 }
 function buttonstyleupdate(element){
-	var test = GetClosestP(element);
-	if (test.nextSibling != null){
-		console.log("This can't got further down", test);
-	}
+    if (Q.opertorList.length != 1) {
+        var test = GetClosestP(element);
+        if (test.nextSibling != null) {
+            console.log("This can't got further down", test);
+        }
+    }
 }
 // BODY //
 function SSlice_within(event){
@@ -138,6 +147,7 @@ function SSlice_within(event){
 	console.log("GlobalPath", globalPath);
 	console.log("InnerGlobal", innerGlobal);
 	console.log("InnerGlobalPath", innerGLobalPath);
+    Q.avaiableOperators();
 }
 function SDice(event){
 	var p = InsertP('Operator', 'border: 1px solid black;');
@@ -160,6 +170,7 @@ function SDice(event){
     console.log("GlobalPath", globalPath);
     console.log("InnerGlobal", innerGlobal);
     console.log("InnerGlobalPath", innerGLobalPath);
+    Q.avaiableOperators();
 }
 function SRU(event){
     var p = InsertP('Operator', 'border: 1px solid black;');
@@ -186,6 +197,7 @@ function SRU(event){
     console.log("GlobalPath", globalPath);
     console.log("InnerGlobal", innerGlobal);
     console.log("InnerGlobalPath", innerGLobalPath);
+    Q.avaiableOperators();
 }
 // BODY UTILITY //
 function SpatialLevel(optionalName, optionalID){
