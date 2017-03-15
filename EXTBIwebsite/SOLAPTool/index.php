@@ -53,7 +53,7 @@
 			var globalPath = {};
 			var innerGlobal = {};
 			var innerGLobalPath = {};
-            var Q = new Query();
+            var Q = new ClsQuery();
             // MenuBottons
             var menuSSlice;
             var menuSDice;

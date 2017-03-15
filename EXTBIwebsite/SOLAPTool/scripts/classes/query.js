@@ -1,7 +1,7 @@
 /**
  * Created by JN on 14/02/2017.
  */
-class Query{
+class ClsQuery{
     constructor(){
         this.opertorList = [];
         this.rdfList = new RDFHandler();
