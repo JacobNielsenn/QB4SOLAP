@@ -4,8 +4,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<script type="text/javascript" src="scripts/utility/interact.js"></script>
+        <script type="text/javascript" src="scripts/utility/jquery-3.1.0.js"></script>
 		<script type="text/javascript" src="scripts/utility/loadSchema.js"></script>
-		<script type="text/javascript" src="scripts/utility/jquery-3.1.0.js"></script>
 		<script type="text/javascript" src="scripts/utility/double-linked-list.js"></script>
 		<script type="text/javascript" src="scripts/BasicComponentHTML.js"></script>
 		<script type="text/javascript" src="scripts/createHTML.js"></script>
@@ -75,22 +75,24 @@
 			spatialMode = {On: 1, Off:0};
 		////////////////////////////////////
 		// Methods - Initialize & Utility //
-			window.onload = Initialize;
 			function Initialize(){
 				GeneratedQueryElement = document.getElementById('GeneratedQuery');
 				QueryStatment = document.getElementById('StartQuery');
-				convertDataToObjects(data);
-				RemoveRegionFromDataStructureDefinition(DataStructureDefinition);
-				console.log(DataStructureDefinition);
+				//convertDataToObjects(0);
+                //DataStructureDefinition = {levelProperty:[], measure:[], dimension:[]};
+                convertDataToObjects1(DataStructureDefinition ,0);
+				//RemoveRegionFromDataStructureDefinition(DataStructureDefinition);
+				console.log("Original" ,DataStructureDefinition);
+                console.log("New Org" ,GlobalObject1);
+                console.log("Farm" ,GlobalObject2);
 				document.getElementById('prefix').innerHTML = prefixes; //Fill the Prefiexs area
-				setupdebug();
+				//setupdebug();
 				$('#prefix').hide();
 				document.getElementById('debug').style.visibility = "hidden";
                 menuSDice = document.getElementById('menuSDICE');
                 menuSRU = document.getElementById('menuSRU');
                 menuSSlice = document.getElementById('menuSSLICE');
                 menuNoAvailableOperators = document.getElementById('menuNoAvailableOperators');
-				//testing();
 			}
 
 			function testing(){

@@ -269,7 +269,7 @@ gaf:parishDim a rdf:Property , qb:DimensionProperty ; rdfs:label "Parish Dimensi
 	
 # -- Geography hierarchy 	
 	
-gaf:geogprahy a qb4o:Hierarchy ; rdfs:label "Geography Hierarchy"@en ;
+gaf:geography a qb4o:Hierarchy ; rdfs:label "Geography Hierarchy"@en ;
 	qb4o:inDimension gaf:parishDim ;
     qb4o:hasLevel gaf:drainageArea .
 
