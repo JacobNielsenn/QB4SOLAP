@@ -1,0 +1,8 @@
+.notify{
+    animation: fadingColor 1s;
+}
+
+@keyframes fadingColor {
+    from { background-color: indianred; }
+    to   { background-color: white; }
+}

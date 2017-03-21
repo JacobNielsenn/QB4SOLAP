@@ -32,7 +32,6 @@ function bMoveDown(){
 	return b;
 }
 function bDelete(){
-
 	var b = document.createElement('button');
 	b.setAttribute('name', 'delete');
 	b.setAttribute('onclick', 'Delete(this)');
@@ -42,7 +41,6 @@ function bDelete(){
 }
 // HEADER UTILITY //
 function Delete(element){
-	Q.avaiableOperators();
 	console.log(Q.opertorList, GetClosestP(element));
 	Q.deleteOperator(GetClosestP(element).id);
 	//var operator = searchOperator(element);
@@ -50,6 +48,7 @@ function Delete(element){
     console.log(Q);
 	GetClosestP(element).remove();
 	PComplete();
+    Q.avaiableOperators();
 }
 function MoveDown(element){
     Q.avaiableOperators();
@@ -111,7 +110,7 @@ function buttonstyleupdate(element){
 // BODY //
 function SSlice_within(event){
 	var p = InsertP('Operator', 'border: 1px solid black;');
-	var header = Insertheader('S-Slice - within');
+	var header = Insertheader('S-Slice');
 	var body = InsertP('body');
 	body.setAttribute('style', 'min-height: 50px; margin:0px 0px 0px 0px; background: lightgrey;');
 	var p1 = InsertP('select1', 25, 100);

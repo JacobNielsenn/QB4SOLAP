@@ -96,7 +96,9 @@ class Query{
     }
 
     avaiableOperators(){
-        var opr = this.opertorList[this.opertorList.length-1].constructor;
+        if (this.opertorList.length != 0){
+            var opr = this.opertorList[this.opertorList.length-1].constructor;
+        }
         var oprLength = this.opertorList.length;
         if (this.opertorList.length == 0){
             menuSDice.setAttribute('style', "");

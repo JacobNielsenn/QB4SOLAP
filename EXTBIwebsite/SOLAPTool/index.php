@@ -37,6 +37,7 @@
 		<link rel="stylesheet" href="./css/menu/RUPath.css" type="text/css">
 		<link rel="stylesheet" href="./css/button/button.css" type="text/css">
 		<link rel="stylesheet" href="./css/trash/tap.css" type="text/css">
+        <link rel="stylesheet" href="./css/menu/notify.css" type="text/css">
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css"/>
 		<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 		<script type="text/javascript">
