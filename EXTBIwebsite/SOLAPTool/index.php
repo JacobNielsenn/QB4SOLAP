@@ -61,7 +61,6 @@
             var menuSRU;
             var menuNoAvailableOperators;
 		// - SOLAP 						  //
-		  //var Dimensions = ['employee', 'orderDate', 'dueDate', 'shippedDate', 'product', 'order', 'shipper', 'supplier', 'customer'];
 			var SpatialAggregation = ['Union', 'Intersection', 'Buffer', 'ConvexHull', 'MinimumBoundingRectangle'];
 			var TopologicalRelations = ['Intersects', 'Disjoint', 'Equals', 'Overlaps', 'Contains', 'Within', 'Touches', 'Covers', 'CoveredBy', 'Crosses', 'Distance'];
 			var NumericOperations = ['Perimeter', 'Area', 'NoOfInteriorRings' , 'Distance', 'HaversineDistance', 'NearstNeighbor', 'NoOfGeometries'];
@@ -78,15 +77,8 @@
 			function Initialize(){
 				GeneratedQueryElement = document.getElementById('GeneratedQuery');
 				QueryStatment = document.getElementById('StartQuery');
-				//convertDataToObjects(0);
-                //DataStructureDefinition = {levelProperty:[], measure:[], dimension:[]};
                 convertDataToObjects1(DataStructureDefinition ,0);
-				//RemoveRegionFromDataStructureDefinition(DataStructureDefinition);
-				console.log("Original" ,DataStructureDefinition);
-                console.log("New Org" ,GlobalObject1);
-                console.log("Farm" ,GlobalObject2);
 				document.getElementById('prefix').innerHTML = prefixes; //Fill the Prefiexs area
-				//setupdebug();
 				$('#prefix').hide();
 				document.getElementById('debug').style.visibility = "hidden";
                 menuSDice = document.getElementById('menuSDICE');
@@ -94,40 +86,6 @@
                 menuSSlice = document.getElementById('menuSSLICE');
                 menuNoAvailableOperators = document.getElementById('menuNoAvailableOperators');
 			}
-
-			function testing(){
-			    var a = new Query();
-                var b = new ODice("test", 2);
-                b.setPath1 = 'supplierGeo,supplier,supplier,spatial levels,';
-                b.setPath2 = 'customerGeo,customer,customer,spatial levels,';
-                b.distance = 100;
-                b.generatePath(1);
-                b.generatePath(1);
-                b.generateAttri(1);
-                b.generateAttri(2);
-                var c = new OSlice("test1", 3);
-                c.setPath1 = 'countryGeo,country,customer,spatial levels,';
-                c.generatePath(1);
-                c.generateAttri(1);
-                c.first = '8.437500000000002, 58.015861473731434';
-                c.second = 'countryGeo';
-                c.spatialOperator = 'within';
-                c.userInput = 'Point';
-                var d = new OSlice("test1", 3);
-                c.setPath1 = 'cityGeo,city,customer,spatial levels,';
-                c.generatePath(1);
-                c.generateAttri(1);
-                c.first = '12.437500000000002, 64.015861473731434';
-                c.second = 'cityGeo';
-                c.spatialOperator = 'within';
-                c.userInput = 'Point';
-                a.add(b);
-                a.add(c);
-                a.add(d);
-                console.log(a);
-                console.log(a.returnQuery);
-                GeneratedQueryElement.innerHTML += a.returnQuery.returnRDFQuery();
-            }
 		</script>
 	</head>
 <body class="about QB4SOLAP">

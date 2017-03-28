@@ -366,7 +366,7 @@ function clickedAttribute(element){
 			break;
 	}
     console.log(operator, obj, cls);
-	PComplete();
+    Q.printQuery();
 }
 // Used to change the name of the multimenu after it has been clicked.
 function clickedMultiMenu(element){

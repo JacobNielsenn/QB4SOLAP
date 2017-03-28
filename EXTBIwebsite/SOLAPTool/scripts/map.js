@@ -45,5 +45,5 @@ function UpdateObject(e){
         addProperty(element, 'second', (e.latlng.lng + ", " + e.latlng.lat));
         cls.setSecond = e.latlng.lng + ", " + e.latlng.lat;
     }
-    PComplete();
+    Q.printQuery();
 }

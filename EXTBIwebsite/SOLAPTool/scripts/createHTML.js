@@ -47,7 +47,7 @@ function Delete(element){
 	//deleteOperatorInList(operator.id);
     console.log(Q);
 	GetClosestP(element).remove();
-	PComplete();
+    Q.printQuery();
     Q.avaiableOperators();
 }
 function MoveDown(element){
@@ -57,7 +57,7 @@ function MoveDown(element){
         swapOperatorInList(test, test.nextSibling);
         Q.swapOperator(test, test.nextSibling);
         swapElements(test, test.nextSibling);
-        PComplete();
+        Q.printQuery();
 	}
 }
 function MoveUp(element){
@@ -67,7 +67,7 @@ function MoveUp(element){
         swapOperatorInList(test, test.previousSibling);
         Q.swapOperator(test, test.previousSibling);
         swapElements(test, test.previousSibling);
-        PComplete();
+        Q.printQuery();
 	}
 }
 function Reset(element){

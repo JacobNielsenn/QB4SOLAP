@@ -150,6 +150,11 @@ class ClsQuery{
         }
     }
 
+    printQuery(){
+        console.log('Running qUERY');
+        GeneratedQueryElement.innerHTML = Q.returnQuery.returnRDFQuery();
+    }
+
     get returnQuery(){
         var SRUCase = [];
         this.select = new Select();
