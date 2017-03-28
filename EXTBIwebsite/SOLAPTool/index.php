@@ -15,7 +15,6 @@
 		<script type="text/javascript" src="scripts/utility.js"></script>
 		<script type="text/javascript" src="scripts/buildquery.js"></script>
 		<script type="text/javascript" src="scripts/runQuery.js"></script>
-		<script type="text/javascript" src="scripts/debug.js"></script>
 		<script type="text/javascript" src="scripts/map.js"></script>
 		<script type="text/javascript" src="scripts/options.js"></script>
         <script type="text/javascript" src="scripts/classes/rdf.js"></script>

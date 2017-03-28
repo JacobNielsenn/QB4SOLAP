@@ -2,7 +2,7 @@ var urls = ["schemas/gnw_qb4solap_schema.txt", "schemas/geodyrDW_qb4solap_schema
 var dataEntry = [];
 var objs = [];
 var DataStructureDefinition = {levelProperty:[], measure:[], dimension:[]};
-var DataStructureDefinitionName;
+var DataStructureDefinitionName = 'gnw:';
 var prefixes = "";
 var GlobalObject1 = {levelProperty:[], measure:[], dimension:[]};
 var GlobalObject2 = {levelProperty:[], measure:[], dimension:[]};
@@ -111,7 +111,6 @@ function searhFor(o, target){
 }
 
 
-//console.log("%c" + lines[i], 'background: #222; color: #bada55');
 function convertDataToObjects1(obj ,index) {
     var rdf = convertFileIntoLines(dataEntry[index]);
     rdf = RemoveComments(rdf);
@@ -149,15 +148,6 @@ function convertDataToObjects1(obj ,index) {
             return string;
         }});
 
-    console.log('filterDataStructure', filterDataStructure);
-    console.log('filterGeometry', filterGeometry);
-    console.log('filterLevelAttribute', filterLevelAttribute);
-    console.log('filterMeasureProperty', filterMeasureProperty);
-    console.log('filterDimensionProperty', filterDimensionProperty);
-    console.log('filterLevelProperty', filterLevelProperty);
-    console.log('filterHierarchyStep', filterHierarchyStep);
-    console.log('filterHierarchy', filterHierarchy);
-    console.log(rdf);
 
     //Fill Dimensions with names and template properties
     for (var i in filterDimensionProperty){
@@ -237,11 +227,9 @@ function convertDataToObjects1(obj ,index) {
                         if (filterHierarchy[i].split('hasLevel').splice(1)[ii].includes(';')){
                             if (filterHierarchy[i].split('hasLevel').splice(1)[ii].includes('qb4o')){
                                 obj.dimension[l].dimensionProperty.hasHierarchy[o].hierarchy.hasLevel.push(filterHierarchy[i].split('hasLevel').splice(1)[ii].split(';').slice(0, 1)[0].split(':')[1].replace(' ',''));
-                                //console.log('hasLevel' ,filterHierarchy[i].split('hasLevel').splice(1)[ii].split(';').slice(0, 1)[0].split(':')[1]);
                             }
                             else{
                                 obj.dimension[l].dimensionProperty.hasHierarchy[o].hierarchy.hasLevel.push(filterHierarchy[i].split('hasLevel').splice(1)[ii].split(';').split(':')[1].replace(' ',''));
-                                //console.log('hasLevel' ,filterHierarchy[i].split('hasLevel').splice(1)[ii].split(';').split(':')[1]);
                             }
 
                         }
@@ -249,22 +237,16 @@ function convertDataToObjects1(obj ,index) {
                             for (var ll in filterHierarchy[i].split('hasLevel').splice(1)[ii].split(',')){
                                 if (filterHierarchy[i].split('hasLevel').splice(1)[ii].split(',')[ll].includes('.')){
                                     obj.dimension[l].dimensionProperty.hasHierarchy[o].hierarchy.hasLevel.push(filterHierarchy[i].split('hasLevel').splice(1)[ii].split(',')[ll].split(' .')[0].split(':')[1].replace(' ',''));
-                                    //console.log('hasLevel' ,filterHierarchy[i].split('hasLevel').splice(1)[ii].split(',')[ll].split(' .')[0].split(':')[1]);
                                 }
                                 else{
                                     obj.dimension[l].dimensionProperty.hasHierarchy[o].hierarchy.hasLevel.push(filterHierarchy[i].split('hasLevel').splice(1)[ii].split(',')[ll].split(':')[1].replace(' ',''));
-                                    //console.log('hasLevel' ,filterHierarchy[i].split('hasLevel').splice(1)[ii].split(',')[ll].split(':')[1]);
                                 }
                             }
                         }
                         else if (filterHierarchy[i].split('hasLevel').splice(1)[ii].includes('.')){
                             obj.dimension[l].dimensionProperty.hasHierarchy[o].hierarchy.hasLevel.push(filterHierarchy[i].split('hasLevel').splice(1)[ii].split(' .')[0].split(':')[1].replace(' ',''));
-                            //console.log('hasLevel' ,filterHierarchy[i].split('hasLevel').splice(1)[ii].split(' .')[0].split(':')[1]);
                         }
                     }
-                }
-                else{
-                    //console.log(filterHierarchy[i]);
                 }
             }
         }
@@ -286,18 +268,16 @@ function convertDataToObjects1(obj ,index) {
             }
         }
     }
-    //Fill LevelProperty with label, levelProperty and templates
+    //Fill LevelProperty with label, levelProperty, hasGeometry and templates
     for (var i in filterLevelProperty){
         var tmpGeo = [];
         if (filterLevelProperty[i].includes('hasGeometry')){
             for (var ii in filterLevelProperty[i].split('hasGeometry').slice(1)){
                 if(filterLevelProperty[i].split('hasGeometry').slice(1)[ii].includes(';')){
-                    tmpGeo.push(filterLevelProperty[i].split('hasGeometry').slice(1)[ii].split(' ;')[0].replace(' ','').split(':')[1]);
-                    console.log(filterLevelProperty[i].split('hasGeometry').slice(1)[ii].split(' ;')[0].replace(' ','').split(':')[1]);
+                    tmpGeo.push(filterLevelProperty[i].split('hasGeometry').slice(1)[ii].split(' ;')[0].replace(/ /g,'').split(':')[1]);
                 }
                 else{
-                    tmpGeo.push(filterLevelProperty[i].split('hasGeometry').slice(1)[ii].split('.')[0].replace(' ','').split(':')[1]);
-                    console.log(filterLevelProperty[i].split('hasGeometry').slice(1)[ii].split('.')[0].replace(' ','').split(':')[1]);
+                    tmpGeo.push(filterLevelProperty[i].split('hasGeometry').slice(1)[ii].split('.')[0].replace(/ /g,'').split(':')[1]);
                 }
             }
         }
@@ -317,7 +297,6 @@ function convertDataToObjects1(obj ,index) {
             }
         }
     }
-    //Fill LevelProperty with hasGeometry
 }
 
 

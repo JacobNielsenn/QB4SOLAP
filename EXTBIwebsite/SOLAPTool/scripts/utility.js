@@ -29,10 +29,3 @@ function UpdateID(name){
 	ID[name] = 1;
 	return ID[name];
 }
-
-function RemoveRegionFromDataStructureDefinition(data){
-	data.dimension[7].dimensionProperty.hasHierarchy[0].hierarchy.hasLevel.splice(3,1);
-	data.dimension[8].dimensionProperty.hasHierarchy[0].hierarchy.hasLevel.splice(3,1);
-	data.dimension[0].dimensionProperty.hasHierarchy[1].hierarchy.hasLevel.splice(3,1);
-	data.levelProperty.splice(3,1);
-}
