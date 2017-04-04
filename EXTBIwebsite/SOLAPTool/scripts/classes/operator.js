@@ -257,6 +257,7 @@ class OSlice extends Operator {
     get returnFilter(){
         if (this.first.indexOf(',') != -1){
             console.log('case 1');
+            console.log(this);
             //FILTER (bif:st_within(bif:st_point(10.079956054687502, 51.06211251399775), ?countryGeo1 ,32))
             this.filters.setFilter = 'FILTER (bif:st_within(bif:st_point(' + this.first + '), ?' + name(this.path1.returnAttribute(), global) + ' ,' + this.distance +'))';
         }

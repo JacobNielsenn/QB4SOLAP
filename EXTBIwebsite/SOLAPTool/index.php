@@ -4,16 +4,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script type="text/javascript" src="scripts/utility/jquery-3.1.0.js"></script>
 		<script type="text/javascript" src="scripts/utility/loadSchema.js"></script>
-		<script type="text/javascript" src="scripts/BasicComponentHTML.js"></script>
 		<script type="text/javascript" src="scripts/createHTML.js"></script>
 		<script type="text/javascript" src="scripts/lookUp.js"></script>
-		<script type="text/javascript" src="scripts/menu.js"></script>
-		<script type="text/javascript" src="scripts/print.js"></script>
 		<script type="text/javascript" src="scripts/utility.js"></script>
-		<script type="text/javascript" src="scripts/buildquery.js"></script>
-		<script type="text/javascript" src="scripts/runQuery.js"></script>
 		<script type="text/javascript" src="scripts/map.js"></script>
-		<script type="text/javascript" src="scripts/options.js"></script>
         <script type="text/javascript" src="scripts/classes/rdf.js"></script>
         <script type="text/javascript" src="scripts/classes/select.js"></script>
         <script type="text/javascript" src="scripts/classes/rdfHandler.js"></script>
@@ -43,7 +37,6 @@
 			var QueryStatment;
 			var ID = {};
 			var NameID = {};
-			var queryOfOperators = [];
 			var global = {};
 			var globalPath = {};
 			var innerGlobal = {};
@@ -63,6 +56,7 @@
 			var AGG = ['MAX', 'MIN', 'AVG'];
 			var SpatialDimensions = ['supplier', 'customer'];
 			var SpatialFunction = ['st_distance'];
+            var tab = '   ';
 		// - Enums //
 			structureLevel = {Dimenasion: 3, Level: 2, Attribute: 1};
 			spatialMode = {On: 1, Off:0};

@@ -33,16 +33,12 @@ function findMap(mapID){
 function UpdateObject(e){
     var element = document.getElementById(e.target._container.id);
     var operator = searchOperator(element);
-    var obj = findOperatorInList(operator.id);
     var cls = findOperatorInClass(operator.id);
-    addProperty(element, 'userInput', 'Point');
     cls.setUserInput = 'Point';
     if (element.previousElementSibling.getAttribute('name').indexOf('1') != -1){
-        addProperty(element, 'first', (e.latlng.lng + ", " + e.latlng.lat));
         cls.setFirst = e.latlng.lng + ", " + e.latlng.lat;
     }
     else if (element.previousElementSibling.getAttribute('name').indexOf('2') != -1){
-        addProperty(element, 'second', (e.latlng.lng + ", " + e.latlng.lat));
         cls.setSecond = e.latlng.lng + ", " + e.latlng.lat;
     }
     Q.printQuery();
