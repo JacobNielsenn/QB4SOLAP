@@ -66,56 +66,6 @@ function createMenuObj(list, label, lookup, inStruct, mode){
 	return obj;
 }
 //Called from HTML elements
-function SpatialOptions(element){
-	var elements = GetClosestP(element).childNodes;
-	var spatialLevel = HtmlSearch(GetClosestP(element), 'spatialLevel');
-	var levelList = [];
-	var ele = 0;
-	var spatialList = [];
-	//console.log(elements, spatialLevel);
-	for (var i = 0; i < elements.length; i++){
-		if (elements[i].getAttribute('name').replace(/[0-9]/g, '') == 'baseLevel' && elements[i].value != defaultvalue){
-			var obj = traverse(DataStructureDefinition.dimension, elements[i].value+'Dim');
-			var list;
-			if (obj.hasOwnProperty('hasHierarchy')){
-				list = obj.hasHierarchy[0].hierarchy.hasLevel;
-			}
-			else {
-				list = [];
-			}
-			ele++;
-			for (var l in list){
-				levelList.push(list[l]);
-			}
-		}
-	}
-	for (var i in levelList){
-		var count = 0;
-		for (var l in levelList){
-			if (levelList[i] == levelList[l]){
-				count++;
-			}
-			if (count == ele){
-				if (spatialList.indexOf(levelList[i]) == -1){
-					spatialList.push(levelList[i]);
-				}
-			}
-		}
-	}
-	ListOptions(spatialLevel, spatialList);
-}
-function AttributeOptions(element){
-	var obj = traverse(DataStructureDefinition.levelProperty, element.value);
-	console.log(obj);
-	var p = GetClosestP(element);
-	var name = element.name.replace(/[0-9]/g, '') + 'Atr';
-	var atr = HtmlSearch(p, name);
-	var list = [];
-	for (var i in obj.levelAttribute){
-		list.push(obj.levelAttribute[i].levelAttribute);
-	}
-	ListOptions(atr, list);
-}
 function ListOperations(selector){
 	var OperationsList = document.getElementById('OperationsList');
 	OperationsList.innerHTML = "";
@@ -128,12 +78,6 @@ function ListOperations(selector){
 		OperationsList.appendChild(text);
 		OperationsList.appendChild(InsertBR());
 	}
-}
-function OprSelect(event){
-	selector = event;
-	event.currentTarget.classList.toggle('switch-color');
-	event.preventDefault();
-	ListOperations(LastOpr);
 }
 function ListOptions(ele, list, property){
 	ele.innerHTML = "";
@@ -284,6 +228,7 @@ function clickedAttribute(element){
 	var operator = searchOperator(element);
 	var obj = findOperatorInList(operator.id);
 	var cls = findOperatorInClass(operator.id);
+	console.log(obj, cls);
 	switch (obj.name){
 		case ("SSlice"):
 			switch (obj.spatialOperator){

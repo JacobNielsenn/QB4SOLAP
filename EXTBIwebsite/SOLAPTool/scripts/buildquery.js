@@ -13,7 +13,6 @@ function addOperator(ele, name){
         document.getElementById('mes').disabled = true;
     }
 }
-
 function findOperatorInList(id){
     for (var i in queryOfOperators){
         if(queryOfOperators[i].id == id){
@@ -21,7 +20,6 @@ function findOperatorInList(id){
         }
     }
 }
-
 function findOperatorInClass(id){
     console.log("Search for:", id);
     for (var i in Q.list){
@@ -29,16 +27,6 @@ function findOperatorInClass(id){
             return Q.list[i];
         }
     }
-}
-
-function deleteOperatorInList(id){
-    for (var i in queryOfOperators){
-        if(queryOfOperators[i].id == id){
-            queryOfOperators.splice(i,1);
-            Q.deleteOperator(id);
-        }
-    }
-
 }
 function addProperty(ele, name, value){
     var operator = searchOperator(ele);

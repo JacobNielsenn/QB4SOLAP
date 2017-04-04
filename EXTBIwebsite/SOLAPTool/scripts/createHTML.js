@@ -70,11 +70,7 @@ function MoveUp(element){
         Q.printQuery();
 	}
 }
-function Reset(element){
-	//reset.png is taken from endless icons which is free to use.
-}
 function swapElements(obj1, obj2) {
-	console.log(obj1, obj2.constructor);
 	// save the location of obj2
 	if(obj2.constructor != HTMLParagraphElement){
 		return;
@@ -141,11 +137,6 @@ function SSlice_within(event){
 	addProperty(p, 'spatialOperator', 'within');
 	Q.add(new OSlice("SSlice", p.id));
 	QueryStatment.appendChild(p);
-	console.log("Query", Q);
-	console.log("Global", global);
-	console.log("GlobalPath", globalPath);
-	console.log("InnerGlobal", innerGlobal);
-	console.log("InnerGlobalPath", innerGLobalPath);
     Q.avaiableOperators();
 }
 function SDice(event){
@@ -164,11 +155,6 @@ function SDice(event){
 	addOperator(p, 'SDice');
     Q.add(new ODice("SDice", p.id));
 	QueryStatment.appendChild(p);
-    console.log("Query", Q);
-    console.log("Global", global);
-    console.log("GlobalPath", globalPath);
-    console.log("InnerGlobal", innerGlobal);
-    console.log("InnerGlobalPath", innerGLobalPath);
     Q.avaiableOperators();
 }
 function SRU(event){
@@ -183,19 +169,11 @@ function SRU(event){
 	body.appendChild(groupBy('Select Aggregation Level: '));
 	body.appendChild(sFunction('Select Spatial Function: '));
 	body.appendChild(aggFunction('Select Agg Function: '));
-	//body.appendChild(InsertTextBox('Inner Select:'))
-	//body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel1'));
-	//body.appendChild(SpatialLevel('Select: ', 'innerSpatialLevel2'));
     p.appendChild(header);
     p.appendChild(body);
     addOperator(p, 'SRU');
     Q.add(new OSRU("SRU", p.id));
     QueryStatment.appendChild(p);
-    console.log("Query", Q);
-    console.log("Global", global);
-    console.log("GlobalPath", globalPath);
-    console.log("InnerGlobal", innerGlobal);
-    console.log("InnerGlobalPath", innerGLobalPath);
     Q.avaiableOperators();
 }
 // BODY UTILITY //

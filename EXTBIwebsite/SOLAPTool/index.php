@@ -2,11 +2,8 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		<script type="text/javascript" src="scripts/utility/interact.js"></script>
         <script type="text/javascript" src="scripts/utility/jquery-3.1.0.js"></script>
 		<script type="text/javascript" src="scripts/utility/loadSchema.js"></script>
-		<script type="text/javascript" src="scripts/utility/double-linked-list.js"></script>
 		<script type="text/javascript" src="scripts/BasicComponentHTML.js"></script>
 		<script type="text/javascript" src="scripts/createHTML.js"></script>
 		<script type="text/javascript" src="scripts/lookUp.js"></script>
@@ -47,8 +44,6 @@
 			var ID = {};
 			var NameID = {};
 			var queryOfOperators = [];
-			var additionalQuery = false;
-			var innerScoopCount = 0;
 			var global = {};
 			var globalPath = {};
 			var innerGlobal = {};
@@ -133,7 +128,7 @@
                                 <p id="PreventSwap">
                                     <button id="QueryButton" style="float: left" onclick="runQuery()">Run Query</button>
 									<button id="mes" style="float:left;" class="hide" onclick="Mes(this)">Aggregate</button>
-									<button id="cls" style="float:left;" class="hide" onclick="Cls(this)">Clear Tables</button>
+									<button id="cls" style="float:left;" class="hide" onclick="Cls(this)">Clear Results</button>
                                 </p>
 							</div>
 

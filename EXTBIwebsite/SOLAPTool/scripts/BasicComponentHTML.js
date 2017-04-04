@@ -45,8 +45,5 @@ function InsertInput(text, size, updater, tooltipText){
     if (updater != null){
         ele.setAttribute('onchange', updater);
     }
-    else{
-        //ele.setAttribute('onchange', '');
-    }
     return ele;
 }
