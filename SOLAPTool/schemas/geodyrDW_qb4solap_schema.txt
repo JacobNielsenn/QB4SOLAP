@@ -1,0 +1,350 @@
+@prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix virtrdf: <http://www.openlinksw.com/schemas/virtrdf#> .
+
+
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix qb4o: <http://purl.org/qb4olap/cubes#> .
+@prefix qb4so: <http://w3id.org/qb4solap#> .
+@prefix gaf: <http://qb4solap.org/cubes/schemas/geoanimalfarm#> .
+
+#-----------------------------------------------------------------------------------------------------
+# -- Cube definition: GeoAnimalFarm Cube 
+
+gaf:GeoAnimalFarm a qb:DataStructureDefinition ;
+
+  # Lowest level for each dimensions in the cube
+  qb:component [qb4o:level gaf:herd ; qb4o:cardinality qb4o:ManyToOne  ] ;
+  qb:component [qb4o:level gaf:time ; qb4o:cardinality qb4o:ManyToOne ] ;
+  qb:component [qb4o:level gaf:farm ; qb4o:cardinality qb4o:ManyToOne; qb4so:topologicalRelation qb4so:Equals ] ;
+  qb:component [qb4o:level gaf:parish ; qb4o:cardinality qb4o:ManyToMany; qb4so:topologicalRelation qb4so:Within ] ;
+
+  # Measures in the cube
+  qb:component [qb:measure gaf:numberOfAnimals ; qb4o:aggregateFunction qb4o:Sum] ;
+  qb:component [qb:measure gaf:location ; qb4o:aggregateFunction qb4so:ConvexHull] ;
+  qb:component [qb:measure gaf:nitrogenReduction ; qb4o:aggregateFunction qb4o:Avg] ;
+  qb:component [qb:measure gaf:nitrateClass ; qb4o:aggregateFunction qb4o:Avg] ;
+  qb:component [qb:measure gaf:phosphorClass ; qb4o:aggregateFunction qb4o:Avg] .
+
+
+#-----------------------------------------------------------------------------------------------------
+# -- Conventional Measures
+
+gaf:numberOfAnimals a rdf:Property , qb:MeasureProperty ; rdfs:label "Livestock Unit"@en ; 
+	rdfs:subPropertyOf sdmx-measure:obsValue ; rdfs:range xsd:decimal .
+
+gaf:nitrogenReduction a rdf:Property , qb:MeasureProperty ; rdfs:label "Nitrogen Reduction Potentials"@en ; 
+	rdfs:subPropertyOf sdmx-measure:obsValue ; rdfs:range xsd:decimal .
+    
+gaf:nitrateClass a rdf:Property , qb:MeasureProperty ; rdfs:label "Nitrate Classification"@en ; 
+	rdfs:subPropertyOf sdmx-measure:obsValue ; rdfs:range xsd:integer .
+	
+gaf:phosphorClass a rdf:Property , qb:MeasureProperty ; rdfs:label "Phosphor Classification"@en ; 
+	rdfs:subPropertyOf sdmx-measure:obsValue ; rdfs:range xsd:integer .
+	
+	
+
+#-----------------------------------------------------------------------------------------------------
+# -- Spatial Measure
+    
+gaf:location a rdf:Property , qb:MeasureProperty ; rdfs:label "Location"@en ; 
+	rdfs:subPropertyOf sdmx-measure:obsValue ; rdfs:subClassOf geo:SpatialObject ;
+	rdfs:domain geo:Point; rdfs:range geo:wktLiteral , virtrdf:Geometry .
+  	
+  
+
+#-----------------------------------------------------------------------------------------------------
+# -- Herd dimension
+
+gaf:herdDim a rdf:Property , qb:DimensionProperty ; rdfs:label "Animal Dimension"@en ; 
+	qb4o:hasHierarchy gaf:type , gaf:usage .
+
+	
+# -- Herd type hierarchy 	
+	
+gaf:type a qb4o:Hierarchy ; rdfs:label "Herd Type Hierarchy"@en ;
+	qb4o:inDimension gaf:herdDim ;
+    qb4o:hasLevel gaf:animal .
+	
+
+# - Herd type hierarchy structure
+	
+_:type_hs1 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:type ;
+    qb4o:childLevel gaf:herd ; qb4o:parentLevel gaf:animal ;
+    qb4o:pcCardinality qb4o:ManyToOne .
+
+# -- Herd level
+
+gaf:herd a qb4o:LevelProperty ; rdfs:label "Herd Level"@en ;
+	qb4o:hasAttribute gaf:herdCode;
+	qb4o:hasAttribute gaf:herdName .
+
+# - Herd level attributes
+	
+gaf:herdcode a qb4o:LevelAttribute ; rdfs:label "Herd Code"@en ; 
+	qb4o:inLevel gaf:herd ; rdfs:range xsd:positiveInteger .
+gaf:herdName a qb4o:LevelAttribute ; rdfs:label "Herd Name"@en ; 
+	qb4o:inLevel gaf:herd ; rdfs:range xsd:string .
+
+
+# -- Animal level
+
+gaf:animal a qb4o:LevelProperty ; rdfs:label "Animal Level"@en ;
+	qb4o:hasAttribute gaf:animalCode;
+	qb4o:hasAttribute gaf:animalName .
+
+# - Animal level attributes
+	
+gaf:animalCode a qb4o:LevelAttribute ; rdfs:label "Animal Code"@en ; 
+	qb4o:inLevel gaf:animal ; rdfs:range xsd:positiveInteger .
+gaf:animalName a qb4o:LevelAttribute ; rdfs:label "Animal Name"@en ; 
+	qb4o:inLevel gaf:animal ; rdfs:range xsd:string .
+
+
+# -- Usage hierarchy 
+	
+gaf:usage a qb4o:Hierarchy ; rdfs:label "Usage Hierarchy"@en ;
+	qb4o:inDimension gaf:animalDim ;
+    qb4o:hasLevel gaf:product ;
+	qb4o:hasLevel gaf:purpose .
+
+	
+# - Usage hierarchy structure
+	
+_:animal_product_hs1 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:usage ;
+    qb4o:childLevel gaf:animal ; qb4o:parentLevel gaf:product ;
+    qb4o:pcCardinality qb4o:ManyToOne .
+
+_:animal_purpose_hs1 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:usage ;
+    qb4o:childLevel gaf:animal ; qb4o:parentLevel gaf:purpose ;
+    qb4o:pcCardinality qb4o:ManyToOne .
+
+# -- Product level
+
+gaf:product a qb4o:LevelProperty ; rdfs:label "Product Level"@en ;
+	qb4o:hasAttribute gaf:productCode;
+	qb4o:hasAttribute gaf:productName .
+
+# - Product level attributes
+	
+gaf:productNumber a qb4o:LevelAttribute ; rdfs:label "Product Number"@en ; 
+	qb4o:inLevel gaf:product ; rdfs:range xsd:positiveInteger .
+gaf:productName a qb4o:LevelAttribute ; rdfs:label "Product Name"@en ; 
+	qb4o:inLevel gaf:product ; rdfs:range xsd:string .
+
+
+# -- Purpose level
+
+gaf:purpose a qb4o:LevelProperty ; rdfs:label "Purpose Level"@en ;
+	qb4o:hasAttribute gaf:purposeCode;
+	qb4o:hasAttribute gaf:purposeName .
+
+# - Purpose level attributes
+	
+gaf:purposeCode a qb4o:LevelAttribute ; rdfs:label "Purpose Code"@en ; 
+	qb4o:inLevel gaf:purpose ; rdfs:range xsd:positiveInteger .
+gaf:purposeName a qb4o:LevelAttribute ; rdfs:label "Purpose Name"@en ; 
+	qb4o:inLevel gaf:purpose ; rdfs:range xsd:string .
+
+
+#-----------------------------------------------------------------------------------------------------
+# -- Farm dimension
+
+gaf:farmDim a rdf:Property , qb:DimensionProperty ; rdfs:label "Farm Dimension"@en ; 
+	qb4o:hasHierarchy gaf:ownership , gaf:address .
+
+	
+# -- Ownership hierarchy 	
+	
+gaf:ownership a qb4o:Hierarchy ; rdfs:label "Ownership Hierarchy"@en ;
+	qb4o:inDimension gaf:farmDim ;
+    qb4o:hasLevel gaf:company .
+
+# - Ownership hierarchy structure
+	
+_:ownership_hs1 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:ownership ;
+    qb4o:childLevel gaf:farm ; qb4o:parentLevel gaf:company ;
+    qb4o:pcCardinality qb4o:ManyToOne .
+
+
+# -- Address hierarchy 	
+	
+gaf:address a qb4o:Hierarchy ; rdfs:label "Address Hierarchy"@en ;
+	qb4o:inDimension gaf:farmDim ;
+    qb4o:hasLevel gaf:zipCode , gaf:kommune .
+	
+# - Address hierarchy structure
+	
+_:farm_address_hs1 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:address ;
+    qb4o:childLevel gaf:farm ; qb4o:parentLevel gaf:zipCode ;
+    qb4o:pcCardinality qb4o:ManyToOne .
+	
+_:farm_address_hs2 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:address ;
+    qb4o:childLevel gaf:zipCode ; qb4o:parentLevel gaf:kommune ;
+    qb4o:pcCardinality qb4o:ManyToOne .		
+		
+_:company_address_hs1 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:address ;
+    qb4o:childLevel gaf:company ; qb4o:parentLevel gaf:zipCode ;
+    qb4o:pcCardinality qb4o:ManyToOne .	
+	
+_:company_address_hs2 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:address ;
+    qb4o:childLevel gaf:zipCode ; qb4o:parentLevel gaf:kommune ;
+    qb4o:pcCardinality qb4o:ManyToOne .	
+		
+
+# -- Farm level
+
+gaf:farm a qb4o:LevelProperty ; rdfs:label "Farm Level"@en ;
+	qb4o:hasAttribute gaf:chrNumber ;	
+	qb4o:hasAttribute gaf:livestockUnit ;	
+	qb4o:hasAttribute gaf:farmLocation ;	
+	geo:hasGeometry gaf:locationPoint. 
+
+# - Farm level attributes
+	
+gaf:chrNumber a qb4o:LevelAttribute ; rdfs:label "CHR Number"@en ; 
+	qb4o:inLevel gaf:farm ; rdfs:range xsd:positiveInteger .
+gaf:livestockUnit a qb4o:LevelAttribute ; rdfs:label "Livestock Unit"@en ; 
+	qb4o:inLevel gaf:farm ; rdfs:range xsd:double .
+gaf:farmLocation a qb4o:LevelAttribute ; rdfs:label "Location"@en ; 
+	rdfs:subPropertyOf geo:Geometry ; qb4o:inLevel gaf:farm ;
+	rdfs:domain geo:Point; rdfs:subClassOf geo:SpatialObject ;
+	rdfs:range geo:wktLiteral , virtrdf:Geometry .
+	
+	
+gaf:locationPoint a geo:Geometry; rdfs:label "Parish Polygon"@en ;
+	rdfs:domain geo:Point; rdfs:subClassOf geo:SpatialObject;
+	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
+
+
+# -- Zip Code level
+
+gaf:zipCode a qb4o:LevelProperty ; rdfs:label "Zip Code Level"@en ;
+	qb4o:hasAttribute gaf:postNr .
+
+# - Zip Code level attributes
+	
+gaf:postNr a qb4o:LevelAttribute ; rdfs:label "Postal Code"@en ; 
+	qb4o:inLevel gaf:zipCode ; rdfs:range xsd:string .
+
+
+# -- Kommune level
+
+gaf:kommune a qb4o:LevelProperty ; rdfs:label "Kommune Level"@en ;
+	qb4o:hasAttribute gaf:kommuneNumber;
+	qb4o:hasAttribute gaf:kommuneName .
+
+# - Kommune level attributes
+	
+gaf:kommuneNumber a qb4o:LevelAttribute ; rdfs:label "Kommune Number"@en ; 
+	qb4o:inLevel gaf:kommune ; rdfs:range xsd:positiveInteger .
+gaf:kommuneName a qb4o:LevelAttribute ; rdfs:label "Kommune Name"@en ; 
+	qb4o:inLevel gaf:kommune ; rdfs:range xsd:string .
+
+# -- Company level
+
+gaf:company a qb4o:LevelProperty ; rdfs:label "Company Level"@en ;
+	qb4o:hasAttribute gaf:cvrNumber;
+	qb4o:hasAttribute gaf:companyName .
+
+# - Company level attributes
+	
+gaf:cvrNumber a qb4o:LevelAttribute ; rdfs:label "CVR Number"@en ; 
+	qb4o:inLevel gaf:company ; rdfs:range xsd:positiveInteger .
+gaf:companyName a qb4o:LevelAttribute ; rdfs:label "Company Name"@en ; 
+	qb4o:inLevel gaf:company ; rdfs:range xsd:string .
+
+
+#-----------------------------------------------------------------------------------------------------
+# -- Parish dimension
+
+gaf:parishDim a rdf:Property , qb:DimensionProperty ; rdfs:label "Parish Dimension"@en ; 
+	qb4o:hasHierarchy gaf:geography .	
+	
+# -- Geography hierarchy 	
+	
+gaf:geography a qb4o:Hierarchy ; rdfs:label "Geography Hierarchy"@en ;
+	qb4o:inDimension gaf:parishDim ;
+    qb4o:hasLevel gaf:drainageArea .
+
+# - Geography hierarchy structure
+		
+_:geography_hs1 a qb4o:HierarchyStep ; qb4o:inHierarchy gaf:geography ;
+    qb4o:childLevel gaf:parish ; qb4o:parentLevel gaf:drainageArea ;
+    qb4o:pcCardinality qb4o:ManyToMany; qb4so:pcTopoRel qb4so:Intersects .
+	
+# -- Parish level
+
+gaf:parish a qb4o:LevelProperty ; rdfs:label "Parish Level"@en ;
+	qb4o:hasAttribute gaf:parishID ;	
+	qb4o:hasAttribute gaf:parishName ;	
+	qb4o:hasAttribute gaf:parishArea ;	
+	qb4o:hasAttribute gaf:parishGeo ;
+	geo:hasGeometry gaf:parishPolygon. 
+
+# - Parish level attributes
+	
+gaf:parishID a qb4o:LevelAttribute ; rdfs:label "Parish ID"@en ; 
+	qb4o:inLevel gaf:parish ; rdfs:range xsd:positiveInteger .
+gaf:parishName a qb4o:LevelAttribute ; rdfs:label "Parish Name"@en ; 
+	qb4o:inLevel gaf:parish ; rdfs:range xsd:string .
+gaf:parishArea a qb4o:LevelAttribute ; rdfs:label "Parish Area"@en ; 
+	qb4o:inLevel gaf:parish ; rdfs:range xsd:positiveInteger .
+gaf:parishGeo a qb4o:LevelAttribute ; rdfs:label "Parish Geometry"@en ; 
+	rdfs:subPropertyOf geo:Geometry ; qb4o:inLevel gaf:parish ;
+	rdfs:domain geo:Point; rdfs:subClassOf geo:SpatialObject;
+	rdfs:range geo:wktLiteral , virtrdf:Geometry .
+	
+	
+gaf:parishPolygon a geo:Geometry; rdfs:label "Parish Polygon"@en ;
+	rdfs:domain geo:MultiSurface; rdfs:subClassOf geo:SpatialObject;
+	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
+
+
+# -- Drainage area level
+	
+gaf:drainageArea a qb4o:LevelProperty ; rdfs:label "Drainage Area Level"@en ;
+	qb4o:hasAttribute gaf:waterID ;	
+	qb4o:hasAttribute gaf:waterName ;	
+	qb4o:hasAttribute gaf:waterArea ;
+	qb4o:hasAttribute gaf:drainageGeo ;
+	geo:hasGeometry gaf:waterPolygon. 	
+
+# - Drainage area level attributes
+	
+gaf:waterID a qb4o:LevelAttribute ; rdfs:label "Water ID"@en ; 
+	qb4o:inLevel gaf:drainageArea ; rdfs:range xsd:positiveInteger .
+gaf:waterName a qb4o:LevelAttribute ; rdfs:label "Water Name"@en ; 
+	qb4o:inLevel gaf:drainageArea ; rdfs:range xsd:string .
+gaf:waterArea a qb4o:LevelAttribute ; rdfs:label "Water Area"@en ; 
+	qb4o:inLevel gaf:drainageArea ; rdfs:range xsd:positiveInteger .
+gaf:drainageGeo a qb4o:LevelAttribute ; rdfs:label "Drainage Geometry"@en ; 
+	rdfs:subPropertyOf geo:Geometry ; qb4o:inLevel gaf:drainageArea ;
+	rdfs:domain geo:Surface; rdfs:subClassOf geo:SpatialObject;
+	rdfs:range geo:wktLiteral , virtrdf:Geometry .
+	
+	
+gaf:waterPolygon a 	geo:Geometry; rdfs:label "Water Polygon"@en ;
+	rdfs:domain geo:MultiSurface; rdfs:subClassOf geo:SpatialObject;
+	rdfs:range geo:wktLiteral , virtrdf:Geometry .	
+
+
+#-----------------------------------------------------------------------------------------------------
+# -- Time dimension
+
+gaf:timeDim a rdf:Property , qb:DimensionProperty ; rdfs:label "Time Dimension"@en .
+
+gaf:time a qb4o:LevelProperty ; rdfs:label "Time Level"@en ;
+	qb4o:hasAttribute gaf:year .
+	
+# - Time level attributes
+
+gaf:year a qb4o:LevelAttribute ; rdfs:label "Year Number"@en ; 
+	qb4o:inLevel gaf:time ; rdfs:range xsd:positiveInteger .
+	

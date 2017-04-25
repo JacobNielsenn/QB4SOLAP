@@ -1,0 +1,3 @@
+- Aggregate button is not working when it is selected for the second time in s-dice operator
+- Prefix should be corrected: prefix qb4so: <http://purl.org/qb4solap/cubes#> --> shall be replaced with prefix qb4so: <https://w3id.org/qb4solap#>
+

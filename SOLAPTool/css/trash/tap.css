@@ -1,0 +1,86 @@
+.noselect {
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none;   /* Chrome/Safari/Opera */
+			-khtml-user-select: none;    /* Konqueror */
+			-moz-user-select: none;      /* Firefox */
+			-ms-user-select: none;       /* Internet Explorer/Edge */
+			user-select: none;           /* Non-prefixed version, currently not supported by any browser */                               
+		}
+
+		.tap-target, .build-target {
+			cursor: pointer;
+			transition: all 0.3s;
+		}
+
+		.tap-target.switch-color{
+			color: green;
+			text-decoration: underline;
+		}
+
+		.appear {
+	    width: 250px; 
+	    border: #000 2px solid;
+	    background:#F8F8F8;
+	    position: relative;
+	    top: 5px;
+	    left:15px;
+	    display:none;
+	    padding: 0 20px 20px 20px;
+	    z-index: 1000000;
+		}
+		.hover  {
+	    cursor:pointer;
+	    width: 5px;
+		}
+		.hover:hover .appear {
+	    display:block;
+		}
+		input[type=text], select {
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			width: 40px;
+			box-sizing: border-box;
+		}
+		/* Tooltip */
+			.tooltip {
+			    position: relative;
+			}
+
+			.tooltip .tooltiptext {
+			    visibility: hidden;
+			    width: 120px;
+			    max-height: 50px;
+			    background-color: black;
+			    color: #fff;
+			    text-align: center;
+			    border-radius: 6px;
+			    padding: 0px 0;
+			    
+			    /* Position the tooltip */
+			    position: absolute;
+			    z-index: 1;
+			    bottom: 100%;
+			    left: 50%;
+			    margin-left: -60px;
+			}
+
+			.tooltip:hover .tooltiptext{
+				visibility: visible;
+			}
+		
+		/* Menu Style */
+			
+			}
+		/* Menu Toggle */
+			.testing {
+				background: #33cc33;
+				background: -webkit-linear-gradient(left, #33cc33, #C7C7C7);
+				background: -o-linear-gradient(right, #33cc33, #C7C7C7);
+				background: -moz-linear-gradient(right, #33cc33, #C7C7C7);
+				background: linear-gradient(to right, #33cc33, #C7C7C7);
+				color: yellow;
+			}
+
+
+
