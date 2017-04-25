@@ -218,7 +218,7 @@ function InsertMultiMenuLevel(objectArrays, width, updater, field){
     }
     return menu;
 }
-//header and button HTML components
+//header HTML components
 function Insertheader(name){
     var header = InsertDiv();
     var title = InsertDiv();
@@ -497,7 +497,6 @@ function MoveUp(element){
         Q.printQuery();
     }
 }
-//Used by buttons to move the elements
 function swapElements(obj1, obj2) {
     // save the location of obj2
     if(obj2.constructor != HTMLParagraphElement){
