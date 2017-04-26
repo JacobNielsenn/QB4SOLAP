@@ -1,4 +1,5 @@
 # QB4SOLAP
+This readme goes over how to install Virtuoso and XAMPP, it also covers how to setup Virtuoso with the schema and datasets and where to copy the web service to. Lasty in Structure of the code information about the different classes that are used and how to change the schema if needed.
 
 ## Virtuoso
 
@@ -26,5 +27,32 @@ To check if it is working we need to open XAMPP, this needs to be done via admin
 ## Structure of the code
 
 Global Variables
+- SpatialAggregation
+- TopologicalRelations 
+- NumericOperations
+- DataTypes
+- RelationalOperators
+- AGG
+- SpatialDimensions
+- SpatialFunction
+
 Classes
-Utility Functions
+- Binds
+- EndGroupBy
+- Filters
+- GroupBy
+- Levels
+- Operator
+- Path
+- ClsQuery
+- RDF
+- RDFHandler
+- Select
+Global Functions
+- createHTML.js
+- utility/loadSchema.js
+- map.js
+
+# Changing schema
+
+
