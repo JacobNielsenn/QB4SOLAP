@@ -47,8 +47,11 @@ Global Variables
 
 Classes
 - Binds
+	returns a RDF in a list, the list will always only contain one element, The list is only used in the returnQuery function that is located in the Query class.
 - EndGroupBy
+	Similar to Binds it return a RDF in a list. The class has an adds and remove function to insert variables into the groupby rdf, when the function returnEndGroupBy is called is generate the RDF and adds all the variables that is added to that object.
 - Filters
+	
 - GroupBy
 - Levels
 - Operator
