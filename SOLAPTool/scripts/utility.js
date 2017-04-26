@@ -57,7 +57,7 @@ $(document).ready(function(){
     $('#QueryButton').click( function () {
         var ele = document.getElementById('GeneratedQuery');
         var actualquery = prefixes + "\n" + ele.value;
-        $.post('http://localhost:8890/sparql', {query: actualquery, format:'text/html'}, function(data) {
+        $.post('http://lod.cs.aau.dk:8890/sparql', {query: actualquery, format:'text/html'}, function(data) {
             var d = new Date,
                 dformat = [d.getMonth()+1,
                         d.getDate(),
@@ -73,7 +73,7 @@ $(document).ready(function(){
 function runQuery(){
     var ele = document.getElementById('GeneratedQuery');
     var actualquery = prefixes + "\n" + ele.value;
-    $.post('http://localhost:8890/sparql', {query: actualquery, format:'text/html'}, function(data) {
+    $.post('http://lod.cs.aau.dk:8890/sparql', {query: actualquery, format:'text/html'}, function(data) {
         var d = new Date,
             dformat = [d.getMonth()+1,
                     d.getDate(),
