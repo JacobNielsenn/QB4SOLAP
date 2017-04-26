@@ -27,6 +27,15 @@ To check if it is working we need to open XAMPP, this needs to be done via admin
 ## Structure of the code
 
 Global Variables
+- Q
+- GeneratedQueryElement
+- QueryStatment
+- ID
+- NameID
+- global
+- globalPath
+- innerGlobal
+- innerGLobalPath
 - SpatialAggregation
 - TopologicalRelations 
 - NumericOperations
