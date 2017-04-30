@@ -62,13 +62,13 @@ Global Functions
 - utility/loadSchema.js in charge of loading the schema used to generate the menus according to the schema.
 - map.js used in S-Slice to create the map.
 
-# Changing schema
+### Changing schema
 Some refactoring is needed in order to make it more flexible, the loadSchema may have some errors on new schema since it was only tested with two schemas. Likewise the global variables SpatialAggregation, TopologicalRelations, NumericOperations, DataTypes, RelationalOperators, AGG, SpatialDimensions and SpatialFunction need to be removed and generate with the schema and all places where the old variables were used need to be replaced with the newly generated ones.
 
-# Chaning endpoint
+### Chaning endpoint
 The url for the endpoint is located in utility used by jQyery $.post .
 
-# Chaning google map id
+### Chaning google map id
 If the map for some reason stops working it is highly like that it because the map id access token has run out, and therefor needs to be replaced. The access token is located in map.js in the function initializeMap when we set the tileLayer. Optimally a function need to be created that fetches a new access token from google maps to not encounter this problem again.
 
 
